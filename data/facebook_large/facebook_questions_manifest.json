@@ -1,0 +1,13 @@
+{
+  "random_seed": 90055,
+  "development_questions": 20,
+  "test_questions": 40,
+  "questions_per_type": {
+    "development": 5,
+    "test": 10
+  },
+  "development_unique_seeds": 30,
+  "test_unique_seeds": 60,
+  "seed_overlap_between_splits": 0,
+  "label_source": "deterministic graph topology; no AGP output used"
+}

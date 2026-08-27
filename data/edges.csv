@@ -1,0 +1,11 @@
+source,target,weight,description
+n1,n2,1.0,Donald Trump served as president of the United States.
+n1,n8,1.0,Donald Trump announced the United States withdrawal.
+n2,n8,1.0,The withdrawal changed United States participation in the agreement.
+n8,n3,1.0,The withdrawal concerned membership in the Paris Agreement.
+n3,n4,1.0,The Paris Agreement addresses climate change.
+n3,n6,0.8,The agreement was negotiated within the UN climate framework.
+n3,n7,0.8,The European Union supports implementation of the agreement.
+n5,n2,1.0,Joe Biden served as president of the United States.
+n5,n8,1.0,Joe Biden reversed the withdrawal by rejoining the agreement.
+

@@ -1,0 +1,36 @@
+{
+  "dataset": "Facebook Large Page-Page Network",
+  "source_repository": "UCI Machine Learning Repository",
+  "source_dataset_id": 527,
+  "doi": "10.24432/C50900",
+  "license": "CC BY 4.0",
+  "source_url": "https://archive.ics.uci.edu/dataset/527/facebook+large+page+page+network",
+  "node_count": 22470,
+  "raw_edge_rows": 171002,
+  "converted_edge_count": 170823,
+  "removed_self_loops": 179,
+  "removed_duplicate_undirected_edges": 0,
+  "isolated_node_count": 0,
+  "isolated_node_ids": [],
+  "categories": {
+    "company": 6495,
+    "government": 6880,
+    "politician": 5768,
+    "tvshow": 3327
+  },
+  "node_id_policy": "Prefix the source integer ID with 'fb_'.",
+  "edge_policy": "Treat mutual likes as undirected, unweighted edges with weight 1.0.",
+  "feature_policy": "Preserve the raw feature JSON. Record only each node's feature count in its description because no feature-index vocabulary is included in the archive.",
+  "source_file_sha256": {
+    "musae_facebook_target.csv": "7bd96eafea3c2ca40f44bfa9e73642194696c21e38c7b29ed409c32ad14075cd",
+    "musae_facebook_edges.csv": "7c50d8f02a75cc0829577814a1fc14535164daa38d79c3612340c9e9cdbd4022",
+    "musae_facebook_features.json": "ea870537646a93642a0008d38aa9bfeff02018070ba97b1f3f469d9622626436"
+  },
+  "output_file_sha256": {
+    "nodes.csv": "a5a89bb0e0bf77eaaff9059a784da0cd5b930ba5e3d9018f80f6156c9af28daa",
+    "edges.csv": "f3c3aeec27afa4389cd5042fabd21585804cf41506dce79df7ee0c74a81f2fb0"
+  },
+  "duplicate_normalized_name_groups": 367,
+  "nodes_in_duplicate_name_groups": 2305,
+  "duplicate_title_policy": "Keep the highest-degree page's original name (smallest numeric ID breaks ties); append ' [page ID]' to other pages with the same normalized name."
+}

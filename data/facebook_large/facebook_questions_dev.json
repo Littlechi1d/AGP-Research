@@ -1,0 +1,317 @@
+[
+  {
+    "id": "facebook_direct_01",
+    "question": "Which pages directly neighbor Headquarters Marine Corps, Henderson Hall, Headquarters & Service Battalion",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_8503"
+    ],
+    "relevant_node_ids": [
+      "fb_961",
+      "fb_4689",
+      "fb_12936"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_02",
+    "question": "Which pages directly neighbor Gluten-Free Girl",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_1855"
+    ],
+    "relevant_node_ids": [
+      "fb_3251",
+      "fb_4080",
+      "fb_4296",
+      "fb_9096",
+      "fb_12165",
+      "fb_15695",
+      "fb_17947",
+      "fb_19943"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_03",
+    "question": "Which pages directly neighbor Census Australia",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_10592"
+    ],
+    "relevant_node_ids": [
+      "fb_1319",
+      "fb_3252",
+      "fb_4976",
+      "fb_6940",
+      "fb_12593",
+      "fb_12807",
+      "fb_15217"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_04",
+    "question": "Which pages directly neighbor Nasdaq Tallinn",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_18330"
+    ],
+    "relevant_node_ids": [
+      "fb_840",
+      "fb_5042",
+      "fb_13226",
+      "fb_21762"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_05",
+    "question": "Which pages directly neighbor Chrisley Knows Best on USA",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_6559"
+    ],
+    "relevant_node_ids": [
+      "fb_7524",
+      "fb_8183",
+      "fb_13559"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_comparison_01",
+    "question": "Which pages are liked by both Meet the Press and Hardball with Chris Matthews",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_20363",
+      "fb_20349"
+    ],
+    "relevant_node_ids": [
+      "fb_1418",
+      "fb_5531",
+      "fb_6276",
+      "fb_7132",
+      "fb_8353",
+      "fb_9337"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_02",
+    "question": "Which pages are liked by both Katharina Schulze and Harald Terpe",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_1653",
+      "fb_15411"
+    ],
+    "relevant_node_ids": [
+      "fb_2051",
+      "fb_4677"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_03",
+    "question": "Which pages are liked by both Tarbijakaitseamet and Estonian Embassy in Dublin",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_2301",
+      "fb_9815"
+    ],
+    "relevant_node_ids": [
+      "fb_818",
+      "fb_12445"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_04",
+    "question": "Which pages are liked by both Rui Palmeira and Maurício Quintella Lessa",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_16679",
+      "fb_17533"
+    ],
+    "relevant_node_ids": [
+      "fb_7724",
+      "fb_14947"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_05",
+    "question": "Which pages are liked by both Emerald and Polaner",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_6265",
+      "fb_10166"
+    ],
+    "relevant_node_ids": [
+      "fb_11550",
+      "fb_17392",
+      "fb_19447",
+      "fb_21334"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_path_01",
+    "question": "Which pages form the unique shortest path between TOYOTA GAZOO Racing and SPORT1 Doppelpass",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_9837",
+      "fb_22469"
+    ],
+    "relevant_node_ids": [
+      "fb_9438",
+      "fb_19369"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_02",
+    "question": "Which pages form the unique shortest path between Michal Kučera and Markus Wallner",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_6093",
+      "fb_6332"
+    ],
+    "relevant_node_ids": [
+      "fb_4426",
+      "fb_9603"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_03",
+    "question": "Which pages form the unique shortest path between OBI and Koçtaş",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_11925",
+      "fb_9155"
+    ],
+    "relevant_node_ids": [
+      "fb_14818",
+      "fb_18559"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_04",
+    "question": "Which pages form the unique shortest path between Joachim Brudziński and Auschwitz Memorial / Muzeum Auschwitz",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_6801",
+      "fb_12221"
+    ],
+    "relevant_node_ids": [
+      "fb_10120",
+      "fb_19470"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_05",
+    "question": "Which pages form the unique shortest path between Alarm für Cobra 11 and Boxen bei RTL",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_18361",
+      "fb_12985"
+    ],
+    "relevant_node_ids": [
+      "fb_13103",
+      "fb_13997"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_similarity_01",
+    "question": "Which pages similar to Hey Qween share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_15197"
+    ],
+    "relevant_node_ids": [
+      "fb_4716",
+      "fb_13051",
+      "fb_18936"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_02",
+    "question": "Which pages similar to djuice pakistan share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_17199"
+    ],
+    "relevant_node_ids": [
+      "fb_8969",
+      "fb_17257",
+      "fb_18983",
+      "fb_19131",
+      "fb_21146"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_03",
+    "question": "Which pages similar to ESPN Capitales del Fútbol share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_6711"
+    ],
+    "relevant_node_ids": [
+      "fb_1433",
+      "fb_2782",
+      "fb_5131",
+      "fb_10881",
+      "fb_11295",
+      "fb_12822",
+      "fb_17775",
+      "fb_17905",
+      "fb_18192",
+      "fb_20958"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_04",
+    "question": "Which pages similar to Jornal da EPTV e Bom Dia Cidade - Ribeirão Preto share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_5020"
+    ],
+    "relevant_node_ids": [
+      "fb_1830",
+      "fb_4293",
+      "fb_4726",
+      "fb_5999",
+      "fb_8158",
+      "fb_9685",
+      "fb_10919",
+      "fb_12040",
+      "fb_16211",
+      "fb_22060"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_05",
+    "question": "Which pages similar to Profissão Repórter share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_4726"
+    ],
+    "relevant_node_ids": [
+      "fb_5020",
+      "fb_7949",
+      "fb_9685",
+      "fb_12474",
+      "fb_13075",
+      "fb_17944"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  }
+]

@@ -1,0 +1,631 @@
+[
+  {
+    "id": "facebook_direct_01",
+    "question": "Which pages directly neighbor Willkommen Österreich",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_7350"
+    ],
+    "relevant_node_ids": [
+      "fb_138",
+      "fb_1623",
+      "fb_4175",
+      "fb_8716",
+      "fb_10387",
+      "fb_16011",
+      "fb_18396"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_02",
+    "question": "Which pages directly neighbor 432nd Civil Affairs Battalion",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_13736"
+    ],
+    "relevant_node_ids": [
+      "fb_961",
+      "fb_2442",
+      "fb_5710",
+      "fb_14307",
+      "fb_14497",
+      "fb_22398"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_03",
+    "question": "Which pages directly neighbor Army Dental Corps Chief",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_15716"
+    ],
+    "relevant_node_ids": [
+      "fb_9625",
+      "fb_10884",
+      "fb_13434",
+      "fb_15076",
+      "fb_15531",
+      "fb_15963",
+      "fb_16093",
+      "fb_16895",
+      "fb_19086",
+      "fb_21231"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_04",
+    "question": "Which pages directly neighbor Felipe Michlig",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_16450"
+    ],
+    "relevant_node_ids": [
+      "fb_6479",
+      "fb_9951",
+      "fb_16625",
+      "fb_19928"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_05",
+    "question": "Which pages directly neighbor Carina Konrad",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_1893"
+    ],
+    "relevant_node_ids": [
+      "fb_2470",
+      "fb_3741",
+      "fb_3980"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_06",
+    "question": "Which pages directly neighbor Augusta, Georgia Fire/EMA",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_2678"
+    ],
+    "relevant_node_ids": [
+      "fb_5990",
+      "fb_10246",
+      "fb_21093",
+      "fb_21496"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_07",
+    "question": "Which pages directly neighbor Voice of Poland TVP",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_14266"
+    ],
+    "relevant_node_ids": [
+      "fb_119",
+      "fb_2257",
+      "fb_4352",
+      "fb_4809",
+      "fb_8762",
+      "fb_18427",
+      "fb_22322"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_08",
+    "question": "Which pages directly neighbor Warwickshire Police",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_12048"
+    ],
+    "relevant_node_ids": [
+      "fb_1311",
+      "fb_2578",
+      "fb_3642",
+      "fb_4334",
+      "fb_5982",
+      "fb_10547",
+      "fb_10833",
+      "fb_13718",
+      "fb_15403",
+      "fb_22091"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_09",
+    "question": "Which pages directly neighbor LU",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_13214"
+    ],
+    "relevant_node_ids": [
+      "fb_465",
+      "fb_5067",
+      "fb_8563",
+      "fb_9858"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_direct_10",
+    "question": "Which pages directly neighbor Sylwester Tułajew",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_8081"
+    ],
+    "relevant_node_ids": [
+      "fb_588",
+      "fb_2898",
+      "fb_6801",
+      "fb_9682",
+      "fb_15004",
+      "fb_18591"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "facebook_comparison_01",
+    "question": "Which pages are liked by both Estonian Embassy in Vilnius and Keskkonnaministeerium",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_5383",
+      "fb_5393"
+    ],
+    "relevant_node_ids": [
+      "fb_957",
+      "fb_995",
+      "fb_5076",
+      "fb_12445"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_02",
+    "question": "Which pages are liked by both Manfred Pentz and Daniel Günther",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_6263",
+      "fb_6839"
+    ],
+    "relevant_node_ids": [
+      "fb_6818",
+      "fb_11514",
+      "fb_14168"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_03",
+    "question": "Which pages are liked by both Rêve de Champlain and ONF",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_10404",
+      "fb_19949"
+    ],
+    "relevant_node_ids": [
+      "fb_8242",
+      "fb_14785"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_04",
+    "question": "Which pages are liked by both KFC and Barclaycard",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_15449",
+      "fb_21458"
+    ],
+    "relevant_node_ids": [
+      "fb_3586",
+      "fb_18206"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_05",
+    "question": "Which pages are liked by both El Intermedio and Más Vale Tarde",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_7858",
+      "fb_21331"
+    ],
+    "relevant_node_ids": [
+      "fb_6089",
+      "fb_14872"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_06",
+    "question": "Which pages are liked by both David Davies MP and Department for Work and Pensions - DWP",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_15045",
+      "fb_14852"
+    ],
+    "relevant_node_ids": [
+      "fb_2434",
+      "fb_8302",
+      "fb_16490"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_07",
+    "question": "Which pages are liked by both John Kasich and John Boehner",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_13138",
+      "fb_10257"
+    ],
+    "relevant_node_ids": [
+      "fb_11087",
+      "fb_15218"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_08",
+    "question": "Which pages are liked by both Hasip Kaplan and Nursel Aydoğan",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_994",
+      "fb_8634"
+    ],
+    "relevant_node_ids": [
+      "fb_413",
+      "fb_1540",
+      "fb_2385"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_09",
+    "question": "Which pages are liked by both Austrian Cultural Forum Tokyo and Österreichisches Kulturforum Teheran  - ÖKFT",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_13071",
+      "fb_9896"
+    ],
+    "relevant_node_ids": [
+      "fb_3688",
+      "fb_4634",
+      "fb_4729",
+      "fb_7170",
+      "fb_14710",
+      "fb_16506",
+      "fb_17062",
+      "fb_18850",
+      "fb_20446",
+      "fb_20660"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_comparison_10",
+    "question": "Which pages are liked by both Todd McClay MP and Royal New Zealand Navy",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_4473",
+      "fb_4876"
+    ],
+    "relevant_node_ids": [
+      "fb_5335",
+      "fb_10476",
+      "fb_11274"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "facebook_path_01",
+    "question": "Which pages form the unique shortest path between India in Sri Lanka - AHCI, Kandy and Aden Duale",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_3700",
+      "fb_20392"
+    ],
+    "relevant_node_ids": [
+      "fb_8327",
+      "fb_9856"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_02",
+    "question": "Which pages form the unique shortest path between Hugo Klein and Anca Boagiu",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_2045",
+      "fb_14999"
+    ],
+    "relevant_node_ids": [
+      "fb_11178",
+      "fb_20888"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_03",
+    "question": "Which pages form the unique shortest path between The People's Operator and Mark Spencer",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_9621",
+      "fb_18742"
+    ],
+    "relevant_node_ids": [
+      "fb_9063",
+      "fb_19302"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_04",
+    "question": "Which pages form the unique shortest path between VirginiaDMV and Office of the Texas Secretary of State",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_8595",
+      "fb_2424"
+    ],
+    "relevant_node_ids": [
+      "fb_11376",
+      "fb_11804"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_05",
+    "question": "Which pages form the unique shortest path between RBC and Carolyn Maloney",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_18985",
+      "fb_20740"
+    ],
+    "relevant_node_ids": [
+      "fb_3342",
+      "fb_18573"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_06",
+    "question": "Which pages form the unique shortest path between Rumblefish and Dick Smith",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_9073",
+      "fb_14745"
+    ],
+    "relevant_node_ids": [
+      "fb_2597",
+      "fb_13083"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_07",
+    "question": "Which pages form the unique shortest path between Alice TV show and Falling Skies",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_15480",
+      "fb_22105"
+    ],
+    "relevant_node_ids": [
+      "fb_8094",
+      "fb_21076"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_08",
+    "question": "Which pages form the unique shortest path between Polizei Niedersachsen Fahndung and Schleswig-Holstein.de",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_11672",
+      "fb_9643"
+    ],
+    "relevant_node_ids": [
+      "fb_591",
+      "fb_7016"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_09",
+    "question": "Which pages form the unique shortest path between State Historical Society of Iowa and Woodstock Police, GA",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_13197",
+      "fb_207"
+    ],
+    "relevant_node_ids": [
+      "fb_15532",
+      "fb_22329"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_path_10",
+    "question": "Which pages form the unique shortest path between KOBİ Nerede TEB Orada and ING Bank Türkiye",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_15108",
+      "fb_1056"
+    ],
+    "relevant_node_ids": [
+      "fb_12828",
+      "fb_13914"
+    ],
+    "generation_rule": "The two internal nodes on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "facebook_similarity_01",
+    "question": "Which pages similar to The Car Chasers share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_11042"
+    ],
+    "relevant_node_ids": [
+      "fb_3799",
+      "fb_5040",
+      "fb_18344"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_02",
+    "question": "Which pages similar to Bangko Sentral ng Pilipinas share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_2550"
+    ],
+    "relevant_node_ids": [
+      "fb_85",
+      "fb_12926",
+      "fb_13532",
+      "fb_13899",
+      "fb_17598",
+      "fb_17912",
+      "fb_19631"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_03",
+    "question": "Which pages similar to 綜藝玩很大Mr.Player share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_963"
+    ],
+    "relevant_node_ids": [
+      "fb_8520",
+      "fb_16132",
+      "fb_16137"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_04",
+    "question": "Which pages similar to Ahmet Davutoğlu share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_14610"
+    ],
+    "relevant_node_ids": [
+      "fb_2379",
+      "fb_15319",
+      "fb_17773"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_05",
+    "question": "Which pages similar to X FACTOR INDONESIA share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_9198"
+    ],
+    "relevant_node_ids": [
+      "fb_3045",
+      "fb_11256",
+      "fb_18305",
+      "fb_19596"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_06",
+    "question": "Which pages similar to Al Marsad share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_2198"
+    ],
+    "relevant_node_ids": [
+      "fb_5969",
+      "fb_6905",
+      "fb_8212",
+      "fb_13490",
+      "fb_14962",
+      "fb_16307",
+      "fb_17784"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_07",
+    "question": "Which pages similar to Ellen Rosenblum share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_18091"
+    ],
+    "relevant_node_ids": [
+      "fb_1228",
+      "fb_9068",
+      "fb_10495",
+      "fb_11003",
+      "fb_20723"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_08",
+    "question": "Which pages similar to Der Hundeprofi share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_941"
+    ],
+    "relevant_node_ids": [
+      "fb_3910",
+      "fb_9851",
+      "fb_13586",
+      "fb_20183",
+      "fb_21564"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_09",
+    "question": "Which pages similar to Karolines Køkken® share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_21411"
+    ],
+    "relevant_node_ids": [
+      "fb_4482",
+      "fb_8577",
+      "fb_9008",
+      "fb_9306",
+      "fb_13636",
+      "fb_16222",
+      "fb_17560",
+      "fb_19395",
+      "fb_21694",
+      "fb_22263"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "facebook_similarity_10",
+    "question": "Which pages similar to Alan Leong Kah-Kit share its category and are two hops away",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_19459"
+    ],
+    "relevant_node_ids": [
+      "fb_645",
+      "fb_3367",
+      "fb_7329",
+      "fb_7662",
+      "fb_9027",
+      "fb_9890",
+      "fb_16953"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  }
+]

@@ -1,0 +1,43 @@
+--- Graph.cpp
++++ Graph.cpp
+@@ -144,7 +144,7 @@
+                     for (int s = 0; s < d_u; s++) {
+                         const int &neighborID = u_adjacentList[s];
+                         auto *neighbor_v = (dynagp::Vertex *) vList[neighborID - 1];
+-                        r_[neighborID] = r_[neighborID] + value / pow(neighbor_v->getDegree(), a);
++                        r_[neighborID - 1] = r_[neighborID - 1] + value / pow(neighbor_v->getDegree(), a);
+                     }
+                     q[j] = q[j] + w[i] * r[j] / y[i];
+                 }
+@@ -190,7 +190,7 @@
+                         for (int s = 0; s < d_u; s++) {
+                             const int &neighborID = u_adjacentList[s];
+                             auto *neighbor_v = (dynagp::Vertex *) vList[neighborID - 1];
+-                            r_[neighborID] = r_[neighborID] + value / pow(neighbor_v->getDegree(), a);
++                            r_[neighborID - 1] = r_[neighborID - 1] + value / pow(neighbor_v->getDegree(), a);
+                         }
+                     } else {
+                         su = y[i + 1] * r[j] / eps / y[i] / pow(d_u, b);
+@@ -216,11 +216,11 @@
+                                     int d_v = neighbor_v->getDegree();
+                                     p_a = su / pow(d_v, a);
+                                     if (p_a >= 1) {
+-                                        r_[neighborID] = r_[neighborID] + p_a * eps;
++                                        r_[neighborID - 1] = r_[neighborID - 1] + p_a * eps;
+                                     } else {
+                                         double randomValue = generateRandomInt(0, 10000) / 10000.0;
+                                         if (randomValue < p_a) {
+-                                            r_[neighborID] = r_[neighborID] + eps;
++                                            r_[neighborID - 1] = r_[neighborID - 1] + eps;
+                                         }
+                                     }
+                                 }
+@@ -241,7 +241,7 @@
+                                     p_a = su / pow(d_v, a);
+                                     randomValue = generateRandomInt(0, 10000) / 10000.0;
+                                     if (randomValue < p_a) {
+-                                        r_[neighborID] = r_[neighborID] + eps;
++                                        r_[neighborID - 1] = r_[neighborID - 1] + eps;
+                                     }
+                                 }
+                             }

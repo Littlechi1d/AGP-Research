@@ -1,0 +1,18 @@
+[
+  {
+    "id": "q1",
+    "question": "What did Donald Trump do regarding the Paris Agreement?",
+    "relevant_node_ids": ["n1", "n3", "n8"]
+  },
+  {
+    "id": "q2",
+    "question": "How are Donald Trump and Climate Change connected?",
+    "relevant_node_ids": ["n1", "n3", "n4", "n8"]
+  },
+  {
+    "id": "q3",
+    "question": "Compare Donald Trump and Joe Biden regarding the Paris Agreement.",
+    "relevant_node_ids": ["n1", "n3", "n5", "n8"]
+  }
+]
+
