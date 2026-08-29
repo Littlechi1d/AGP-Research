@@ -1,57 +1,83 @@
 # Query-Adaptive Graph Propagation Research Prototype
 
-This is a small, standalone implementation of the research pipeline proposed for
-COMP90055. It does not modify or require Microsoft GraphRAG.
+This standalone COMP90055 prototype tests whether graph-propagation parameters
+selected for each natural-language question improve knowledge-graph retrieval over
+fixed parameters. It does not modify or require Microsoft GraphRAG at runtime.
 
-For the prepared real-world Facebook Large Page-Page dataset, see
-[`FACEBOOK_LARGE_DATASET.md`](FACEBOOK_LARGE_DATASET.md). It documents provenance,
-conversion rules, checksums, exact run commands, and the remaining evaluation-label
-work.
+## Current status
 
-The topology-grounded development and test questions are documented in
-[`FACEBOOK_BENCHMARK.md`](FACEBOOK_BENCHMARK.md).
+Completed components include:
 
-## Research pipeline
+- a question → entity seeds → propagation → context → optional LLM answer pipeline;
+- seed-only, fixed, rule-adaptive, and LLM-adaptive strategies;
+- a dependency-free Python propagation backend;
+- an optional C++ adapter for the paper authors' AGP-Dynamic code;
+- the prepared UCI Facebook Large Page-Page graph;
+- deterministic development and held-out test questions with topology labels;
+- a completed three-strategy development experiment;
+- 16 passing unit tests.
+
+The held-out Facebook test set has intentionally not been evaluated. Freeze the
+parameters and planner before using it.
+
+Further documentation:
+
+- [`PROJECT_REPORT.md`](PROJECT_REPORT.md): complete implementation report;
+- [`FACEBOOK_LARGE_DATASET.md`](FACEBOOK_LARGE_DATASET.md): provenance,
+  conversion, statistics, and checksums;
+- [`FACEBOOK_BENCHMARK.md`](FACEBOOK_BENCHMARK.md): benchmark rules,
+  regeneration, development results, and final-test protocol.
+
+## Pipeline
 
 1. Receive a natural-language question.
-2. Extract graph entity keywords.
-3. Map keywords to knowledge-graph nodes using normalized exact matching.
-4. Select query-specific propagation depth, decay, and result count.
-5. Propagate relevance through the graph.
-6. Convert the highest-scoring nodes and relationships into textual context.
-7. Ask an LLM to answer using only that context.
-
-The principal research question is whether query-specific parameters improve
-retrieval and answer quality compared with fixed parameters.
+2. Extract entity keywords.
+3. Map keywords to graph nodes using normalized exact-title matching.
+4. Select `depth`, `decay`, and `top_k` using fixed values, rules, or an LLM.
+5. Propagate relevance and rank nodes.
+6. Convert selected nodes and edges into readable context.
+7. Optionally ask an LLM to answer using only that context.
 
 ## Requirements
 
-- Python 3.10 or newer
-- No third-party package is required for the core prototype
-- An OpenAI-compatible API key is optional
+- Python 3.10 or newer;
+- no third-party dependency for the core Python implementation;
+- an OpenAI-compatible API key only for LLM planning or answering;
+- a C++ compiler and external AGP-Dynamic checkout only for the paper backend.
 
-## Run without installation
+## Important files
 
-From this directory:
+| Path | Purpose |
+|---|---|
+| `agp_research/config.py` | Reads `.env` and shell settings. |
+| `agp_research/graph.py` | Loads CSV graphs and performs exact matching. |
+| `agp_research/planner.py` | Extracts keywords and selects parameters. |
+| `agp_research/propagation.py` | Runs local Python graph propagation. |
+| `agp_research/paper_backend.py` | Calls the optional C++ backend. |
+| `agp_research/pipeline.py` | Orchestrates the full workflow. |
+| `agp_research/evaluation.py` | Calculates metrics and runs batches. |
+| `agp_research/cli.py` | Implements `ask` and `experiment`. |
+| `scripts/prepare_facebook_large.py` | Converts the UCI dataset. |
+| `scripts/generate_facebook_questions.py` | Builds and validates the benchmark. |
+
+## Run the small demonstration
 
 ```bash
+cd /Users/feiyuzhang/Desktop/COMP90055/agp_research
+
 python3 -m agp_research ask \
   "How are Donald Trump and Climate Change connected?" \
-  --strategy rules \
-  --no-answer
+  --strategy rules --no-answer
 ```
 
-The command prints the extracted keywords, mapped seed nodes, selected parameters,
-ranked nodes, propagation scores, and generated context.
+Available strategies:
 
-Available strategies are:
+- `seed-only`: return exact seed nodes without propagation;
+- `fixed`: use manually supplied parameters;
+- `rules`: choose parameters from transparent question-wording rules;
+- `llm`: ask an LLM for keywords and per-question parameters.
 
-- `seed-only`: return only exactly matched nodes; this is the no-propagation baseline.
-- `fixed`: use the same depth, decay, and top-k for every question.
-- `rules`: choose parameters from transparent question-type rules.
-- `llm`: ask an LLM to extract keywords and predict parameters.
-
-Example fixed configuration:
+Fixed example:
 
 ```bash
 python3 -m agp_research ask \
@@ -59,28 +85,23 @@ python3 -m agp_research ask \
   --strategy fixed --depth 2 --decay 0.6 --top-k 5 --no-answer
 ```
 
-## Enable LLM parameter prediction and answer generation
-
-Create a private settings file from the safe example:
+## Configure optional LLM access
 
 ```bash
 cp .env.example .env
 ```
 
-Open `.env` in a text editor and set your key and model:
+Edit `.env`:
 
 ```dotenv
 OPENAI_API_KEY=your-key
-AGP_MODEL=gpt-4.1-mini
+AGP_MODEL=a-model-available-to-your-account
 OPENAI_BASE_URL=https://api.openai.com/v1
 AGP_LLM_TIMEOUT=60
 ```
 
-The real `.env` file is ignored by Git. Never commit or share it. Shell
-environment variables still work and take precedence over values in `.env`.
-For another OpenAI-compatible provider, change `OPENAI_BASE_URL`.
-
-Then run:
+`.env` is ignored by Git. Shell environment variables take precedence. Never
+commit, publish, or paste the real key into a report.
 
 ```bash
 python3 -m agp_research ask \
@@ -88,10 +109,10 @@ python3 -m agp_research ask \
   --strategy llm
 ```
 
-API behavior and model availability can change. Choose a model available to your
-account and record its exact name, date, prompt, and settings in experiment logs.
+Record the provider, exact model, prompt, temperature, date, and API settings in
+reproducible LLM experiments.
 
-## Run the sample experiment
+## Demonstration experiment
 
 ```bash
 python3 -m agp_research experiment \
@@ -99,41 +120,105 @@ python3 -m agp_research experiment \
   --output results/experiment.jsonl
 ```
 
-This compares three retrieval conditions and reports macro averages for:
+The runner reports macro-average precision, recall, hit rate, reciprocal rank,
+and latency, and saves one JSON object per question/strategy pair.
 
-- precision@k;
-- recall@k;
-- hit rate;
-- reciprocal rank;
-- pipeline latency.
+## Facebook Large dataset
 
-Each question-level trace is saved as JSON Lines for later analysis. Once an API
-key is configured, add `llm` to `--strategies` to evaluate LLM-selected parameters.
+The converted graph in `data/facebook_large/` contains:
 
-## Use a real knowledge graph
+- 22,470 nodes;
+- 170,823 usable undirected edges;
+- one connected component;
+- four categories: company, government, politician, and tvshow;
+- 179 source self-loops removed;
+- duplicate normalized titles deterministically disambiguated.
 
-Replace `data/nodes.csv` and `data/edges.csv`, or provide paths with `--nodes` and
-`--edges`.
+Regenerate it from the preserved UCI download:
 
-`nodes.csv` must contain:
+```bash
+python3 scripts/prepare_facebook_large.py \
+  --source-dir ../datasets/facebook_large/raw/facebook_large \
+  --output-dir data/facebook_large
+```
+
+Run one real-data query:
+
+```bash
+python3 -m agp_research \
+  --nodes data/facebook_large/nodes.csv \
+  --edges data/facebook_large/edges.csv \
+  ask "Which pages are connected to NASA Student Launch through the network" \
+  --strategy rules --no-answer
+```
+
+## Facebook benchmark and development result
+
+The project contains 60 deterministic topology-grounded questions:
+
+| Split | Questions | Per question type | Unique seed pages |
+|---|---:|---:|---:|
+| Development | 20 | 5 | 30 |
+| Held-out test | 40 | 10 | 60 |
+
+The splits have no seed overlap. The balanced types are direct neighbors, common
+neighbors, unique shortest three-edge paths, and same-category pages exactly two
+hops away. Labels are computed from graph topology before retrieval.
+
+Regenerate and validate the benchmark:
+
+```bash
+python3 scripts/generate_facebook_questions.py \
+  --nodes data/facebook_large/nodes.csv \
+  --edges data/facebook_large/edges.csv \
+  --targets ../datasets/facebook_large/raw/facebook_large/musae_facebook_target.csv \
+  --output-dir data/facebook_large \
+  --dev-per-type 5 --test-per-type 10 --random-seed 90055
+```
+
+Run the development experiment:
+
+```bash
+python3 -m agp_research \
+  --nodes data/facebook_large/nodes.csv \
+  --edges data/facebook_large/edges.csv \
+  experiment \
+  --questions data/facebook_large/facebook_questions_dev.json \
+  --output results/facebook_dev.jsonl \
+  --strategies seed-only fixed rules
+```
+
+Verified macro averages:
+
+| Strategy | Precision@10 | Recall@10 | Hit rate | MRR |
+|---|---:|---:|---:|---:|
+| Seed-only | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+| Fixed AGP | 0.3377 | 0.8800 | 0.9000 | 0.3142 |
+| Rule-adaptive AGP | 0.4159 | 0.8800 | 0.9000 | 0.3130 |
+
+These are development results, not final findings. The rule strategy's precision
+advantage mainly comes from depth 1 on direct questions. Similarity questions are
+the current weakness.
+
+The batch runner currently fixes the baseline at `depth=2`, `decay=0.6`, and
+`top_k=10` inside `evaluation.py`; `ask` arguments do not change these experiment
+settings. Do not run the test set until all choices are frozen.
+
+## Data formats
+
+`nodes.csv`:
 
 ```text
 id,title,description
 ```
 
-`edges.csv` must contain:
+`edges.csv`:
 
 ```text
 source,target,weight,description
 ```
 
-Every edge endpoint must reference an existing node ID. Edge weights must be
-numeric. The current algorithm treats relationships as undirected because the
-research task is contextual neighborhood retrieval.
-
-## Prepare an experimental question set
-
-Use the format in `data/questions.json`:
+Question JSON:
 
 ```json
 [
@@ -145,124 +230,64 @@ Use the format in `data/questions.json`:
 ]
 ```
 
-Relevant nodes should be annotated before inspecting model results. Ideally, use
-two annotators and document disagreement resolution.
+All referenced IDs must exist. Research labels must be defined independently of
+the evaluated rankings.
 
-## Recommended experiment
+## Optional paper backend
 
-Compare these four systems on the same questions and graph:
+Build the bridge against the external repository:
 
-1. Seed-only retrieval
-2. Fixed AGP
-3. Rule-adaptive AGP
-4. LLM-adaptive AGP
+```bash
+bash scripts/build_paper_backend.sh \
+  /Users/feiyuzhang/Desktop/COMP90055/AGP-dynamic
+```
 
-Tune fixed parameters on a development set, freeze them, and report results once
-on a separate test set. Keep LLM model, temperature, prompts, graph, and question
-set constant. Run stochastic configurations more than once if temperature is not
-zero.
+Run it on Facebook Large:
 
-After retrieval evaluation, add human or model-assisted answer evaluation for
-correctness, relevance, and faithfulness. Store the retrieved context with every
-answer so unsupported claims can be audited.
+```bash
+python3 -m agp_research \
+  --nodes data/facebook_large/nodes.csv \
+  --edges data/facebook_large/edges.csv \
+  --backend paper --paper-a 0 --paper-b 1 --paper-query-type S \
+  ask "Which pages are connected to NASA Student Launch through the network" \
+  --strategy rules --no-answer
+```
+
+The build applies `graph_query_zero_based.patch` to a temporary copy of upstream
+`Graph.cpp`; it does not alter the external checkout. The backend is undirected
+and unweighted, approximate mode is randomized, and each CLI request currently
+reloads the graph. Dynamic update lifecycle support is not implemented.
 
 ## Tests
-
-With the standard library:
 
 ```bash
 python3 -m unittest discover -s tests -p "test_*.py"
 ```
 
-If pytest is available:
+Current verified result:
 
-```bash
-python3 -m pytest
-```
-
-## Use the paper authors' AGP-Dynamic implementation
-
-The project includes an optional adapter for the reference code accompanying
-*Approximate Graph Propagation Revisited: Dynamic Parameterized Queries, Tighter
-Bounds and Dynamic Updates*. The upstream executable is a benchmark and cannot
-accept application seed nodes or return scores directly, so this project provides
-a small C++ bridge that calls its `Graph::query` method.
-
-The published `Graph::query` also uses 1-based vertex IDs as indices into 0-based
-score arrays in five assignments. The build script applies the documented
-`paper_backend/patches/graph_query_zero_based.patch` to a temporary build copy of
-`Graph.cpp`. It does not modify the external checkout. Without this correction,
-scores are shifted and the maximum vertex ID writes beyond the allocated array.
-
-Clone the authors' repository beside this project (do not copy it into this
-repository):
-
-```bash
-cd /Users/feiyuzhang/Desktop/COMP90055
-git clone https://github.com/alvinzhaowei/AGP-dynamic.git
-```
-
-Build the bridge:
-
-```bash
-cd /Users/feiyuzhang/Desktop/COMP90055/agp_research
-bash scripts/build_paper_backend.sh \
-  /Users/feiyuzhang/Desktop/COMP90055/AGP-dynamic
-```
-
-Run a query with AGP-Static++ (`S`) from the authors' code:
-
-```bash
-python3 -m agp_research \
-  --edges data/edges_unweighted.csv \
-  --backend paper \
-  --paper-a 0 --paper-b 1 \
-  --paper-query-type S \
-  ask "How are Donald Trump and Climate Change connected?" \
-  --strategy rules --no-answer
-```
-
-The adapter maps `decay` to personalized PageRank weights
-`w_i = (1 - decay) * decay**i`. It uses `delta = 1 / number_of_nodes`
-unless `--paper-delta` is supplied, and computes the implementation's epsilon
-from `--paper-relative-error` (default `0.1`).
-
-Important differences from the local Python backend:
-
-- the paper code supports undirected, **unweighted** graphs only;
-- `a` and `b` must lie in `[0, 1]` and satisfy `a + b >= 1`;
-- approximate mode `S` cannot safely initialize isolated nodes in the published
-  implementation; remove them or use exact mode `N`;
-- the returned values are randomized approximations for high-degree graphs;
-- this adapter currently uses its static query algorithm; dynamic edge-update
-  lifecycle support requires a persistent service rather than one process per query.
-
-For experiments, add the global backend arguments before the subcommand:
-
-```bash
-python3 -m agp_research \
-  --edges data/edges_unweighted.csv \
-  --backend paper --paper-a 0 --paper-b 1 \
-  experiment --strategies fixed rules \
-  --output results/paper_backend.jsonl
+```text
+Ran 16 tests
+OK
 ```
 
 ## Next steps
 
-1. Export a manageable real graph from GraphRAG into the two CSV files.
-2. Create and manually annotate at least 50–100 questions.
-3. Establish the seed-only and fixed-parameter results.
-4. Evaluate rule-based parameter selection.
-5. Evaluate zero-shot and few-shot LLM parameter selection.
-6. Analyze failures: keyword extraction, node matching, parameter prediction,
-   propagation, missing graph evidence, and answer generation.
-7. Only consider fine-tuning a small model if prompting is measurably inadequate
-   and enough labeled parameter examples exist.
+1. Tune fixed parameters using only the Facebook development set.
+2. Improve and freeze the rule planner, especially for similarity questions.
+3. Make batch parameters configurable and report metrics per question type.
+4. Run the zero-shot LLM-adaptive condition on development data.
+5. Add keyword/parameter ablations to separate the two LLM effects.
+6. Freeze code, parameters, prompts, model, and metrics.
+7. Run the held-out test once and report paired uncertainty estimates.
+8. Add manually authored questions and human relevance/answer labels.
 
-## Important limitations
+## Limitations
 
-- Exact matching cannot handle aliases, spelling differences, or implicit entities.
-- The sample graph and questions demonstrate software behavior, not research gains.
-- Retrieval labels must be constructed for the actual evaluation dataset.
-- LLM answers should not be evaluated without saving their supporting context.
-- LLM fine-tuning is intentionally outside the first working version.
+- Exact matching does not handle aliases, misspellings, or implicit entities.
+- The topology benchmark is controlled but cannot replace semantic evaluation.
+- The graph is treated as undirected.
+- The Python backend prioritizes clarity over large-scale optimization.
+- Batch evaluation uses hard-coded fixed parameters and does not score answers.
+- LLM experiments still need frozen prompts, retries/caching, and cost logging.
+- The paper adapter currently supports static queries, not dynamic updates.

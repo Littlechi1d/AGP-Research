@@ -3,7 +3,8 @@
 ## Complete implementation and experimental report
 
 **Project location:** `/Users/feiyuzhang/Desktop/COMP90055/agp_research`  
-**Status:** Working standalone prototype  
+**Status:** Working prototype with a prepared real graph, development benchmark,
+and held-out test set  
 **Python requirement:** Python 3.10 or newer  
 **External dependencies:** None for local retrieval and evaluation; an OpenAI-compatible API is optional
 
@@ -24,7 +25,12 @@ Four retrieval strategies are supported:
 3. **Rule-adaptive AGP:** transparent rules select parameters from the wording of each question.
 4. **LLM-adaptive AGP:** an LLM extracts keywords and selects parameters for each question.
 
-The prototype includes a command-line interface, a sample knowledge graph, annotated sample questions, retrieval evaluation, JSON Lines experiment logging, and seven passing unit tests. The included sample results verify the software, but the sample is too small to support research conclusions.
+The prototype includes a command-line interface, a demonstration graph, the UCI
+Facebook Large Page-Page graph, deterministic topology-grounded development and
+test questions, retrieval evaluation, JSON Lines logging, a C++ reference-code
+adapter, `.env` configuration, and 16 passing unit tests. A three-strategy
+development experiment is complete. The held-out test set remains intentionally
+unused until model and parameter choices are frozen.
 
 ## 2. Scope and relationship to Microsoft GraphRAG
 
@@ -139,6 +145,7 @@ Without an API key, all graph retrieval and evaluation features still work. Answ
 | File | Responsibility |
 |---|---|
 | `agp_research/models.py` | Defines nodes, edges, parameters, ranked results, and pipeline output. |
+| `agp_research/config.py` | Loads optional `.env` settings while giving shell variables precedence. |
 | `agp_research/graph.py` | Loads CSV graph data, validates endpoints, normalizes text, and performs exact matching. |
 | `agp_research/propagation.py` | Implements matrix-free truncated graph propagation. |
 | `agp_research/planner.py` | Implements local keyword extraction, rule-based parameters, and LLM planning. |
@@ -147,6 +154,7 @@ Without an API key, all graph retrieval and evaluation features still work. Answ
 | `agp_research/evaluation.py` | Calculates retrieval metrics and executes batch experiments. |
 | `agp_research/cli.py` | Provides the `ask` and `experiment` command-line interfaces. |
 | `agp_research/__main__.py` | Allows execution with `python3 -m agp_research`. |
+| `agp_research/paper_backend.py` | Maps application graphs and queries to the optional C++ reference backend. |
 
 ### Data and tests
 
@@ -158,7 +166,17 @@ Without an API key, all graph retrieval and evaluation features still work. Answ
 | `tests/test_graph.py` | Tests loading and normalized exact matching. |
 | `tests/test_propagation.py` | Tests propagation scores and empty-seed behavior. |
 | `tests/test_evaluation.py` | Tests precision, recall, hit rate, and reciprocal rank. |
+| `tests/test_config.py` | Tests `.env` parsing, precedence, and validation. |
+| `tests/test_planner.py` | Tests rule-based query classification and parameters. |
+| `tests/test_paper_backend.py` | Tests C++ adapter configuration and parsing behavior. |
 | `results/experiment.jsonl` | Saved question-level outputs from the verified sample experiment. |
+| `data/facebook_large/nodes.csv` | 22,470 converted Facebook page nodes. |
+| `data/facebook_large/edges.csv` | 170,823 usable Facebook relationships. |
+| `data/facebook_large/facebook_questions_dev.json` | 20 development questions. |
+| `data/facebook_large/facebook_questions_test.json` | 40 held-out test questions. |
+| `scripts/prepare_facebook_large.py` | Reproducibly converts and validates the UCI files. |
+| `scripts/generate_facebook_questions.py` | Generates and validates topology-grounded benchmark labels. |
+| `results/facebook_dev.jsonl` | 60 development question-strategy traces. |
 
 `pyproject.toml` defines the package and an optional `agp` console command. `.gitignore` excludes generated caches, virtual environments, and result logs.
 
@@ -224,7 +242,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 7 tests
+Ran 16 tests
 OK
 ```
 
@@ -232,14 +250,22 @@ If `pytest` is already available, `python3 -m pytest` can also run the tests.
 
 ## 6. LLM configuration
 
-LLM access is optional and credentials must not be committed to the repository. Configure them in the terminal:
+LLM access is optional and credentials must not be committed. The easiest setup
+is to copy the safe template and edit the private file:
 
 ```bash
-export OPENAI_API_KEY="your-api-key"
-export AGP_MODEL="a-model-available-to-your-account"
+cp .env.example .env
 ```
 
-The default API base URL is `https://api.openai.com/v1`. For a compatible provider:
+```dotenv
+OPENAI_API_KEY=your-api-key
+AGP_MODEL=a-model-available-to-your-account
+OPENAI_BASE_URL=https://api.openai.com/v1
+AGP_LLM_TIMEOUT=60
+```
+
+The real `.env` is ignored by Git. Shell environment variables remain supported
+and take precedence. For a compatible provider, change `OPENAI_BASE_URL`.
 
 ```bash
 export OPENAI_BASE_URL="https://provider.example/v1"
@@ -349,6 +375,44 @@ python3 -m agp_research \
 
 Global `--nodes` and `--edges` arguments must appear before the `experiment` or `ask` subcommand.
 
+### 8.4 Facebook Large benchmark
+
+The real-data stage now uses the UCI Facebook Large Page-Page Network. The source
+archive is preserved outside this project, while deterministic conversion outputs
+are stored in `data/facebook_large/`. The converted graph has 22,470 nodes,
+170,823 non-self edges, one connected component, and four page categories. The
+converter removes 179 self-loops, validates endpoints, disambiguates duplicate
+normalized page names, and records checksums in `metadata.json`.
+
+The benchmark generator creates labels from explicit graph rules without viewing
+AGP rankings. Its four balanced question types are:
+
+1. all direct neighbors of one seed;
+2. common direct neighbors of two seeds;
+3. two internal nodes on a unique shortest path of exactly three edges;
+4. same-category nodes at shortest-path distance exactly two.
+
+There are 20 development questions (5 per type, 30 unique seed pages) and 40
+held-out test questions (10 per type, 60 unique seed pages). No seed page appears
+in both splits. The generator also verifies that the project's local keyword
+extractor maps every question to exactly the intended seed IDs.
+
+The completed development run used `top_k=10`. The fixed experiment baseline in
+`evaluation.py` is currently `depth=2`, `decay=0.6`, and `top_k=10`.
+
+| Strategy | Precision@10 | Recall@10 | Hit rate | MRR |
+|---|---:|---:|---:|---:|
+| Seed-only | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+| Fixed AGP | 0.3377 | 0.8800 | 0.9000 | 0.3142 |
+| Rule-adaptive AGP | 0.4159 | 0.8800 | 0.9000 | 0.3130 |
+
+These are development results, not final conclusions. Seed-only obtains zero for
+this benchmark because labels deliberately describe related pages rather than the
+seed itself. Rule adaptation improves overall precision mainly by using depth 1
+for direct-neighbor questions. Both fixed and rule strategies achieve only 0.52
+mean recall on the development similarity questions, making that the clearest
+current failure mode. The held-out test set has not been run.
+
 ## 9. Experimental methodology for the real study
 
 ### 9.1 Research questions
@@ -437,13 +501,16 @@ All strategies answer the same questions, so comparisons are paired. Recommended
 
 Save raw outputs and analysis scripts so every table can be regenerated.
 
-## 10. Recommended real-data workflow
+## 10. Real-data workflow status
 
-### Phase 1: Establish reliable graph data
+### Phase 1: Establish reliable graph data — completed
 
-Export a small but meaningful graph from GraphRAG or construct one from the selected research corpus. Preserve stable node IDs, titles, descriptions, relationship descriptions, and weights. Start with a graph small enough to inspect manually.
+The UCI Facebook Large graph has been downloaded, preserved, converted, and
+validated. Stable prefixed node IDs, unique exact-match titles, categories, and
+unit-weight relationships are available in `data/facebook_large/`. Detailed
+provenance and checksums are recorded in `FACEBOOK_LARGE_DATASET.md`.
 
-Check:
+The conversion and validation process checks:
 
 - duplicate or ambiguous titles;
 - missing descriptions;
@@ -453,26 +520,31 @@ Check:
 - whether directed relationships should remain directed;
 - how original GraphRAG edge weights should be interpreted.
 
-### Phase 2: Construct the question dataset
+### Phase 2: Construct the controlled question dataset — completed
 
-Create at least 50–100 questions for an initial study, balanced across:
+The deterministic generator produced 60 balanced topology questions across:
 
 - direct factual questions;
 - comparisons;
-- explanations and impacts;
-- multi-hop connections.
+- unique three-hop paths;
+- same-category two-hop similarity questions.
 
-For each question, annotate entity mentions, correct seed nodes, relevant evidence nodes, and a reference answer. Ideally use two annotators and report agreement and disagreement resolution.
+Every question records its intended seed nodes, relevant evidence nodes, question
+type, and generation rule. This controlled benchmark does not include reference
+answers or human semantic labels; those remain a later complementary evaluation.
 
-### Phase 3: Establish baselines
+### Phase 3: Establish baselines — in progress
 
-Run seed-only and tune fixed AGP on development data. Inspect failures before adding LLM adaptation. This verifies that the graph and labels are capable of supporting the questions.
+Seed-only, fixed AGP, and rule-adaptive AGP have been run on development data.
+The next task is a development-only parameter search and per-question-type failure
+analysis before freezing the fixed baseline.
 
-### Phase 4: Evaluate adaptation
+### Phase 4: Evaluate adaptation — partially completed
 
-Run rule-adaptive and zero-shot LLM-adaptive strategies. Add few-shot examples to the planner prompt only as a separately named condition. Keep model and prompt versions frozen during final evaluation.
+Rule-adaptive development results are recorded. Zero-shot LLM-adaptive retrieval,
+component ablations, and prompt freezing remain outstanding.
 
-### Phase 5: Evaluate answers
+### Phase 5: Evaluate answers — not started
 
 Generate answers from identical answer prompts and model settings, varying only retrieved context. Evaluate correctness and faithfulness, and compare retrieval improvements with answer improvements.
 
@@ -492,17 +564,23 @@ This taxonomy will make the discussion more informative than reporting aggregate
 
 ## 11. Current validation
 
-The delivered project has been checked in the target directory.
+The delivered project has been checked in the target directory:
 
-- Seven unit tests pass using the Python standard library.
-- The sample graph loads successfully.
-- Normalized exact matching identifies expected seed nodes.
-- A three-hop rule-adaptive query retrieves a plausible connecting path.
-- The batch runner executes seed-only, fixed, and rule-adaptive conditions.
-- Nine question-condition traces are written to `results/experiment.jsonl`.
-- Python bytecode compilation succeeds.
+- 16 unit tests pass using the Python standard library;
+- the demonstration graph and 22,470-node Facebook graph load successfully;
+- the Facebook conversion checksum and row-count checks pass;
+- both Python and paper backends complete a real-data NASA query;
+- the generator reproducibly creates 20 development and 40 test questions;
+- topology definitions, nonempty labels, ID validity, keyword extraction, type
+  balance, and split seed independence are validated;
+- 60 development question-strategy traces are saved in
+  `results/facebook_dev.jsonl`;
+- regenerating the benchmark with seed 90055 produces identical question files.
 
-No live LLM API call was made during validation because no user API credentials were supplied. The API-dependent path is implemented but must be tested against the chosen account, provider, and model before a large experiment.
+The OpenAI-compatible path is implemented and configurable through `.env`, but
+the LLM-adaptive Facebook development condition has not yet been recorded as a
+frozen research run. API behavior must be verified for the selected provider and
+model before the final experiment.
 
 ## 12. Limitations
 
@@ -515,10 +593,15 @@ The current version intentionally prioritizes clarity over production complexity
 - Propagation is implemented with Python dictionaries and is not optimized for very large graphs.
 - Edge weights are assumed to represent positive retrieval strength.
 - The rule planner is based on surface phrases and may misclassify questions.
-- The demonstration contains only eight nodes and three questions.
+- The small demonstration contains only eight nodes and three questions; it is
+  retained for teaching and software checks, not used as the real benchmark.
+- The Facebook questions have objective topology labels but are templated and do
+  not establish semantic relevance or answer correctness.
 - Current batch evaluation measures retrieval but does not generate or score answers.
 - The LLM client depends on a chat-completions-compatible API and structured JSON support.
-- There is no caching or retry logic for API experiments yet.
+- There is no caching, retry, or token/cost logging for API experiments yet.
+- The batch runner hard-codes fixed parameters at depth 2, decay 0.6, and top-k
+  10, so development parameter tuning needs a configurable interface.
 - Fine-tuning a small model has not been implemented and is not justified until prompted baselines are evaluated.
 
 These limitations are appropriate for the first prototype and provide concrete directions for extensions and ablation studies.
@@ -527,34 +610,41 @@ These limitations are appropriate for the first prototype and provide concrete d
 
 ### Immediate
 
-1. Select the real corpus and graph to evaluate.
-2. Export real nodes and edges into the documented CSV schema.
-3. Inspect a sample manually to verify titles, descriptions, relationships, and weights.
-4. Create a small pilot set of 10–20 questions and relevance labels.
-5. Test every question under seed-only and fixed AGP.
+1. Make the batch runner accept fixed `depth`, `decay`, and `top_k` explicitly.
+2. Add per-question-type summaries and preferably F1@k.
+3. Tune the fixed configuration using only the 20 development questions.
+4. Analyze the two missed development similarity questions and decide whether
+   planner or propagation changes are justified.
+5. Freeze the chosen fixed baseline and rule definitions.
 
 ### Before the main experiment
 
-6. Expand to at least 50–100 balanced questions.
-7. Split development and test data before tuning.
-8. Tune and freeze the fixed baseline.
-9. Validate the LLM planning output and add API retries, caching, and token/cost logging.
-10. Implement the two keyword/parameter ablations.
-11. Freeze all prompts and model versions.
+6. Run zero-shot LLM adaptation on development data with a recorded model and
+   prompt.
+7. Add API retries, caching, latency, token, and cost logging.
+8. Implement local-keywords/LLM-parameters and LLM-keywords/fixed-parameters
+   ablations.
+9. Freeze all code, prompts, model versions, metrics, and random settings.
 
 ### Main evaluation
 
-12. Run all retrieval conditions and calculate paired uncertainty estimates.
-13. Generate answers from saved contexts.
-14. Conduct blind answer-quality and faithfulness evaluation.
-15. Analyze results by question type, graph distance, and failure category.
+10. Run the held-out Facebook test set once for every frozen condition.
+11. Calculate paired uncertainty estimates and analyze results by question type.
+12. Add manually authored semantic questions with independently prepared human
+    relevance labels.
+13. Generate answers from saved contexts and conduct blind correctness and
+    faithfulness evaluation.
+14. Classify failures using the taxonomy in Section 10.
 
 ### Optional extensions
 
-16. Compare exact matching with alias and embedding-based matching.
-17. Test directed propagation or relation-type-specific weights.
-18. Replace the dictionary implementation if real graph scale makes it necessary.
-19. Consider fine-tuning a small parameter predictor only after collecting sufficient labeled examples and demonstrating a weakness in zero-shot or few-shot prompting.
+15. Compare exact matching with alias or embedding-based matching.
+16. Implement a persistent C++ service if dynamic edge updates become part of the
+    research question.
+17. Test directed propagation or relation-type-specific weights on a dataset that
+    contains those semantics.
+18. Consider fine-tuning only after prompted baselines show a measurable weakness
+    and sufficient labeled parameter examples exist.
 
 ## 14. Suggested final dissertation/report structure
 
@@ -574,7 +664,14 @@ The current document can support the implementation and methodology chapters, bu
 
 The project now has a complete, executable foundation for studying query-adaptive graph propagation without requiring detailed knowledge of the Microsoft GraphRAG codebase. It supports reproducible local retrieval, multiple baselines, LLM-based adaptation, transparent context construction, batch logging, and standard retrieval metrics.
 
-The most important remaining work is empirical rather than architectural: obtain a real graph, construct trustworthy question and relevance annotations, tune the fixed baseline correctly, run the adaptive conditions, and evaluate whether retrieval differences improve grounded answers. Fine-tuning should remain optional until those simpler experiments establish a clear need.
+The project has progressed beyond architecture and data preparation: a real graph,
+a controlled 60-question benchmark, split isolation, and initial development
+baselines now exist. The immediate work is to tune and freeze the fixed and rule
+conditions on development data, evaluate the LLM condition and ablations, and only
+then run the held-out test set. A later human-labeled semantic evaluation is still
+needed because topology-defined questions alone cannot demonstrate answer quality.
+Fine-tuning should remain optional until simpler prompted baselines establish a
+clear need.
 
 ## Appendix A. Interface to the paper's AGP-Dynamic source code
 
