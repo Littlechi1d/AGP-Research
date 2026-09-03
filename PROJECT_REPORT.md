@@ -533,11 +533,13 @@ Every question records its intended seed nodes, relevant evidence nodes, questio
 type, and generation rule. This controlled benchmark does not include reference
 answers or human semantic labels; those remain a later complementary evaluation.
 
-### Phase 3: Establish baselines — in progress
+### Phase 3: Establish fixed baselines — development tuning completed
 
 Seed-only, fixed AGP, and rule-adaptive AGP have been run on development data.
-The next task is a development-only parameter search and per-question-type failure
-analysis before freezing the fixed baseline.
+A 36-configuration search selected depth 2, decay 0.3, top-k 5 by mean F1,
+with a separately recorded k=10 baseline for matched-budget comparisons.
+Per-question-type summaries and all traces are saved. See
+[FIXED_PARAMETER_TUNING.md](FIXED_PARAMETER_TUNING.md).
 
 ### Phase 4: Evaluate adaptation — partially completed
 
@@ -613,7 +615,10 @@ These limitations are appropriate for the first prototype and provide concrete d
 1. Use the now-configurable batch `--depth`, `--decay`, and `--top-k` options to
    compare fixed configurations; other strategies retain their own parameters.
 2. Add per-question-type summaries and preferably F1@k.
-3. Tune the fixed configuration using only the 20 development questions.
+3. Fixed tuning is complete on the 20 development questions. The declared
+   36-configuration search selected depth 2, decay 0.3, top-k 5 by mean F1.
+   See [FIXED_PARAMETER_TUNING.md](FIXED_PARAMETER_TUNING.md) for all scores,
+   ties, recall trade-offs, and the budget-matched k=10 baseline.
 4. Analyze the two missed development similarity questions and decide whether
    planner or propagation changes are justified.
 5. Freeze the chosen fixed baseline and rule definitions.
@@ -667,7 +672,7 @@ The project now has a complete, executable foundation for studying query-adaptiv
 
 The project has progressed beyond architecture and data preparation: a real graph,
 a controlled 60-question benchmark, split isolation, and initial development
-baselines now exist. The immediate work is to tune and freeze the fixed and rule
+baselines and a completed fixed-parameter search now exist. The immediate work is to freeze the rule
 conditions on development data, evaluate the LLM condition and ablations, and only
 then run the held-out test set. A later human-labeled semantic evaluation is still
 needed because topology-defined questions alone cannot demonstrate answer quality.

@@ -276,7 +276,9 @@ OK
 
 ## Next steps
 
-1. Tune fixed parameters using only the Facebook development set.
+1. Fixed tuning is complete: see [FIXED_PARAMETER_TUNING.md](FIXED_PARAMETER_TUNING.md).
+   Use depth 2, decay 0.3, k=5 for the selected mean-F1 baseline; also report the
+   budget-matched k=10 baseline. Defaults remain unchanged.
 2. Improve and freeze the rule planner, especially for similarity questions.
 3. Report metrics per question type (batch fixed parameters are now configurable).
 4. Run the zero-shot LLM-adaptive condition on development data.

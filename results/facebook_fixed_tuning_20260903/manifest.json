@@ -1,0 +1,221 @@
+{
+  "started_utc": "2026-09-03T05:14:00.574140+00:00",
+  "python": "3.12.4",
+  "git_revision": "b04f36baa9090420d7b295be4abbbd87336e88c8",
+  "git_status": "",
+  "source_sha256": {
+    "__init__.py": "83ca27c3b12b610c65bce5b9ccc573ac9547554b6a09d47d69c06b457dca28e1",
+    "__main__.py": "5fa06e973497020c993ad5af3e7c11da0dd10e5a4de4b691d9ad23c4dcfdc0b7",
+    "cli.py": "c3c30b3d961ef7de2a9a77123f072a1d0ba75fdadc01ce254297d0b09da12a94",
+    "config.py": "80248f50f66ef9962b6873657c17b56ea96bf217397872a0d738edc73c70af36",
+    "evaluation.py": "3a5ff7460b12e9ec386f1a1d4750f28e5b56fd8e1836814dc57ec06ee0fe1f4d",
+    "graph.py": "ed61e8c9d0855494ca95be2ffa61af6681151363ab4adcb365e610a14bd17e13",
+    "llm.py": "8fd63d5a376e5aea8e0bf6c95ff949a49c8ba8b52a9d0cf739ff0fed9cead0f8",
+    "models.py": "a78f94f262e4c5fff5c445d3083f63cf1efc76080055ea7827392275539ee8e2",
+    "paper_backend.py": "ac40f4aa9066536ad5aafb7bbf979bbb6042850aa610a4241f2b2bf382745f15",
+    "pipeline.py": "28b16e4c5b63147cb41db84fedbfde4976fc89bdb0f795498e085053184299af",
+    "planner.py": "be48e0c38d935a0794aed656d0aea3eb9ccbbbdc967bfc22787b57ce305e7669",
+    "propagation.py": "d721e8d11efea714903df3f003f9d7e8bd13a2948eb1c28d344c984c9b9d59ff"
+  },
+  "tuner_sha256": "fab51779ca1141af77eedd9378248cdf059b9542058d0b4bf686dbf432707834",
+  "input_sha256": {
+    "/Users/feiyuzhang/Desktop/COMP90055/agp_research/data/facebook_large/nodes.csv": "a5a89bb0e0bf77eaaff9059a784da0cd5b930ba5e3d9018f80f6156c9af28daa",
+    "/Users/feiyuzhang/Desktop/COMP90055/agp_research/data/facebook_large/edges.csv": "f3c3aeec27afa4389cd5042fabd21585804cf41506dce79df7ee0c74a81f2fb0",
+    "/Users/feiyuzhang/Desktop/COMP90055/agp_research/data/facebook_large/facebook_questions_dev.json": "cf0df205bca318f8650a8c9eb4e9406a4a94c4a686af737d6da475be415d6d48"
+  },
+  "question_count": 20,
+  "backend": "python-exact",
+  "llm_calls": 0,
+  "grid": [
+    {
+      "depth": 1,
+      "decay": 0.3,
+      "top_k": 5
+    },
+    {
+      "depth": 1,
+      "decay": 0.3,
+      "top_k": 10
+    },
+    {
+      "depth": 1,
+      "decay": 0.3,
+      "top_k": 20
+    },
+    {
+      "depth": 1,
+      "decay": 0.5,
+      "top_k": 5
+    },
+    {
+      "depth": 1,
+      "decay": 0.5,
+      "top_k": 10
+    },
+    {
+      "depth": 1,
+      "decay": 0.5,
+      "top_k": 20
+    },
+    {
+      "depth": 1,
+      "decay": 0.7,
+      "top_k": 5
+    },
+    {
+      "depth": 1,
+      "decay": 0.7,
+      "top_k": 10
+    },
+    {
+      "depth": 1,
+      "decay": 0.7,
+      "top_k": 20
+    },
+    {
+      "depth": 1,
+      "decay": 0.9,
+      "top_k": 5
+    },
+    {
+      "depth": 1,
+      "decay": 0.9,
+      "top_k": 10
+    },
+    {
+      "depth": 1,
+      "decay": 0.9,
+      "top_k": 20
+    },
+    {
+      "depth": 2,
+      "decay": 0.3,
+      "top_k": 5
+    },
+    {
+      "depth": 2,
+      "decay": 0.3,
+      "top_k": 10
+    },
+    {
+      "depth": 2,
+      "decay": 0.3,
+      "top_k": 20
+    },
+    {
+      "depth": 2,
+      "decay": 0.5,
+      "top_k": 5
+    },
+    {
+      "depth": 2,
+      "decay": 0.5,
+      "top_k": 10
+    },
+    {
+      "depth": 2,
+      "decay": 0.5,
+      "top_k": 20
+    },
+    {
+      "depth": 2,
+      "decay": 0.7,
+      "top_k": 5
+    },
+    {
+      "depth": 2,
+      "decay": 0.7,
+      "top_k": 10
+    },
+    {
+      "depth": 2,
+      "decay": 0.7,
+      "top_k": 20
+    },
+    {
+      "depth": 2,
+      "decay": 0.9,
+      "top_k": 5
+    },
+    {
+      "depth": 2,
+      "decay": 0.9,
+      "top_k": 10
+    },
+    {
+      "depth": 2,
+      "decay": 0.9,
+      "top_k": 20
+    },
+    {
+      "depth": 3,
+      "decay": 0.3,
+      "top_k": 5
+    },
+    {
+      "depth": 3,
+      "decay": 0.3,
+      "top_k": 10
+    },
+    {
+      "depth": 3,
+      "decay": 0.3,
+      "top_k": 20
+    },
+    {
+      "depth": 3,
+      "decay": 0.5,
+      "top_k": 5
+    },
+    {
+      "depth": 3,
+      "decay": 0.5,
+      "top_k": 10
+    },
+    {
+      "depth": 3,
+      "decay": 0.5,
+      "top_k": 20
+    },
+    {
+      "depth": 3,
+      "decay": 0.7,
+      "top_k": 5
+    },
+    {
+      "depth": 3,
+      "decay": 0.7,
+      "top_k": 10
+    },
+    {
+      "depth": 3,
+      "decay": 0.7,
+      "top_k": 20
+    },
+    {
+      "depth": 3,
+      "decay": 0.9,
+      "top_k": 5
+    },
+    {
+      "depth": 3,
+      "decay": 0.9,
+      "top_k": 10
+    },
+    {
+      "depth": 3,
+      "decay": 0.9,
+      "top_k": 20
+    }
+  ],
+  "objective": "Mean of per-question F1 (not F1 of macro precision/recall)",
+  "tie_breaks": [
+    "higher macro recall",
+    "smaller top_k",
+    "smaller depth",
+    "smaller decay"
+  ],
+  "precision_denominator": "actual number of unique nodes returned, not a padded k",
+  "held_out_test_evaluated": false,
+  "completed_utc": "2026-09-03T05:20:48.616553+00:00"
+}

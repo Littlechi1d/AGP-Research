@@ -1,0 +1,1838 @@
+[
+  {
+    "name": "fixed_d1_a03_k5",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.3,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.365,
+      "recall": 0.5410714285714285,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.41201021201021204,
+      "latency": 0.5361837272066623
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.78,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7770451770451771,
+        "latency": 0.5356419918127358
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5323087252210825
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 0.5,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.28571428571428575,
+        "latency": 0.5400641915854066
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.5367200002074242
+      }
+    },
+    "trace": "fixed_d1_a03_k5.jsonl"
+  },
+  {
+    "name": "fixed_d1_a03_k10",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.3,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.3298611111111111,
+      "recall": 0.7,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.41495564892623715,
+      "latency": 0.5341812792234123
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.8127777777777778,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.8955368814192344,
+        "latency": 0.5294016832951456
+      },
+      "comparison": {
+        "precision": 0.3466666666666667,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4976190476190476,
+        "latency": 0.530848508188501
+      },
+      "path": {
+        "precision": 0.16,
+        "recall": 0.8,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.2666666666666667,
+        "latency": 0.5362071668263525
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.54026775858365
+      }
+    },
+    "trace": "fixed_d1_a03_k10.jsonl"
+  },
+  {
+    "name": "fixed_d1_a03_k20",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.3,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.2948938969527205,
+      "recall": 0.75,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.37596497843401866,
+      "latency": 0.5335777396103367
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.8127777777777778,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.8955368814192344,
+        "latency": 0.5284274582285434
+      },
+      "comparison": {
+        "precision": 0.21833333333333332,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.35047762694821516,
+        "latency": 0.5289166167378425
+      },
+      "path": {
+        "precision": 0.1484644766997708,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.25784540536862516,
+        "latency": 0.5433423252776265
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.5336245581973345
+      }
+    },
+    "trace": "fixed_d1_a03_k20.jsonl"
+  },
+  {
+    "name": "fixed_d1_a05_k5",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.5,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.365,
+      "recall": 0.5410714285714285,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.41201021201021204,
+      "latency": 0.5377453958266415
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.78,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7770451770451771,
+        "latency": 0.5304216002114117
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5285518831573427
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 0.5,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.28571428571428575,
+        "latency": 0.5365598082076758
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.5554482917301357
+      }
+    },
+    "trace": "fixed_d1_a05_k5.jsonl"
+  },
+  {
+    "name": "fixed_d1_a05_k10",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.5,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.3298611111111111,
+      "recall": 0.7,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.41495564892623715,
+      "latency": 0.5361968437675386
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.8127777777777778,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.8955368814192344,
+        "latency": 0.5258552417624742
+      },
+      "comparison": {
+        "precision": 0.3466666666666667,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4976190476190476,
+        "latency": 0.5362431500572711
+      },
+      "path": {
+        "precision": 0.16,
+        "recall": 0.8,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.2666666666666667,
+        "latency": 0.5358559334650635
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.5468330497853457
+      }
+    },
+    "trace": "fixed_d1_a05_k10.jsonl"
+  },
+  {
+    "name": "fixed_d1_a05_k20",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.5,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.2948938969527205,
+      "recall": 0.75,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.37596497843401866,
+      "latency": 0.5332959957886487
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.8127777777777778,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.8955368814192344,
+        "latency": 0.5269210083875805
+      },
+      "comparison": {
+        "precision": 0.21833333333333332,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.35047762694821516,
+        "latency": 0.5292049997951835
+      },
+      "path": {
+        "precision": 0.1484644766997708,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.25784540536862516,
+        "latency": 0.5393404247239232
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.5377175502479077
+      }
+    },
+    "trace": "fixed_d1_a05_k20.jsonl"
+  },
+  {
+    "name": "fixed_d1_a07_k5",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.7,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.365,
+      "recall": 0.5410714285714285,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.41201021201021204,
+      "latency": 0.5344310500309802
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.78,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7770451770451771,
+        "latency": 0.5252616834361106
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5291248749941587
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 0.5,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.28571428571428575,
+        "latency": 0.5374899501446635
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.5458476915489883
+      }
+    },
+    "trace": "fixed_d1_a07_k5.jsonl"
+  },
+  {
+    "name": "fixed_d1_a07_k10",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.7,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.3298611111111111,
+      "recall": 0.7,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.41495564892623715,
+      "latency": 0.5374954416882247
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.8127777777777778,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.8955368814192344,
+        "latency": 0.534322100225836
+      },
+      "comparison": {
+        "precision": 0.3466666666666667,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4976190476190476,
+        "latency": 0.5352725665550679
+      },
+      "path": {
+        "precision": 0.16,
+        "recall": 0.8,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.2666666666666667,
+        "latency": 0.5462180084548891
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.5341690915171057
+      }
+    },
+    "trace": "fixed_d1_a07_k10.jsonl"
+  },
+  {
+    "name": "fixed_d1_a07_k20",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.7,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.2948938969527205,
+      "recall": 0.75,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.37596497843401866,
+      "latency": 0.5323539230157621
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.8127777777777778,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.8955368814192344,
+        "latency": 0.5306550167966634
+      },
+      "comparison": {
+        "precision": 0.21833333333333332,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.35047762694821516,
+        "latency": 0.5286006419919431
+      },
+      "path": {
+        "precision": 0.1484644766997708,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.25784540536862516,
+        "latency": 0.5360863582231105
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.5340736750513315
+      }
+    },
+    "trace": "fixed_d1_a07_k20.jsonl"
+  },
+  {
+    "name": "fixed_d1_a09_k5",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.9,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.365,
+      "recall": 0.5410714285714285,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.41201021201021204,
+      "latency": 0.5347453686990775
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.78,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7770451770451771,
+        "latency": 0.5262198416050523
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5336530499625951
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 0.5,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.28571428571428575,
+        "latency": 0.5359289002604782
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.5431796829681843
+      }
+    },
+    "trace": "fixed_d1_a09_k5.jsonl"
+  },
+  {
+    "name": "fixed_d1_a09_k10",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.9,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.3298611111111111,
+      "recall": 0.7,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.41495564892623715,
+      "latency": 0.5489783374825492
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.8127777777777778,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.8955368814192344,
+        "latency": 0.537510824855417
+      },
+      "comparison": {
+        "precision": 0.3466666666666667,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4976190476190476,
+        "latency": 0.5390778416767716
+      },
+      "path": {
+        "precision": 0.16,
+        "recall": 0.8,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.2666666666666667,
+        "latency": 0.5713835832197219
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.5479411001782865
+      }
+    },
+    "trace": "fixed_d1_a09_k10.jsonl"
+  },
+  {
+    "name": "fixed_d1_a09_k20",
+    "parameters": {
+      "depth": 1,
+      "decay": 0.9,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.2948938969527205,
+      "recall": 0.75,
+      "hit_rate": 0.75,
+      "reciprocal_rank": 0.275,
+      "f1": 0.37596497843401866,
+      "latency": 0.5425469458219595
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.8127777777777778,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.8955368814192344,
+        "latency": 0.5339375834912061
+      },
+      "comparison": {
+        "precision": 0.21833333333333332,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.35047762694821516,
+        "latency": 0.5580149500165135
+      },
+      "path": {
+        "precision": 0.1484644766997708,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.26666666666666666,
+        "f1": 0.25784540536862516,
+        "latency": 0.5390596997924149
+      },
+      "similarity": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "hit_rate": 0.0,
+        "reciprocal_rank": 0.0,
+        "f1": 0.0,
+        "latency": 0.5391755499877036
+      }
+    },
+    "trace": "fixed_d1_a09_k20.jsonl"
+  },
+  {
+    "name": "fixed_d2_a03_k5",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.3,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.41000000000000003,
+      "recall": 0.6244047619047619,
+      "hit_rate": 0.85,
+      "reciprocal_rank": 0.3058333333333333,
+      "f1": 0.46724830724830724,
+      "latency": 0.5320087564061395
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.72,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7341880341880341,
+        "latency": 0.5287046086508781
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5293266002088786
+      },
+      "path": {
+        "precision": 0.24000000000000005,
+        "recall": 0.6,
+        "hit_rate": 0.8,
+        "reciprocal_rank": 0.25,
+        "f1": 0.34285714285714286,
+        "latency": 0.5359349249862134
+      },
+      "similarity": {
+        "precision": 0.2,
+        "recall": 0.23333333333333334,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.2066666666666667,
+        "latency": 0.5340688917785883
+      }
+    },
+    "trace": "fixed_d2_a03_k5.jsonl"
+  },
+  {
+    "name": "fixed_d2_a03_k10",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.3,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.33767857142857144,
+      "recall": 0.8800000000000001,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.31416666666666665,
+      "f1": 0.45821249012425486,
+      "latency": 0.5320141186704859
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.6413847590318179,
+        "latency": 0.5311786666046828
+      },
+      "comparison": {
+        "precision": 0.32,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4642857142857143,
+        "latency": 0.5296700331848114
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.33333333333333337,
+        "latency": 0.5335196417290717
+      },
+      "similarity": {
+        "precision": 0.3307142857142857,
+        "recall": 0.52,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.39384615384615385,
+        "latency": 0.5336881331633776
+      }
+    },
+    "trace": "fixed_d2_a03_k10.jsonl"
+  },
+  {
+    "name": "fixed_d2_a03_k20",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.3,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.24392857142857144,
+      "recall": 0.9616666666666667,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3220454545454545,
+      "f1": 0.3612937465111378,
+      "latency": 0.5325866438099183
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.27,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.41682999769956297,
+        "latency": 0.5337747169658542
+      },
+      "comparison": {
+        "precision": 0.16,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.2680652680652681,
+        "latency": 0.5296080329921097
+      },
+      "path": {
+        "precision": 0.1,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.18181818181818182,
+        "latency": 0.532018350251019
+      },
+      "similarity": {
+        "precision": 0.44571428571428573,
+        "recall": 0.8466666666666667,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.1715151515151515,
+        "f1": 0.5784615384615385,
+        "latency": 0.5349454750306905
+      }
+    },
+    "trace": "fixed_d2_a03_k20.jsonl"
+  },
+  {
+    "name": "fixed_d2_a05_k5",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.5,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.41000000000000003,
+      "recall": 0.6244047619047619,
+      "hit_rate": 0.85,
+      "reciprocal_rank": 0.3058333333333333,
+      "f1": 0.46724830724830724,
+      "latency": 0.5407150562037714
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.72,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7341880341880341,
+        "latency": 0.5255956082139164
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5713298081420362
+      },
+      "path": {
+        "precision": 0.24000000000000005,
+        "recall": 0.6,
+        "hit_rate": 0.8,
+        "reciprocal_rank": 0.25,
+        "f1": 0.34285714285714286,
+        "latency": 0.5367005336564035
+      },
+      "similarity": {
+        "precision": 0.2,
+        "recall": 0.23333333333333334,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.2066666666666667,
+        "latency": 0.5292342748027294
+      }
+    },
+    "trace": "fixed_d2_a05_k5.jsonl"
+  },
+  {
+    "name": "fixed_d2_a05_k10",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.5,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.33767857142857144,
+      "recall": 0.8800000000000001,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.31416666666666665,
+      "f1": 0.45821249012425486,
+      "latency": 0.5388509646407329
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.6413847590318179,
+        "latency": 0.5230544668156654
+      },
+      "comparison": {
+        "precision": 0.32,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4642857142857143,
+        "latency": 0.5446333753876388
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.33333333333333337,
+        "latency": 0.5552022499963641
+      },
+      "similarity": {
+        "precision": 0.3307142857142857,
+        "recall": 0.52,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.39384615384615385,
+        "latency": 0.5325137663632631
+      }
+    },
+    "trace": "fixed_d2_a05_k10.jsonl"
+  },
+  {
+    "name": "fixed_d2_a05_k20",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.5,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.24392857142857144,
+      "recall": 0.9616666666666667,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3220454545454545,
+      "f1": 0.3612937465111378,
+      "latency": 0.5299438354559243
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.27,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.41682999769956297,
+        "latency": 0.5206006832420826
+      },
+      "comparison": {
+        "precision": 0.16,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.2680652680652681,
+        "latency": 0.5350533167831599
+      },
+      "path": {
+        "precision": 0.1,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.18181818181818182,
+        "latency": 0.5341685334220528
+      },
+      "similarity": {
+        "precision": 0.44571428571428573,
+        "recall": 0.8466666666666667,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.1715151515151515,
+        "f1": 0.5784615384615385,
+        "latency": 0.5299528083764017
+      }
+    },
+    "trace": "fixed_d2_a05_k20.jsonl"
+  },
+  {
+    "name": "fixed_d2_a07_k5",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.7,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.41000000000000003,
+      "recall": 0.6244047619047619,
+      "hit_rate": 0.85,
+      "reciprocal_rank": 0.3058333333333333,
+      "f1": 0.46724830724830724,
+      "latency": 0.540098152065184
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.72,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7341880341880341,
+        "latency": 0.5220935747958719
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5617107334081084
+      },
+      "path": {
+        "precision": 0.24000000000000005,
+        "recall": 0.6,
+        "hit_rate": 0.8,
+        "reciprocal_rank": 0.25,
+        "f1": 0.34285714285714286,
+        "latency": 0.5387475666124374
+      },
+      "similarity": {
+        "precision": 0.2,
+        "recall": 0.23333333333333334,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.2066666666666667,
+        "latency": 0.5378407334443182
+      }
+    },
+    "trace": "fixed_d2_a07_k5.jsonl"
+  },
+  {
+    "name": "fixed_d2_a07_k10",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.7,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.33767857142857144,
+      "recall": 0.8800000000000001,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.31416666666666665,
+      "f1": 0.45821249012425486,
+      "latency": 0.5338082499685697
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.6413847590318179,
+        "latency": 0.5317585418466478
+      },
+      "comparison": {
+        "precision": 0.32,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4642857142857143,
+        "latency": 0.5330900248605758
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.33333333333333337,
+        "latency": 0.5348274333868176
+      },
+      "similarity": {
+        "precision": 0.3307142857142857,
+        "recall": 0.52,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.39384615384615385,
+        "latency": 0.5355569997802376
+      }
+    },
+    "trace": "fixed_d2_a07_k10.jsonl"
+  },
+  {
+    "name": "fixed_d2_a07_k20",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.7,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.24392857142857144,
+      "recall": 0.9616666666666667,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3220454545454545,
+      "f1": 0.3612937465111378,
+      "latency": 0.5379556893603876
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.27,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.41682999769956297,
+        "latency": 0.540819858154282
+      },
+      "comparison": {
+        "precision": 0.16,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.2680652680652681,
+        "latency": 0.5383230663836003
+      },
+      "path": {
+        "precision": 0.1,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.18181818181818182,
+        "latency": 0.5379007581621409
+      },
+      "similarity": {
+        "precision": 0.44571428571428573,
+        "recall": 0.8466666666666667,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.1715151515151515,
+        "f1": 0.5784615384615385,
+        "latency": 0.5347790747415274
+      }
+    },
+    "trace": "fixed_d2_a07_k20.jsonl"
+  },
+  {
+    "name": "fixed_d2_a09_k5",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.9,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.41000000000000003,
+      "recall": 0.6244047619047619,
+      "hit_rate": 0.85,
+      "reciprocal_rank": 0.3058333333333333,
+      "f1": 0.46724830724830724,
+      "latency": 0.5348850544309244
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.72,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7341880341880341,
+        "latency": 0.5326181165408344
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5375681753735989
+      },
+      "path": {
+        "precision": 0.24000000000000005,
+        "recall": 0.6,
+        "hit_rate": 0.8,
+        "reciprocal_rank": 0.25,
+        "f1": 0.34285714285714286,
+        "latency": 0.5359217585995794
+      },
+      "similarity": {
+        "precision": 0.2,
+        "recall": 0.23333333333333334,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.2066666666666667,
+        "latency": 0.5334321672096849
+      }
+    },
+    "trace": "fixed_d2_a09_k5.jsonl"
+  },
+  {
+    "name": "fixed_d2_a09_k10",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.9,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.33767857142857144,
+      "recall": 0.8800000000000001,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.31416666666666665,
+      "f1": 0.45821249012425486,
+      "latency": 0.533044004207477
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.6413847590318179,
+        "latency": 0.5282521751243621
+      },
+      "comparison": {
+        "precision": 0.32,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4642857142857143,
+        "latency": 0.5305264834314585
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.33333333333333337,
+        "latency": 0.5382759500760586
+      },
+      "similarity": {
+        "precision": 0.3307142857142857,
+        "recall": 0.52,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.39384615384615385,
+        "latency": 0.5351214081980288
+      }
+    },
+    "trace": "fixed_d2_a09_k10.jsonl"
+  },
+  {
+    "name": "fixed_d2_a09_k20",
+    "parameters": {
+      "depth": 2,
+      "decay": 0.9,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.24392857142857144,
+      "recall": 0.9616666666666667,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3220454545454545,
+      "f1": 0.3612937465111378,
+      "latency": 0.5321994687896222
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.27,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.41682999769956297,
+        "latency": 0.5271811001468449
+      },
+      "comparison": {
+        "precision": 0.16,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.2680652680652681,
+        "latency": 0.5307568336371332
+      },
+      "path": {
+        "precision": 0.1,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.18181818181818182,
+        "latency": 0.5339341499842704
+      },
+      "similarity": {
+        "precision": 0.44571428571428573,
+        "recall": 0.8466666666666667,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.1715151515151515,
+        "f1": 0.5784615384615385,
+        "latency": 0.5369257913902402
+      }
+    },
+    "trace": "fixed_d2_a09_k20.jsonl"
+  },
+  {
+    "name": "fixed_d3_a03_k5",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.3,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.41000000000000003,
+      "recall": 0.6244047619047619,
+      "hit_rate": 0.85,
+      "reciprocal_rank": 0.3058333333333333,
+      "f1": 0.46724830724830724,
+      "latency": 0.5349253209657036
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.72,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7341880341880341,
+        "latency": 0.5297854749951512
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5333269254304469
+      },
+      "path": {
+        "precision": 0.24000000000000005,
+        "recall": 0.6,
+        "hit_rate": 0.8,
+        "reciprocal_rank": 0.25,
+        "f1": 0.34285714285714286,
+        "latency": 0.5406819084193557
+      },
+      "similarity": {
+        "precision": 0.2,
+        "recall": 0.23333333333333334,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.2066666666666667,
+        "latency": 0.5359069750178606
+      }
+    },
+    "trace": "fixed_d3_a03_k5.jsonl"
+  },
+  {
+    "name": "fixed_d3_a03_k10",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.3,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.32,
+      "recall": 0.875,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.31416666666666665,
+      "f1": 0.44116120807297277,
+      "latency": 0.5410763209220022
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.6413847590318179,
+        "latency": 0.535159749770537
+      },
+      "comparison": {
+        "precision": 0.32,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4642857142857143,
+        "latency": 0.5403139917645603
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.33333333333333337,
+        "latency": 0.5400626919697971
+      },
+      "similarity": {
+        "precision": 0.26,
+        "recall": 0.5,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.32564102564102565,
+        "latency": 0.5487688501831144
+      }
+    },
+    "trace": "fixed_d3_a03_k10.jsonl"
+  },
+  {
+    "name": "fixed_d3_a03_k20",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.3,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.20249999999999999,
+      "recall": 0.97,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3220454545454545,
+      "f1": 0.3176371132892872,
+      "latency": 0.5382012603688053
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.3890039107430412,
+        "latency": 0.5398556500207633
+      },
+      "comparison": {
+        "precision": 0.16,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.2680652680652681,
+        "latency": 0.5393894664477556
+      },
+      "path": {
+        "precision": 0.1,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.18181818181818182,
+        "latency": 0.536548658227548
+      },
+      "similarity": {
+        "precision": 0.3,
+        "recall": 0.8800000000000001,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.1715151515151515,
+        "f1": 0.4316610925306577,
+        "latency": 0.5370112667791546
+      }
+    },
+    "trace": "fixed_d3_a03_k20.jsonl"
+  },
+  {
+    "name": "fixed_d3_a05_k5",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.5,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.41000000000000003,
+      "recall": 0.6244047619047619,
+      "hit_rate": 0.85,
+      "reciprocal_rank": 0.3058333333333333,
+      "f1": 0.46724830724830724,
+      "latency": 0.5352601082762704
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.72,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7341880341880341,
+        "latency": 0.5295517084188759
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5357654667925089
+      },
+      "path": {
+        "precision": 0.24000000000000005,
+        "recall": 0.6,
+        "hit_rate": 0.8,
+        "reciprocal_rank": 0.25,
+        "f1": 0.34285714285714286,
+        "latency": 0.5374694331549108
+      },
+      "similarity": {
+        "precision": 0.2,
+        "recall": 0.23333333333333334,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.2066666666666667,
+        "latency": 0.5382538247387856
+      }
+    },
+    "trace": "fixed_d3_a05_k5.jsonl"
+  },
+  {
+    "name": "fixed_d3_a05_k10",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.5,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.32,
+      "recall": 0.875,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.31416666666666665,
+      "f1": 0.44116120807297277,
+      "latency": 0.5357451230287552
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.6413847590318179,
+        "latency": 0.5356917168479413
+      },
+      "comparison": {
+        "precision": 0.32,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4642857142857143,
+        "latency": 0.5333120834548026
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.33333333333333337,
+        "latency": 0.5377375834155828
+      },
+      "similarity": {
+        "precision": 0.26,
+        "recall": 0.5,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.32564102564102565,
+        "latency": 0.5362391083966941
+      }
+    },
+    "trace": "fixed_d3_a05_k10.jsonl"
+  },
+  {
+    "name": "fixed_d3_a05_k20",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.5,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.20249999999999999,
+      "recall": 0.97,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3222835497835498,
+      "f1": 0.3176371132892872,
+      "latency": 0.540458818746265
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.3890039107430412,
+        "latency": 0.5467214998323471
+      },
+      "comparison": {
+        "precision": 0.16,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.2680652680652681,
+        "latency": 0.5339045167900622
+      },
+      "path": {
+        "precision": 0.1,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2833333333333333,
+        "f1": 0.18181818181818182,
+        "latency": 0.5377428747713566
+      },
+      "similarity": {
+        "precision": 0.3,
+        "recall": 0.8800000000000001,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.1724675324675325,
+        "f1": 0.4316610925306577,
+        "latency": 0.5434663835912943
+      }
+    },
+    "trace": "fixed_d3_a05_k20.jsonl"
+  },
+  {
+    "name": "fixed_d3_a07_k5",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.7,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.41000000000000003,
+      "recall": 0.6244047619047619,
+      "hit_rate": 0.85,
+      "reciprocal_rank": 0.3058333333333333,
+      "f1": 0.46724830724830724,
+      "latency": 0.539540916623082
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.72,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7341880341880341,
+        "latency": 0.5291060581803322
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5320268250536173
+      },
+      "path": {
+        "precision": 0.24000000000000005,
+        "recall": 0.6,
+        "hit_rate": 0.8,
+        "reciprocal_rank": 0.25,
+        "f1": 0.34285714285714286,
+        "latency": 0.5463624749798328
+      },
+      "similarity": {
+        "precision": 0.2,
+        "recall": 0.23333333333333334,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.2066666666666667,
+        "latency": 0.5506683082785457
+      }
+    },
+    "trace": "fixed_d3_a07_k5.jsonl"
+  },
+  {
+    "name": "fixed_d3_a07_k10",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.7,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.32,
+      "recall": 0.875,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.31297619047619046,
+      "f1": 0.44116120807297277,
+      "latency": 0.5437074187095277
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.6413847590318179,
+        "latency": 0.5368720083963126
+      },
+      "comparison": {
+        "precision": 0.32,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4642857142857143,
+        "latency": 0.553528325073421
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2785714285714286,
+        "f1": 0.33333333333333337,
+        "latency": 0.5439523913897574
+      },
+      "similarity": {
+        "precision": 0.26,
+        "recall": 0.5,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.32564102564102565,
+        "latency": 0.5404769499786198
+      }
+    },
+    "trace": "fixed_d3_a07_k10.jsonl"
+  },
+  {
+    "name": "fixed_d3_a07_k20",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.7,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.20249999999999999,
+      "recall": 0.97,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3210930735930736,
+      "f1": 0.3176371132892872,
+      "latency": 0.5398634021985345
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.3890039107430412,
+        "latency": 0.5447103751357645
+      },
+      "comparison": {
+        "precision": 0.16,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.2680652680652681,
+        "latency": 0.5382715668529272
+      },
+      "path": {
+        "precision": 0.1,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2785714285714286,
+        "f1": 0.18181818181818182,
+        "latency": 0.5380117085762322
+      },
+      "similarity": {
+        "precision": 0.3,
+        "recall": 0.8800000000000001,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.1724675324675325,
+        "f1": 0.4316610925306577,
+        "latency": 0.538459958229214
+      }
+    },
+    "trace": "fixed_d3_a07_k20.jsonl"
+  },
+  {
+    "name": "fixed_d3_a09_k5",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.9,
+      "top_k": 5
+    },
+    "metrics": {
+      "precision": 0.4,
+      "recall": 0.5994047619047619,
+      "hit_rate": 0.85,
+      "reciprocal_rank": 0.3058333333333333,
+      "f1": 0.45296259296259295,
+      "latency": 0.5422677377006039
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.72,
+        "recall": 0.8142857142857143,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.7341880341880341,
+        "latency": 0.5531605252064764
+      },
+      "comparison": {
+        "precision": 0.48,
+        "recall": 0.85,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.5852813852813853,
+        "latency": 0.5397406834177673
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 0.5,
+        "hit_rate": 0.8,
+        "reciprocal_rank": 0.25,
+        "f1": 0.28571428571428575,
+        "latency": 0.539490041974932
+      },
+      "similarity": {
+        "precision": 0.2,
+        "recall": 0.23333333333333334,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.2066666666666667,
+        "latency": 0.53667970020324
+      }
+    },
+    "trace": "fixed_d3_a09_k5.jsonl"
+  },
+  {
+    "name": "fixed_d3_a09_k10",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.9,
+      "top_k": 10
+    },
+    "metrics": {
+      "precision": 0.32,
+      "recall": 0.875,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.31297619047619046,
+      "f1": 0.44116120807297277,
+      "latency": 0.5353523791301995
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.6413847590318179,
+        "latency": 0.5290855915751308
+      },
+      "comparison": {
+        "precision": 0.32,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.4642857142857143,
+        "latency": 0.5380123168230057
+      },
+      "path": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2785714285714286,
+        "f1": 0.33333333333333337,
+        "latency": 0.5391378497704864
+      },
+      "similarity": {
+        "precision": 0.26,
+        "recall": 0.5,
+        "hit_rate": 0.6,
+        "reciprocal_rank": 0.13999999999999999,
+        "f1": 0.32564102564102565,
+        "latency": 0.5351737583521754
+      }
+    },
+    "trace": "fixed_d3_a09_k10.jsonl"
+  },
+  {
+    "name": "fixed_d3_a09_k20",
+    "parameters": {
+      "depth": 3,
+      "decay": 0.9,
+      "top_k": 20
+    },
+    "metrics": {
+      "precision": 0.20249999999999999,
+      "recall": 0.97,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3210930735930736,
+      "f1": 0.3176371132892872,
+      "latency": 0.538105949840974
+    },
+    "by_type": {
+      "direct": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.5,
+        "f1": 0.3890039107430412,
+        "latency": 0.5347450080327689
+      },
+      "comparison": {
+        "precision": 0.16,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.3333333333333333,
+        "f1": 0.2680652680652681,
+        "latency": 0.5361277831252664
+      },
+      "path": {
+        "precision": 0.1,
+        "recall": 1.0,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.2785714285714286,
+        "f1": 0.18181818181818182,
+        "latency": 0.5451467999722809
+      },
+      "similarity": {
+        "precision": 0.3,
+        "recall": 0.8800000000000001,
+        "hit_rate": 1.0,
+        "reciprocal_rank": 0.1724675324675325,
+        "f1": 0.4316610925306577,
+        "latency": 0.53640420823358
+      }
+    },
+    "trace": "fixed_d3_a09_k20.jsonl"
+  }
+]

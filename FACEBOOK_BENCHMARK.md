@@ -99,7 +99,12 @@ new output filename per configuration to avoid overwriting earlier results.
 
 ## Recommended next research step
 
-Use only the development split to tune the fixed baseline and improve the
+Fixed-parameter tuning is now complete. See
+[FIXED_PARAMETER_TUNING.md](FIXED_PARAMETER_TUNING.md) for the 36-configuration
+search, selected parameters, and unchanged rule reference. Use the selected fixed
+baseline in further comparisons; the test set remains unevaluated.
+
+Use only the development split to improve the
 query-adaptive planner. In particular, test whether larger `top_k`, category-aware
 filtering, or a changed propagation rule improves similarity recall. Once all
 choices are frozen, run the held-out test once and report both overall and
