@@ -37,6 +37,9 @@ def parser() -> argparse.ArgumentParser:
     experiment.add_argument("--questions", default="data/questions.json")
     experiment.add_argument("--output", default="results/experiment.jsonl")
     experiment.add_argument("--strategies", nargs="+", default=["seed-only", "fixed", "rules"])
+    experiment.add_argument("--depth", type=int, default=2, help="Fixed strategy only: propagation depth 0–5 (default: 2)")
+    experiment.add_argument("--decay", type=float, default=0.6, help="Fixed strategy only: decay 0–1 (default: 0.6)")
+    experiment.add_argument("--top-k", type=int, default=10, help="Fixed strategy only: positive result limit (default: 10)")
     return result
 
 
@@ -69,7 +72,10 @@ def main() -> None:
         )
         print(json.dumps(result.to_dict(), indent=2))
     else:
-        summary = run_experiment(pipeline, args.questions, args.output, args.strategies)
+        summary = run_experiment(
+            pipeline, args.questions, args.output, args.strategies,
+            fixed_parameters=AGPParameters(args.depth, args.decay, args.top_k),
+        )
         print(json.dumps(summary, indent=2))
 
 

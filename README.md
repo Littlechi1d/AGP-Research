@@ -15,7 +15,7 @@ Completed components include:
 - the prepared UCI Facebook Large Page-Page graph;
 - deterministic development and held-out test questions with topology labels;
 - a completed three-strategy development experiment;
-- 16 passing unit tests.
+- 21 passing unit tests.
 
 The held-out Facebook test set has intentionally not been evaluated. Freeze the
 parameters and planner before using it.
@@ -200,9 +200,12 @@ These are development results, not final findings. The rule strategy's precision
 advantage mainly comes from depth 1 on direct questions. Similarity questions are
 the current weakness.
 
-The batch runner currently fixes the baseline at `depth=2`, `decay=0.6`, and
-`top_k=10` inside `evaluation.py`; `ask` arguments do not change these experiment
-settings. Do not run the test set until all choices are frozen.
+The experiment command accepts `--depth`, `--decay`, and `--top-k` for the
+`fixed` strategy only. Defaults remain 2, 0.6, and 10. For example, append
+`--depth 1 --decay 0.3 --top-k 10` after `experiment` to evaluate another fixed
+configuration. These options do not override the rules, seed-only, or LLM planner.
+Use a distinct `--output` path for each configuration: existing logs are overwritten.
+Do not run the test set until all choices are frozen.
 
 ## Data formats
 
@@ -267,7 +270,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 16 tests
+Ran 21 tests
 OK
 ```
 
@@ -275,7 +278,7 @@ OK
 
 1. Tune fixed parameters using only the Facebook development set.
 2. Improve and freeze the rule planner, especially for similarity questions.
-3. Make batch parameters configurable and report metrics per question type.
+3. Report metrics per question type (batch fixed parameters are now configurable).
 4. Run the zero-shot LLM-adaptive condition on development data.
 5. Add keyword/parameter ablations to separate the two LLM effects.
 6. Freeze code, parameters, prompts, model, and metrics.
@@ -288,6 +291,6 @@ OK
 - The topology benchmark is controlled but cannot replace semantic evaluation.
 - The graph is treated as undirected.
 - The Python backend prioritizes clarity over large-scale optimization.
-- Batch evaluation uses hard-coded fixed parameters and does not score answers.
+- Batch evaluation does not score answers or automatically search parameters.
 - LLM experiments still need frozen prompts, retries/caching, and cost logging.
 - The paper adapter currently supports static queries, not dynamic updates.

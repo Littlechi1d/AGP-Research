@@ -28,7 +28,7 @@ Four retrieval strategies are supported:
 The prototype includes a command-line interface, a demonstration graph, the UCI
 Facebook Large Page-Page graph, deterministic topology-grounded development and
 test questions, retrieval evaluation, JSON Lines logging, a C++ reference-code
-adapter, `.env` configuration, and 16 passing unit tests. A three-strategy
+adapter, `.env` configuration, and 21 passing unit tests. A three-strategy
 development experiment is complete. The held-out test set remains intentionally
 unused until model and parameter choices are frozen.
 
@@ -242,7 +242,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 16 tests
+Ran 21 tests
 OK
 ```
 
@@ -566,7 +566,7 @@ This taxonomy will make the discussion more informative than reporting aggregate
 
 The delivered project has been checked in the target directory:
 
-- 16 unit tests pass using the Python standard library;
+- 21 unit tests pass using the Python standard library;
 - the demonstration graph and 22,470-node Facebook graph load successfully;
 - the Facebook conversion checksum and row-count checks pass;
 - both Python and paper backends complete a real-data NASA query;
@@ -600,8 +600,8 @@ The current version intentionally prioritizes clarity over production complexity
 - Current batch evaluation measures retrieval but does not generate or score answers.
 - The LLM client depends on a chat-completions-compatible API and structured JSON support.
 - There is no caching, retry, or token/cost logging for API experiments yet.
-- The batch runner hard-codes fixed parameters at depth 2, decay 0.6, and top-k
-  10, so development parameter tuning needs a configurable interface.
+- The batch runner accepts fixed parameters through `experiment --depth`,
+  `--decay`, and `--top-k`, but automated grid search is not implemented.
 - Fine-tuning a small model has not been implemented and is not justified until prompted baselines are evaluated.
 
 These limitations are appropriate for the first prototype and provide concrete directions for extensions and ablation studies.
@@ -610,7 +610,8 @@ These limitations are appropriate for the first prototype and provide concrete d
 
 ### Immediate
 
-1. Make the batch runner accept fixed `depth`, `decay`, and `top_k` explicitly.
+1. Use the now-configurable batch `--depth`, `--decay`, and `--top-k` options to
+   compare fixed configurations; other strategies retain their own parameters.
 2. Add per-question-type summaries and preferably F1@k.
 3. Tune the fixed configuration using only the 20 development questions.
 4. Analyze the two missed development similarity questions and decide whether

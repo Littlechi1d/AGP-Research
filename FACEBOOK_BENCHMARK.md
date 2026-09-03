@@ -92,9 +92,10 @@ python3 -m agp_research \
 ```
 
 Add `llm` only after configuring an API key and freezing the model and prompt.
-The experiment command currently applies fixed parameters `depth=2`, `decay=0.6`,
-and `top_k=10` inside `evaluation.py`. Changing CLI `ask` arguments does not alter
-those experiment settings.
+The experiment command defaults to fixed parameters `depth=2`, `decay=0.6`, and
+`top_k=10`. Override them with `experiment --depth 1 --decay 0.3 --top-k 10`.
+These options affect only the fixed strategy, not the rules or LLM planner. Use a
+new output filename per configuration to avoid overwriting earlier results.
 
 ## Recommended next research step
 

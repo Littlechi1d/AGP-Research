@@ -36,7 +36,11 @@ def run_experiment(
     questions_path: str | Path,
     output_path: str | Path,
     strategies: list[str],
+    *,
+    fixed_parameters: AGPParameters | None = None,
 ) -> dict[str, dict[str, float]]:
+    # Preserve the old defaults, and reject invalid settings before opening output.
+    parameters = (fixed_parameters or AGPParameters()).validate()
     questions = json.loads(Path(questions_path).read_text(encoding="utf-8"))
     output = Path(output_path)
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -48,7 +52,7 @@ def run_experiment(
                 result = pipeline.run(
                     example["question"],
                     strategy=strategy,
-                    fixed_parameters=AGPParameters(depth=2, decay=0.6, top_k=10),
+                    fixed_parameters=parameters,
                     generate_answer=False,
                 )
                 ranked_ids = [item.node.id for item in result.ranked_nodes]
@@ -63,4 +67,3 @@ def run_experiment(
         strategy: {key: value / counts[strategy] for key, value in values.items()}
         for strategy, values in totals.items()
     }
-
