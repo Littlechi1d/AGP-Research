@@ -8,7 +8,13 @@ from typing import Protocol
 from agp_research.graph import KnowledgeGraph
 from agp_research.llm import OpenAICompatibleClient
 from agp_research.models import AGPParameters, PipelineResult
-from agp_research.planner import heuristic_keywords, llm_plan, local_keyword_extraction, rule_parameters
+from agp_research.planner import (
+    heuristic_keywords,
+    llm_parameters,
+    llm_plan,
+    local_keyword_extraction,
+    rule_parameters,
+)
 from agp_research.propagation import propagate
 
 
@@ -42,6 +48,11 @@ class AGPPipeline:
             if self.client is None:
                 raise RuntimeError("LLM strategy requires OPENAI_API_KEY")
             keywords, parameters = llm_plan(question, self.client)
+        elif strategy == "llm-parameters":
+            if self.client is None:
+                raise RuntimeError("LLM-parameters strategy requires OPENAI_API_KEY")
+            keywords = local_keyword_extraction(question, self.graph)
+            parameters = llm_parameters(question, self.client)
         elif strategy == "fixed":
             keywords = local_keyword_extraction(question, self.graph)
             parameters = (fixed_parameters or AGPParameters()).validate()
@@ -52,7 +63,9 @@ class AGPPipeline:
             keywords = local_keyword_extraction(question, self.graph)
             parameters = AGPParameters(depth=0, decay=0.0, top_k=10)
         else:
-            raise ValueError("strategy must be seed-only, fixed, rules, or llm")
+            raise ValueError(
+                "strategy must be seed-only, fixed, rules, llm-parameters, or llm"
+            )
 
         # If no keywords were found, fall back to heuristic extraction
         if not keywords:
@@ -85,7 +98,8 @@ class AGPPipeline:
             answer=answer,
             elapsed_seconds=time.perf_counter() - started,
             metadata={
-                "llm_used": strategy == "llm" or (generate_answer and self.client is not None),
+                "llm_used": strategy in {"llm", "llm-parameters"}
+                or (generate_answer and self.client is not None),
                 "propagation_backend": (
                     type(self.propagation_backend).__name__
                     if self.propagation_backend is not None

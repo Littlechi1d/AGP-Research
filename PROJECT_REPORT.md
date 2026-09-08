@@ -18,17 +18,20 @@ The principal research question is:
 
 > Does selecting graph-propagation parameters separately for each question improve retrieval and answer quality compared with using the same parameters for every question?
 
-Four retrieval strategies are supported:
+Five retrieval strategies are supported:
 
 1. **Seed-only:** exact entity matches without graph propagation.
 2. **Fixed AGP:** the same propagation parameters for every question.
 3. **Rule-adaptive AGP:** transparent rules select parameters from the wording of each question.
 4. **LLM-adaptive AGP:** an LLM extracts keywords and selects parameters for each question.
+5. **LLM-parameter AGP:** local exact-title extraction is retained while an LLM
+   selects only depth, decay, and top-k. This separates parameter selection from
+   LLM entity-extraction errors.
 
 The prototype includes a command-line interface, a demonstration graph, the UCI
 Facebook Large Page-Page graph, deterministic topology-grounded development and
 test questions, retrieval evaluation, JSON Lines logging, a C++ reference-code
-adapter, `.env` configuration, and 26 passing unit tests. A three-strategy
+adapter, `.env` configuration, and 31 passing unit tests. A three-strategy
 development experiment is complete. The held-out test set remains intentionally
 unused until model and parameter choices are frozen.
 
@@ -242,7 +245,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 26 tests
+Ran 31 tests
 OK
 ```
 
@@ -543,8 +546,10 @@ Per-question-type summaries and all traces are saved. See
 
 ### Phase 4: Evaluate adaptation — partially completed
 
-Rule-adaptive development results are recorded. Zero-shot LLM-adaptive retrieval,
-component ablations, and prompt freezing remain outstanding.
+Rule-adaptive and zero-shot `llm-parameters` development results are recorded.
+The latter uses local keywords so parameter selection is isolated. It achieved
+precision 0.4125, recall 0.8300, and mean per-question F1 0.5134. Few-shot
+planning, end-to-end `llm`, further ablations, and prompt freezing remain.
 
 ### Phase 5: Evaluate answers — not started
 
@@ -568,7 +573,7 @@ This taxonomy will make the discussion more informative than reporting aggregate
 
 The delivered project has been checked in the target directory:
 
-- 26 unit tests pass using the Python standard library;
+- 31 unit tests pass using the Python standard library;
 - the demonstration graph and 22,470-node Facebook graph load successfully;
 - the Facebook conversion checksum and row-count checks pass;
 - both Python and paper backends complete a real-data NASA query;
@@ -579,10 +584,10 @@ The delivered project has been checked in the target directory:
   `results/facebook_dev.jsonl`;
 - regenerating the benchmark with seed 90055 produces identical question files.
 
-The OpenAI-compatible path is implemented and configurable through `.env`, but
-the LLM-adaptive Facebook development condition has not yet been recorded as a
-frozen research run. API behavior must be verified for the selected provider and
-model before the final experiment.
+The OpenAI-compatible path is implemented and configurable through `.env`. A
+local Qwen zero-shot `llm-parameters` development run is recorded with model and
+input checksums. It does not beat the rules condition on development mean F1.
+The end-to-end `llm` condition is not yet a frozen research run.
 
 ## 12. Limitations
 
@@ -625,8 +630,8 @@ These limitations are appropriate for the first prototype and provide concrete d
 
 ### Before the main experiment
 
-6. Run zero-shot LLM adaptation on development data with a recorded model and
-   prompt.
+6. Preserve the completed zero-shot `llm-parameters` result and add a separately
+   named few-shot parameter-planning condition.
 7. Add API retries, caching, latency, token, and cost logging.
 8. Implement local-keywords/LLM-parameters and LLM-keywords/fixed-parameters
    ablations.

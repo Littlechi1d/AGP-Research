@@ -15,7 +15,7 @@ Completed components include:
 - the prepared UCI Facebook Large Page-Page graph;
 - deterministic development and held-out test questions with topology labels;
 - a completed three-strategy development experiment;
-- 26 passing unit tests.
+- 31 passing unit tests.
 
 The held-out Facebook test set has intentionally not been evaluated. Freeze the
 parameters and planner before using it.
@@ -76,6 +76,8 @@ Available strategies:
 - `fixed`: use manually supplied parameters;
 - `rules`: choose parameters from transparent question-wording rules;
 - `llm`: ask an LLM for keywords and per-question parameters.
+- `llm-parameters`: use local exact-title keywords and ask an LLM only for
+  `depth`, `decay`, and `top_k`; this is the clean parameter-selection ablation.
 
 Fixed example:
 
@@ -108,6 +110,17 @@ python3 -m agp_research ask \
   "Compare Donald Trump and Joe Biden regarding the Paris Agreement." \
   --strategy llm
 ```
+
+To test LLM parameter selection while retaining reliable local title extraction:
+
+```bash
+python3 -m agp_research ask \
+  "Which pages form a path between Donald Trump and Climate Change?" \
+  --strategy llm-parameters --no-answer
+```
+
+This makes one LLM planning call. Without `--no-answer`, the same configured
+model is called again to generate the final answer.
 
 Record the provider, exact model, prompt, temperature, date, and API settings in
 reproducible LLM experiments.
@@ -270,7 +283,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 26 tests
+Ran 31 tests
 OK
 ```
 
@@ -281,7 +294,9 @@ OK
    budget-matched k=10 baseline. Defaults remain unchanged.
 2. Improve and freeze the rule planner, especially for similarity questions.
 3. Report metrics per question type (batch fixed parameters are now configurable).
-4. Run the zero-shot LLM-adaptive condition on development data.
+4. The zero-shot `llm-parameters` development run is complete; see
+   `results/facebook_llm_parameters_dev_20260909/REPORT.md`. Add a separately
+   named few-shot condition before evaluating end-to-end `llm`.
 5. Add keyword/parameter ablations to separate the two LLM effects.
 6. Freeze code, parameters, prompts, model, and metrics.
 7. Run the held-out test once and report paired uncertainty estimates.

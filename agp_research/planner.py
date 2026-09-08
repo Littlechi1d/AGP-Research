@@ -59,6 +59,23 @@ with keys keywords, depth, decay, and top_k."""
     return keywords, parameters
 
 
+def llm_parameters(question: str, client: OpenAICompatibleClient) -> AGPParameters:
+    """Ask an LLM for parameters only, leaving entity extraction to local code."""
+    system = """You configure graph retrieval parameters for a natural-language query.
+Use depth 1 for direct facts, 2 for explanation/comparison, and 3 for multi-step
+connections. decay controls distant evidence and must be between 0 and 1. top_k
+must be 5, 10, or 20. Return JSON only with keys depth, decay, and top_k."""
+    data = client.complete_json(system, question)
+    parameters = AGPParameters(
+        depth=int(data["depth"]),
+        decay=float(data["decay"]),
+        top_k=int(data["top_k"]),
+    ).validate()
+    if parameters.top_k not in {5, 10, 20}:
+        raise ValueError("LLM top_k must be 5, 10, or 20")
+    return parameters
+
+
 def heuristic_keywords(question: str) -> list[str]:
     """Last-resort noun-like tokens, useful for reporting unmatched terms."""
     stop = {"what", "when", "where", "which", "who", "why", "how", "is", "did", "does", "the", "and", "are", "was", "were", "with", "from", "into"}

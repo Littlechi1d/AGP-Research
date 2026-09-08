@@ -1,0 +1,79 @@
+{
+  "metrics": {
+    "overall": {
+      "precision": 0.4125396825396825,
+      "recall": 0.8300000000000001,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.31,
+      "f1": 0.5134171873877756,
+      "latency": 1.1075818519806488
+    },
+    "direct": {
+      "precision": 0.8127777777777778,
+      "recall": 1.0,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.5,
+      "f1": 0.8955368814192344,
+      "latency": 1.3003481579944491
+    },
+    "comparison": {
+      "precision": 0.3466666666666667,
+      "recall": 1.0,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3333333333333333,
+      "f1": 0.4976190476190476,
+      "latency": 1.0440895499661564
+    },
+    "path": {
+      "precision": 0.16,
+      "recall": 0.8,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.26666666666666666,
+      "f1": 0.2666666666666667,
+      "latency": 1.0357563002035022
+    },
+    "similarity": {
+      "precision": 0.3307142857142857,
+      "recall": 0.52,
+      "hit_rate": 0.6,
+      "reciprocal_rank": 0.13999999999999999,
+      "f1": 0.39384615384615385,
+      "latency": 1.0501333997584879
+    }
+  },
+  "parameter_counts": [
+    {
+      "depth": 1,
+      "decay": 0.3,
+      "top_k": 10,
+      "count": 2
+    },
+    {
+      "depth": 1,
+      "decay": 0.5,
+      "top_k": 10,
+      "count": 9
+    },
+    {
+      "depth": 1,
+      "decay": 0.8,
+      "top_k": 10,
+      "count": 4
+    },
+    {
+      "depth": 2,
+      "decay": 0.7,
+      "top_k": 10,
+      "count": 3
+    },
+    {
+      "depth": 2,
+      "decay": 0.8,
+      "top_k": 10,
+      "count": 2
+    }
+  ],
+  "record_count": 20,
+  "all_intended_seeds_matched": true,
+  "all_unmatched_keyword_lists_empty": true
+}

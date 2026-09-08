@@ -28,7 +28,11 @@ def parser() -> argparse.ArgumentParser:
     commands = result.add_subparsers(dest="command", required=True)
     ask = commands.add_parser("ask", help="Run one question")
     ask.add_argument("question")
-    ask.add_argument("--strategy", choices=["seed-only", "fixed", "rules", "llm"], default="rules")
+    ask.add_argument(
+        "--strategy",
+        choices=["seed-only", "fixed", "rules", "llm-parameters", "llm"],
+        default="rules",
+    )
     ask.add_argument("--depth", type=int, default=2)
     ask.add_argument("--decay", type=float, default=0.6)
     ask.add_argument("--top-k", type=int, default=10)
