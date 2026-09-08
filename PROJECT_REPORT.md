@@ -28,7 +28,7 @@ Four retrieval strategies are supported:
 The prototype includes a command-line interface, a demonstration graph, the UCI
 Facebook Large Page-Page graph, deterministic topology-grounded development and
 test questions, retrieval evaluation, JSON Lines logging, a C++ reference-code
-adapter, `.env` configuration, and 21 passing unit tests. A three-strategy
+adapter, `.env` configuration, and 26 passing unit tests. A three-strategy
 development experiment is complete. The held-out test set remains intentionally
 unused until model and parameter choices are frozen.
 
@@ -146,7 +146,7 @@ Without an API key, all graph retrieval and evaluation features still work. Answ
 |---|---|
 | `agp_research/models.py` | Defines nodes, edges, parameters, ranked results, and pipeline output. |
 | `agp_research/config.py` | Loads optional `.env` settings while giving shell variables precedence. |
-| `agp_research/graph.py` | Loads CSV graph data, validates endpoints, normalizes text, and performs exact matching. |
+| `agp_research/graph.py` | Loads CSV data, validates endpoints, and builds cached title indexes for exact matching. |
 | `agp_research/propagation.py` | Implements matrix-free truncated graph propagation. |
 | `agp_research/planner.py` | Implements local keyword extraction, rule-based parameters, and LLM planning. |
 | `agp_research/llm.py` | Implements a minimal OpenAI-compatible chat client using the Python standard library. |
@@ -242,7 +242,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 21 tests
+Ran 26 tests
 OK
 ```
 
@@ -568,7 +568,7 @@ This taxonomy will make the discussion more informative than reporting aggregate
 
 The delivered project has been checked in the target directory:
 
-- 21 unit tests pass using the Python standard library;
+- 26 unit tests pass using the Python standard library;
 - the demonstration graph and 22,470-node Facebook graph load successfully;
 - the Facebook conversion checksum and row-count checks pass;
 - both Python and paper backends complete a real-data NASA query;

@@ -61,6 +61,25 @@ class PlannerTest(unittest.TestCase):
             with self.subTest(question=question):
                 self.assertEqual(local_keyword_extraction(question, graph), ["Press"])
 
+    def test_punctuation_inside_title_is_preserved(self):
+        graph = KnowledgeGraph(
+            nodes={
+                "n1": Node(
+                    "n1",
+                    "Headquarters Marine Corps, Henderson Hall, Headquarters & Service Battalion",
+                    "",
+                )
+            },
+            edges=[],
+        )
+        self.assertEqual(
+            local_keyword_extraction(
+                "Neighbor Headquarters Marine Corps, Henderson Hall, Headquarters & Service Battalion?",
+                graph,
+            ),
+            ["Headquarters Marine Corps, Henderson Hall, Headquarters & Service Battalion"],
+        )
+
     def test_is_is_a_fallback_stop_word(self):
         self.assertEqual(heuristic_keywords("Who is Donald Trump?"), ["Donald", "Trump"])
 

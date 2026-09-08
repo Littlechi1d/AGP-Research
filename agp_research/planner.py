@@ -11,12 +11,7 @@ from agp_research.models import AGPParameters
 
 def local_keyword_extraction(question: str, graph: KnowledgeGraph) -> list[str]:
     """Return titles in question order, preferring longer overlapping mentions."""
-    normalized_question = normalize(question)
-    candidates: list[tuple[str, int, int]] = []
-    for node in graph.nodes.values():
-        pattern = rf"(?<!\w){re.escape(normalize(node.title))}(?!\w)"
-        for match in re.finditer(pattern, normalized_question):
-            candidates.append((node.title, match.start(), match.end()))
+    candidates = graph.title_mentions(question)
 
     # Resolve overlaps by length, using position to break equal-length ties.
     candidates.sort(key=lambda item: (-(item[2] - item[1]), item[1]))

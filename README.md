@@ -15,7 +15,7 @@ Completed components include:
 - the prepared UCI Facebook Large Page-Page graph;
 - deterministic development and held-out test questions with topology labels;
 - a completed three-strategy development experiment;
-- 21 passing unit tests.
+- 26 passing unit tests.
 
 The held-out Facebook test set has intentionally not been evaluated. Freeze the
 parameters and planner before using it.
@@ -50,7 +50,7 @@ Further documentation:
 | Path | Purpose |
 |---|---|
 | `agp_research/config.py` | Reads `.env` and shell settings. |
-| `agp_research/graph.py` | Loads CSV graphs and performs exact matching. |
+| `agp_research/graph.py` | Loads CSV graphs and caches indexes for exact matching. |
 | `agp_research/planner.py` | Extracts keywords and selects parameters. |
 | `agp_research/propagation.py` | Runs local Python graph propagation. |
 | `agp_research/paper_backend.py` | Calls the optional C++ backend. |
@@ -270,7 +270,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 21 tests
+Ran 26 tests
 OK
 ```
 
