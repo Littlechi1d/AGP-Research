@@ -24,7 +24,7 @@ class PlannerTest(unittest.TestCase):
     def test_local_keyword_before_other_punctuation(self):
         self.assertEqual(
             local_keyword_extraction("Explain Donald Trump, then Paris Agreement.", self.graph),
-            ["Paris Agreement", "Donald Trump"],
+            ["Donald Trump", "Paris Agreement"],
         )
 
     def test_partial_word_does_not_match(self):
@@ -32,6 +32,34 @@ class PlannerTest(unittest.TestCase):
             local_keyword_extraction("Donald Trumpet", self.graph),
             [],
         )
+
+    def test_overlapping_titles_and_separate_mentions(self):
+        graph = KnowledgeGraph(
+            nodes={
+                "n1": Node("n1", "NASA", ""),
+                "n2": Node("n2", "NASA Student Launch", ""),
+            },
+            edges=[],
+        )
+        cases = [
+            ("Which pages neighbor NASA Student Launch?", ["NASA Student Launch"]),
+            ("NASA and NASA Student Launch", ["NASA", "NASA Student Launch"]),
+            ("NASA Student Launch and NASA", ["NASA Student Launch", "NASA"]),
+            ("NASA, NASA!", ["NASA", "NASA"]),
+            ("  nasa\tSTUDENT  launch?", ["NASA Student Launch"]),
+        ]
+        for question, expected in cases:
+            with self.subTest(question=question):
+                self.assertEqual(local_keyword_extraction(question, graph), expected)
+
+    def test_press_boundaries(self):
+        graph = KnowledgeGraph(nodes={"p": Node("p", "Press", "")}, edges=[])
+        for question in ["Pressure", "pressing", "Express", "Press2", "_Press", "éPress"]:
+            with self.subTest(question=question):
+                self.assertEqual(local_keyword_extraction(question, graph), [])
+        for question in ['"Press"', "(Press)", "Press,", "Press?", "Press"]:
+            with self.subTest(question=question):
+                self.assertEqual(local_keyword_extraction(question, graph), ["Press"])
 
     def test_is_is_a_fallback_stop_word(self):
         self.assertEqual(heuristic_keywords("Who is Donald Trump?"), ["Donald", "Trump"])

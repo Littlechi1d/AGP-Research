@@ -10,17 +10,26 @@ from agp_research.models import AGPParameters
 
 
 def local_keyword_extraction(question: str, graph: KnowledgeGraph) -> list[str]:
-    """Find complete node titles, treating punctuation as a valid boundary."""
+    """Return titles in question order, preferring longer overlapping mentions."""
     normalized_question = normalize(question)
-    matches = [
-        node.title
-        for node in graph.nodes.values()
-        if re.search(
-            rf"(?<!\w){re.escape(normalize(node.title))}(?!\w)",
-            normalized_question,
-        )
-    ]
-    return sorted(matches, key=lambda text: (-len(text), text))
+    candidates: list[tuple[str, int, int]] = []
+    for node in graph.nodes.values():
+        pattern = rf"(?<!\w){re.escape(normalize(node.title))}(?!\w)"
+        for match in re.finditer(pattern, normalized_question):
+            candidates.append((node.title, match.start(), match.end()))
+
+    # Resolve overlaps by length, using position to break equal-length ties.
+    candidates.sort(key=lambda item: (-(item[2] - item[1]), item[1]))
+    selected: list[tuple[str, int, int]] = []
+    for title, start, end in candidates:
+        if not any(
+            start < selected_end and end > selected_start
+            for _, selected_start, selected_end in selected
+        ):
+            selected.append((title, start, end))
+
+    selected.sort(key=lambda item: item[1])
+    return [title for title, _, _ in selected]
 
 
 def rule_parameters(question: str, *, top_k: int = 10) -> AGPParameters:
