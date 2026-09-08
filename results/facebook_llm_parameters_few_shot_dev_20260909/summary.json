@@ -1,0 +1,10 @@
+{
+  "llm-parameters-few-shot": {
+    "precision": 0.39753968253968247,
+    "recall": 0.8800000000000001,
+    "hit_rate": 0.9,
+    "reciprocal_rank": 0.31416666666666665,
+    "latency": 1.3045993771171198,
+    "mean_per_question_f1": 0.4922050661756544
+  }
+}

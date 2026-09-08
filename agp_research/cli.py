@@ -30,7 +30,14 @@ def parser() -> argparse.ArgumentParser:
     ask.add_argument("question")
     ask.add_argument(
         "--strategy",
-        choices=["seed-only", "fixed", "rules", "llm-parameters", "llm"],
+        choices=[
+            "seed-only",
+            "fixed",
+            "rules",
+            "llm-parameters",
+            "llm-parameters-few-shot",
+            "llm",
+        ],
         default="rules",
     )
     ask.add_argument("--depth", type=int, default=2)

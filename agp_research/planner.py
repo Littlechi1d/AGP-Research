@@ -76,6 +76,40 @@ must be 5, 10, or 20. Return JSON only with keys depth, decay, and top_k."""
     return parameters
 
 
+def llm_parameters_few_shot(
+    question: str, client: OpenAICompatibleClient
+) -> AGPParameters:
+    """Select parameters using one demonstration for each benchmark query type."""
+    system = """You configure graph retrieval parameters for a natural-language query.
+Choose depth based on the graph distance needed to retrieve the evidence. decay controls
+how much score reaches distant nodes and must be between 0 and 1. top_k controls the
+retrieval budget and must be 5, 10, or 20.
+
+Follow these examples:
+Question: Which pages directly neighbor Example Page
+Output: {"depth": 1, "decay": 0.4, "top_k": 10}
+
+Question: Which pages are liked by both Example Page A and Example Page B
+Output: {"depth": 1, "decay": 0.6, "top_k": 10}
+
+Question: Which pages form the unique shortest path between Example Page A and Example Page B
+Output: {"depth": 2, "decay": 0.75, "top_k": 20}
+
+Question: Which pages similar to Example Page share its category and are two hops away
+Output: {"depth": 2, "decay": 0.7, "top_k": 10}
+
+Return JSON only with keys depth, decay, and top_k. Do not explain the choice."""
+    data = client.complete_json(system, question)
+    parameters = AGPParameters(
+        depth=int(data["depth"]),
+        decay=float(data["decay"]),
+        top_k=int(data["top_k"]),
+    ).validate()
+    if parameters.top_k not in {5, 10, 20}:
+        raise ValueError("LLM top_k must be 5, 10, or 20")
+    return parameters
+
+
 def heuristic_keywords(question: str) -> list[str]:
     """Last-resort noun-like tokens, useful for reporting unmatched terms."""
     stop = {"what", "when", "where", "which", "who", "why", "how", "is", "did", "does", "the", "and", "are", "was", "were", "with", "from", "into"}

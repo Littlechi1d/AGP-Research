@@ -78,6 +78,8 @@ Available strategies:
 - `llm`: ask an LLM for keywords and per-question parameters.
 - `llm-parameters`: use local exact-title keywords and ask an LLM only for
   `depth`, `decay`, and `top_k`; this is the clean parameter-selection ablation.
+- `llm-parameters-few-shot`: the same ablation with one synthetic parameter
+  example for each of the four benchmark question types.
 
 Fixed example:
 
@@ -118,6 +120,9 @@ python3 -m agp_research ask \
   "Which pages form a path between Donald Trump and Climate Change?" \
   --strategy llm-parameters --no-answer
 ```
+
+Use `--strategy llm-parameters-few-shot` to run the separately named four-example
+condition. It does not replace the zero-shot strategy.
 
 This makes one LLM planning call. Without `--no-answer`, the same configured
 model is called again to generate the final answer.
@@ -283,7 +288,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 31 tests
+Ran 33 tests
 OK
 ```
 
@@ -294,9 +299,9 @@ OK
    budget-matched k=10 baseline. Defaults remain unchanged.
 2. Improve and freeze the rule planner, especially for similarity questions.
 3. Report metrics per question type (batch fixed parameters are now configurable).
-4. The zero-shot `llm-parameters` development run is complete; see
-   `results/facebook_llm_parameters_dev_20260909/REPORT.md`. Add a separately
-   named few-shot condition before evaluating end-to-end `llm`.
+4. Zero-shot and few-shot `llm-parameters` development runs are complete; see
+   their reports under `results/facebook_llm_parameters*_dev_20260909/`. Few-shot
+   improved recall but did not improve mean F1.
 5. Add keyword/parameter ablations to separate the two LLM effects.
 6. Freeze code, parameters, prompts, model, and metrics.
 7. Run the held-out test once and report paired uncertainty estimates.

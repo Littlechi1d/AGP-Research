@@ -1,0 +1,29 @@
+{
+  "completed_utc": "2026-09-08T15:14:06Z",
+  "python": "3.12.4",
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "model_size_bytes": 2497293803,
+  "temperature": 0,
+  "base_url": "http://127.0.0.1:11434/v1",
+  "cloud_api_calls": 0,
+  "answer_generation": false,
+  "strategy": "llm-parameters-few-shot",
+  "prompt_examples": 4,
+  "backend": "python-exact",
+  "held_out_test_evaluated": false,
+  "command": "python3 -m agp_research --nodes data/facebook_large/nodes.csv --edges data/facebook_large/edges.csv experiment --questions data/facebook_large/facebook_questions_dev.json --strategies llm-parameters-few-shot --output results/facebook_llm_parameters_few_shot_dev_20260909/results.jsonl",
+  "input_sha256": {
+    "data/facebook_large/nodes.csv": "a5a89bb0e0bf77eaaff9059a784da0cd5b930ba5e3d9018f80f6156c9af28daa",
+    "data/facebook_large/edges.csv": "f3c3aeec27afa4389cd5042fabd21585804cf41506dce79df7ee0c74a81f2fb0",
+    "data/facebook_large/facebook_questions_dev.json": "cf0df205bca318f8650a8c9eb4e9406a4a94c4a686af737d6da475be415d6d48"
+  },
+  "code_sha256": {
+    "agp_research/planner.py": "8535a8869ee15a948e8f2ba444a1c98ee436b8f8851f45e4bfe21941832c5717",
+    "agp_research/pipeline.py": "54f39af65f4f1613973fc3e66d7045aa687e016999b4719f7d42c57709f24454",
+    "agp_research/llm.py": "8fd63d5a376e5aea8e0bf6c95ff949a49c8ba8b52a9d0cf739ff0fed9cead0f8",
+    "agp_research/evaluation.py": "3a5ff7460b12e9ec386f1a1d4750f28e5b56fd8e1836814dc57ec06ee0fe1f4d"
+  },
+  "git_revision": "4af633cb1160d6d503f5e0f1a1d129136d23c4e2",
+  "git_status_at_run": "M agp_research/cli.py\n M agp_research/pipeline.py\n M agp_research/planner.py\n M tests/test_llm_parameters_strategy.py"
+}

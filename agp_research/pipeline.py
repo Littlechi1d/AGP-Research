@@ -11,6 +11,7 @@ from agp_research.models import AGPParameters, PipelineResult
 from agp_research.planner import (
     heuristic_keywords,
     llm_parameters,
+    llm_parameters_few_shot,
     llm_plan,
     local_keyword_extraction,
     rule_parameters,
@@ -53,6 +54,13 @@ class AGPPipeline:
                 raise RuntimeError("LLM-parameters strategy requires OPENAI_API_KEY")
             keywords = local_keyword_extraction(question, self.graph)
             parameters = llm_parameters(question, self.client)
+        elif strategy == "llm-parameters-few-shot":
+            if self.client is None:
+                raise RuntimeError(
+                    "Few-shot LLM-parameters strategy requires OPENAI_API_KEY"
+                )
+            keywords = local_keyword_extraction(question, self.graph)
+            parameters = llm_parameters_few_shot(question, self.client)
         elif strategy == "fixed":
             keywords = local_keyword_extraction(question, self.graph)
             parameters = (fixed_parameters or AGPParameters()).validate()
@@ -64,7 +72,8 @@ class AGPPipeline:
             parameters = AGPParameters(depth=0, decay=0.0, top_k=10)
         else:
             raise ValueError(
-                "strategy must be seed-only, fixed, rules, llm-parameters, or llm"
+                "strategy must be seed-only, fixed, rules, llm-parameters, "
+                "llm-parameters-few-shot, or llm"
             )
 
         # If no keywords were found, fall back to heuristic extraction
@@ -98,7 +107,8 @@ class AGPPipeline:
             answer=answer,
             elapsed_seconds=time.perf_counter() - started,
             metadata={
-                "llm_used": strategy in {"llm", "llm-parameters"}
+                "llm_used": strategy
+                in {"llm", "llm-parameters", "llm-parameters-few-shot"}
                 or (generate_answer and self.client is not None),
                 "propagation_backend": (
                     type(self.propagation_backend).__name__

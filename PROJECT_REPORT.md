@@ -573,7 +573,7 @@ This taxonomy will make the discussion more informative than reporting aggregate
 
 The delivered project has been checked in the target directory:
 
-- 31 unit tests pass using the Python standard library;
+- 33 unit tests pass using the Python standard library;
 - the demonstration graph and 22,470-node Facebook graph load successfully;
 - the Facebook conversion checksum and row-count checks pass;
 - both Python and paper backends complete a real-data NASA query;
@@ -587,6 +587,10 @@ The delivered project has been checked in the target directory:
 The OpenAI-compatible path is implemented and configurable through `.env`. A
 local Qwen zero-shot `llm-parameters` development run is recorded with model and
 input checksums. It does not beat the rules condition on development mean F1.
+The separately named four-example few-shot condition is also recorded. It raises
+recall from 0.83 to 0.88 but lowers mean per-question F1 from 0.5134 to 0.4922;
+rules remains strongest at 0.5218. The few-shot model exactly copies each
+question-type demonstration, exposing the templated benchmark's limitations.
 The end-to-end `llm` condition is not yet a frozen research run.
 
 ## 12. Limitations
@@ -630,8 +634,8 @@ These limitations are appropriate for the first prototype and provide concrete d
 
 ### Before the main experiment
 
-6. Preserve the completed zero-shot `llm-parameters` result and add a separately
-   named few-shot parameter-planning condition.
+6. Preserve the completed zero-shot and few-shot `llm-parameters` results as
+   prompt ablations; do not retune them on the same development questions.
 7. Add API retries, caching, latency, token, and cost logging.
 8. Implement local-keywords/LLM-parameters and LLM-keywords/fixed-parameters
    ablations.

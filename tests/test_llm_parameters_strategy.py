@@ -7,7 +7,7 @@ from agp_research.cli import parser
 from agp_research.graph import KnowledgeGraph
 from agp_research.models import Node
 from agp_research.pipeline import AGPPipeline
-from agp_research.planner import llm_parameters
+from agp_research.planner import llm_parameters, llm_parameters_few_shot
 
 
 class FakeClient:
@@ -41,6 +41,18 @@ class LLMParametersStrategyTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "top_k must be 5, 10, or 20"):
             llm_parameters(self.question, client)
 
+    def test_few_shot_prompt_has_four_examples_and_requests_no_keywords(self):
+        client = FakeClient()
+        parameters = llm_parameters_few_shot(self.question, client)
+        prompt = client.calls[0][0]
+        self.assertEqual(parameters.__dict__, {"depth": 2, "decay": 0.7, "top_k": 10})
+        self.assertEqual(prompt.count("Question:"), 4)
+        self.assertIn("directly neighbor", prompt)
+        self.assertIn("liked by both", prompt)
+        self.assertIn("unique shortest path", prompt)
+        self.assertIn("two hops away", prompt)
+        self.assertNotIn("keywords", prompt.casefold())
+
     def test_strategy_uses_complete_local_title_and_llm_parameters(self):
         client = FakeClient()
         result = AGPPipeline(self.graph, client).run(
@@ -59,14 +71,29 @@ class LLMParametersStrategyTest(unittest.TestCase):
                 self.question, strategy="llm-parameters", generate_answer=False
             )
 
+    def test_few_shot_strategy_uses_local_title_and_separate_name(self):
+        client = FakeClient()
+        result = AGPPipeline(self.graph, client).run(
+            self.question,
+            strategy="llm-parameters-few-shot",
+            generate_answer=False,
+        )
+        self.assertEqual(result.strategy, "llm-parameters-few-shot")
+        self.assertEqual(result.keywords, [self.graph.nodes["seed"].title])
+        self.assertEqual(result.matched_seed_ids, ["seed"])
+        self.assertTrue(result.metadata["llm_used"])
+        self.assertIn("Follow these examples", client.calls[0][0])
+
     def test_cli_accepts_strategy_for_ask_and_experiment(self):
         with patch("sys.argv", ["agp", "ask", self.question,
                                 "--strategy", "llm-parameters", "--no-answer"]):
             self.assertEqual(parser().parse_args().strategy, "llm-parameters")
         with patch("sys.argv", ["agp", "experiment",
-                                "--strategies", "fixed", "llm-parameters"]):
+                                "--strategies", "fixed", "llm-parameters",
+                                "llm-parameters-few-shot"]):
             self.assertEqual(
-                parser().parse_args().strategies, ["fixed", "llm-parameters"]
+                parser().parse_args().strategies,
+                ["fixed", "llm-parameters", "llm-parameters-few-shot"],
             )
 
 
