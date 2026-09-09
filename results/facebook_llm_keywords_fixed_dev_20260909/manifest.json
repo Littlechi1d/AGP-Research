@@ -1,0 +1,33 @@
+{
+  "completed_utc": "2026-09-09T01:23:19Z",
+  "python": "3.12.4",
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "temperature": 0,
+  "base_url": "http://localhost:11434/v1",
+  "cloud_api_calls": 0,
+  "network_requests": 20,
+  "cache_hits": 0,
+  "prompt_tokens": 2222,
+  "completion_tokens": 346,
+  "total_tokens": 2568,
+  "answer_generation": false,
+  "strategy": "llm-keywords",
+  "fixed_parameters": {"depth": 2, "decay": 0.3, "top_k": 5},
+  "backend": "python-exact",
+  "held_out_test_evaluated": false,
+  "command": "python3 -m agp_research --nodes data/facebook_large/nodes.csv --edges data/facebook_large/edges.csv experiment --questions data/facebook_large/facebook_questions_dev.json --strategies llm-keywords --depth 2 --decay 0.3 --top-k 5 --output results/facebook_llm_keywords_fixed_dev_20260909/results.jsonl",
+  "input_sha256": {
+    "data/facebook_large/nodes.csv": "a5a89bb0e0bf77eaaff9059a784da0cd5b930ba5e3d9018f80f6156c9af28daa",
+    "data/facebook_large/edges.csv": "f3c3aeec27afa4389cd5042fabd21585804cf41506dce79df7ee0c74a81f2fb0",
+    "data/facebook_large/facebook_questions_dev.json": "cf0df205bca318f8650a8c9eb4e9406a4a94c4a686af737d6da475be415d6d48"
+  },
+  "code_sha256": {
+    "agp_research/planner.py": "acf41de1759781d4a0bda036202a19d2ec093dae29d4f7a042f75be42d3b3845",
+    "agp_research/pipeline.py": "cc55e56e777e08bbb3c551e1e1d9e9d2d1f6e356cae9c17fbd2053d8608ad5a1",
+    "agp_research/llm.py": "fc2251f8b8a97652c4b6ab2799c1c50836f9604cff236ce1c99f1ac32b4ce175",
+    "agp_research/evaluation.py": "3a5ff7460b12e9ec386f1a1d4750f28e5b56fd8e1836814dc57ec06ee0fe1f4d"
+  },
+  "git_revision": "f918f0c2501b25b8f6bb2dd70e23e1d079f35843",
+  "held_out_test_file_read_by_experiment": false
+}

@@ -76,6 +76,8 @@ Available strategies:
 - `fixed`: use manually supplied parameters;
 - `rules`: choose parameters from transparent question-wording rules;
 - `llm`: ask an LLM for keywords and per-question parameters.
+- `llm-keywords`: ask an LLM only for keywords while using supplied fixed
+  parameters; this isolates entity extraction.
 - `llm-parameters`: use local exact-title keywords and ask an LLM only for
   `depth`, `decay`, and `top_k`; this is the clean parameter-selection ablation.
 - `llm-parameters-few-shot`: the same ablation with one synthetic parameter
@@ -298,7 +300,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 35 tests
+Ran 40 tests
 OK
 ```
 
@@ -312,8 +314,10 @@ OK
 4. Zero-shot and few-shot `llm-parameters` development runs are complete; see
    their reports under `results/facebook_llm_parameters*_dev_20260909/`. Few-shot
    improved recall but did not improve mean F1.
-5. Add keyword/parameter ablations to separate the two LLM effects.
-6. Freeze code, parameters, prompts, model, and metrics.
+5. The `llm-keywords`/fixed-parameters ablation is complete; Qwen exactly matched
+   18 of 20 development questions but split two long page titles.
+6. Follow [FROZEN_EXPERIMENT_PROTOCOL.md](FROZEN_EXPERIMENT_PROTOCOL.md). Run an
+   end-to-end `llm` development smoke test before the one-time held-out run.
 7. Run the held-out test once and report paired uncertainty estimates.
 8. Add manually authored questions and human relevance/answer labels.
 

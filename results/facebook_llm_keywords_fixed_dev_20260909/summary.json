@@ -1,0 +1,10 @@
+{
+  "llm-keywords": {
+    "precision": 0.3500000000000001,
+    "recall": 0.5244047619047618,
+    "hit_rate": 0.75,
+    "reciprocal_rank": 0.25583333333333336,
+    "latency": 1.0711399000952952,
+    "mean_per_question_f1": 0.3922483072483073
+  }
+}

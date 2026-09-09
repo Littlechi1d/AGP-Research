@@ -34,6 +34,7 @@ def parser() -> argparse.ArgumentParser:
             "seed-only",
             "fixed",
             "rules",
+            "llm-keywords",
             "llm-parameters",
             "llm-parameters-few-shot",
             "llm",

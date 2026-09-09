@@ -581,7 +581,7 @@ This taxonomy will make the discussion more informative than reporting aggregate
 
 The delivered project has been checked in the target directory:
 
-- 35 unit tests pass using the Python standard library;
+- 40 unit tests pass using the Python standard library;
 - the demonstration graph and 22,470-node Facebook graph load successfully;
 - the Facebook conversion checksum and row-count checks pass;
 - both Python and paper backends complete a real-data NASA query;
@@ -600,6 +600,11 @@ recall from 0.83 to 0.88 but lowers mean per-question F1 from 0.5134 to 0.4922;
 rules remains strongest at 0.5218. The few-shot model exactly copies each
 question-type demonstration, exposing the templated benchmark's limitations.
 The end-to-end `llm` condition is not yet a frozen research run.
+The complementary `llm-keywords` ablation uses fixed `(2, 0.3, 5)` parameters.
+Qwen matches intended seed titles on 18 of 20 development questions, but splits
+two long page titles into unmatched fragments. Mean F1 falls from 0.4672 with
+local keywords to 0.3922 with LLM keywords. The conditions and one-time held-out
+procedure are specified in `FROZEN_EXPERIMENT_PROTOCOL.md`.
 
 ## 12. Limitations
 
@@ -647,9 +652,10 @@ These limitations are appropriate for the first prototype and provide concrete d
    prompt ablations; do not retune them on the same development questions.
 7. Response caching and metadata-only request/token logging are complete. Add
    bounded retries and provider-specific cost calculation if needed.
-8. Implement local-keywords/LLM-parameters and LLM-keywords/fixed-parameters
-   ablations.
-9. Freeze all code, prompts, model versions, metrics, and random settings.
+8. The local-keywords/LLM-parameters and LLM-keywords/fixed-parameters ablations
+   are complete on development data.
+9. Follow the frozen protocol. Run only an end-to-end development smoke check,
+   then commit before evaluating the held-out set once.
 
 ### Main evaluation
 
