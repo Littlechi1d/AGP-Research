@@ -49,3 +49,19 @@ change followed the result. Its mean F1 was 0.3977; see
 
 After committing this smoke-run evidence, execute all frozen conditions on
 held-out data once. Do not add another development tuning round.
+
+## Frozen runner
+
+`scripts/run_frozen_evaluation.py` executes the eight named conditions in one
+pass, refuses to overwrite an existing output directory, and writes 10,000-sample
+paired bootstrap comparisons against `rules` using random seed 90055. A complete
+development rehearsal reproduced the previously saved metrics before held-out
+evaluation. The held-out command is:
+
+```bash
+python3 scripts/run_frozen_evaluation.py \
+  --nodes data/facebook_large/nodes.csv \
+  --edges data/facebook_large/edges.csv \
+  --questions data/facebook_large/facebook_questions_test.json \
+  --output results/facebook_frozen_test_20260909
+```

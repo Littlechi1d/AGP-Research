@@ -300,7 +300,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 40 tests
+Ran 44 tests
 OK
 ```
 

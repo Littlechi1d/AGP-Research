@@ -581,7 +581,7 @@ This taxonomy will make the discussion more informative than reporting aggregate
 
 The delivered project has been checked in the target directory:
 
-- 40 unit tests pass using the Python standard library;
+- 44 unit tests pass using the Python standard library;
 - the demonstration graph and 22,470-node Facebook graph load successfully;
 - the Facebook conversion checksum and row-count checks pass;
 - both Python and paper backends complete a real-data NASA query;
