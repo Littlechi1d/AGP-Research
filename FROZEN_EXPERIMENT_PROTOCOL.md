@@ -65,3 +65,11 @@ python3 scripts/run_frozen_evaluation.py \
   --questions data/facebook_large/facebook_questions_test.json \
   --output results/facebook_frozen_test_20260909
 ```
+
+## Held-out evaluation: completed
+
+The command above completed once from clean commit `4dbe755`, producing all 320
+expected records. The primary result is rules mean F1 0.5625, followed by
+zero-shot `llm-parameters` at 0.5557. Their paired 95% bootstrap interval for the
+F1 difference includes zero. No frozen strategy was modified after the run. See
+`results/facebook_frozen_test_20260909/REPORT.md` for the complete analysis.

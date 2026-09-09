@@ -319,8 +319,12 @@ OK
 6. Follow [FROZEN_EXPERIMENT_PROTOCOL.md](FROZEN_EXPERIMENT_PROTOCOL.md). Run an
    end-to-end `llm` development smoke test before the one-time held-out run. The
    smoke test is complete with mean F1 0.3977 and no prompt changes afterward.
-7. Run the held-out test once and report paired uncertainty estimates.
-8. Add manually authored questions and human relevance/answer labels.
+7. The one-time held-out evaluation is complete. Rules ranks first by mean F1
+   (0.5625); zero-shot LLM parameters is close at 0.5557, with a paired 95%
+   bootstrap interval that includes zero. See
+   `results/facebook_frozen_test_20260909/REPORT.md`.
+8. Add manually authored questions and human relevance/answer labels. Treat any
+   further implementation changes as post-test research.
 
 ## Limitations
 

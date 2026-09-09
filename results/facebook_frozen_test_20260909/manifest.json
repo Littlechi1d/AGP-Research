@@ -1,0 +1,82 @@
+{
+  "completed_utc": "2026-09-09T07:23:54.622748+00:00",
+  "git_revision": "4dbe755b6f0dccd2d95a41f92c1ecff315400f60",
+  "python": "3.12.4",
+  "platform": "macOS-14.6.1-arm64-arm-64bit",
+  "questions_path": "data/facebook_large/facebook_questions_test.json",
+  "questions_sha256": "988a6882bf9bd5ff0457097a837f8f6933b0d13ddc26fe009404705ea0f8e211",
+  "nodes_path": "data/facebook_large/nodes.csv",
+  "nodes_sha256": "a5a89bb0e0bf77eaaff9059a784da0cd5b930ba5e3d9018f80f6156c9af28daa",
+  "edges_path": "data/facebook_large/edges.csv",
+  "edges_sha256": "f3c3aeec27afa4389cd5042fabd21585804cf41506dce79df7ee0c74a81f2fb0",
+  "question_count": 40,
+  "conditions": [
+    {
+      "name": "seed-only",
+      "strategy": "seed-only",
+      "parameters": null
+    },
+    {
+      "name": "fixed-k5",
+      "strategy": "fixed",
+      "parameters": {
+        "depth": 2,
+        "decay": 0.3,
+        "top_k": 5
+      }
+    },
+    {
+      "name": "fixed-k10",
+      "strategy": "fixed",
+      "parameters": {
+        "depth": 2,
+        "decay": 0.3,
+        "top_k": 10
+      }
+    },
+    {
+      "name": "rules",
+      "strategy": "rules",
+      "parameters": null
+    },
+    {
+      "name": "llm-keywords",
+      "strategy": "llm-keywords",
+      "parameters": {
+        "depth": 2,
+        "decay": 0.3,
+        "top_k": 5
+      }
+    },
+    {
+      "name": "llm-parameters",
+      "strategy": "llm-parameters",
+      "parameters": null
+    },
+    {
+      "name": "llm-parameters-few-shot",
+      "strategy": "llm-parameters-few-shot",
+      "parameters": null
+    },
+    {
+      "name": "llm",
+      "strategy": "llm",
+      "parameters": null
+    }
+  ],
+  "record_count": 320,
+  "answer_generation": false,
+  "bootstrap_samples": 10000,
+  "bootstrap_seed": 90055,
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "model_digest_verified_before_run": true,
+  "git_worktree_clean_before_run": true,
+  "held_out_evaluation": true,
+  "command": "python3 scripts/run_frozen_evaluation.py --nodes data/facebook_large/nodes.csv --edges data/facebook_large/edges.csv --questions data/facebook_large/facebook_questions_test.json --output results/facebook_frozen_test_20260909",
+  "network_requests": 160,
+  "cache_hits": 0,
+  "prompt_tokens": 24508,
+  "completion_tokens": 4577,
+  "total_tokens": 29085
+}

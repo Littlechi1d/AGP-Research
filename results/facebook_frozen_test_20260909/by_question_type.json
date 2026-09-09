@@ -1,0 +1,266 @@
+{
+  "direct": {
+    "seed-only": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "hit_rate": 0.0,
+      "reciprocal_rank": 0.0,
+      "latency": 0.09921831269748509
+    },
+    "fixed-k5": {
+      "precision": 0.78,
+      "recall": 0.7276190476190476,
+      "f1": 0.7271212121212122,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.5,
+      "latency": 0.09684201665222644
+    },
+    "fixed-k10": {
+      "precision": 0.5900000000000001,
+      "recall": 0.9800000000000001,
+      "f1": 0.7122882999353587,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.5,
+      "latency": 0.10147311678156257
+    },
+    "rules": {
+      "precision": 0.8414285714285714,
+      "recall": 0.9800000000000001,
+      "f1": 0.9036630036630037,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.5,
+      "latency": 0.09859734165947884
+    },
+    "llm-keywords": {
+      "precision": 0.78,
+      "recall": 0.7276190476190476,
+      "f1": 0.7271212121212122,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.5,
+      "latency": 0.7224812123924493
+    },
+    "llm-parameters": {
+      "precision": 0.8414285714285714,
+      "recall": 0.9800000000000001,
+      "f1": 0.9036630036630037,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.5,
+      "latency": 1.0439717834349722
+    },
+    "llm-parameters-few-shot": {
+      "precision": 0.8414285714285714,
+      "recall": 0.9800000000000001,
+      "f1": 0.9036630036630037,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.5,
+      "latency": 1.050365791702643
+    },
+    "llm": {
+      "precision": 0.6739285714285714,
+      "recall": 0.78,
+      "f1": 0.7214407814407815,
+      "hit_rate": 0.8,
+      "reciprocal_rank": 0.4,
+      "latency": 1.6809630084084346
+    }
+  },
+  "comparison": {
+    "seed-only": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "hit_rate": 0.0,
+      "reciprocal_rank": 0.0,
+      "latency": 0.10433225419837981
+    },
+    "fixed-k5": {
+      "precision": 0.52,
+      "recall": 0.905,
+      "f1": 0.6352380952380952,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3333333333333333,
+      "latency": 0.09967567902058364
+    },
+    "fixed-k10": {
+      "precision": 0.32333333333333336,
+      "recall": 0.9800000000000001,
+      "f1": 0.458937728937729,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3333333333333333,
+      "latency": 0.08753546690568328
+    },
+    "rules": {
+      "precision": 0.32333333333333336,
+      "recall": 0.9800000000000001,
+      "f1": 0.458937728937729,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3333333333333333,
+      "latency": 0.09133661661762744
+    },
+    "llm-keywords": {
+      "precision": 0.54,
+      "recall": 0.915,
+      "f1": 0.6485714285714286,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.35,
+      "latency": 0.9843322751112282
+    },
+    "llm-parameters": {
+      "precision": 0.3350793650793651,
+      "recall": 0.9800000000000001,
+      "f1": 0.471968031968032,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3333333333333333,
+      "latency": 1.0374570503132419
+    },
+    "llm-parameters-few-shot": {
+      "precision": 0.3350793650793651,
+      "recall": 0.9800000000000001,
+      "f1": 0.471968031968032,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3333333333333333,
+      "latency": 1.0327760291984305
+    },
+    "llm": {
+      "precision": 0.32333333333333336,
+      "recall": 0.9800000000000001,
+      "f1": 0.458937728937729,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3333333333333333,
+      "latency": 2.218020516913384
+    }
+  },
+  "path": {
+    "seed-only": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "hit_rate": 0.0,
+      "reciprocal_rank": 0.0,
+      "latency": 0.10158616243861615
+    },
+    "fixed-k5": {
+      "precision": 0.2,
+      "recall": 0.5,
+      "f1": 0.28571428571428575,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.2833333333333333,
+      "latency": 0.12532659994903952
+    },
+    "fixed-k10": {
+      "precision": 0.17,
+      "recall": 0.85,
+      "f1": 0.2833333333333333,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.2976190476190476,
+      "latency": 0.1001765584340319
+    },
+    "rules": {
+      "precision": 0.17,
+      "recall": 0.85,
+      "f1": 0.2833333333333333,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.2509523809523809,
+      "latency": 0.1017495373962447
+    },
+    "llm-keywords": {
+      "precision": 0.2,
+      "recall": 0.5,
+      "f1": 0.28571428571428575,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.3,
+      "latency": 0.9744639998767525
+    },
+    "llm-parameters": {
+      "precision": 0.14722222222222223,
+      "recall": 0.7,
+      "f1": 0.24303030303030307,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.24023809523809522,
+      "latency": 1.0425113626057283
+    },
+    "llm-parameters-few-shot": {
+      "precision": 0.1,
+      "recall": 1.0,
+      "f1": 0.18181818181818182,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.2976190476190476,
+      "latency": 1.063440320896916
+    },
+    "llm": {
+      "precision": 0.1622222222222222,
+      "recall": 0.8,
+      "f1": 0.2696969696969697,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.3142857142857143,
+      "latency": 2.067109804111533
+    }
+  },
+  "similarity": {
+    "seed-only": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "hit_rate": 0.0,
+      "reciprocal_rank": 0.0,
+      "latency": 0.11009297939017415
+    },
+    "fixed-k5": {
+      "precision": 0.22000000000000003,
+      "recall": 0.25690476190476186,
+      "f1": 0.22888888888888892,
+      "hit_rate": 0.7,
+      "reciprocal_rank": 0.16,
+      "latency": 0.11062192090321332
+    },
+    "fixed-k10": {
+      "precision": 0.47888888888888886,
+      "recall": 0.8742857142857142,
+      "f1": 0.6040530058177117,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.20523809523809522,
+      "latency": 0.11468106668908148
+    },
+    "rules": {
+      "precision": 0.47888888888888886,
+      "recall": 0.8742857142857142,
+      "f1": 0.6040530058177117,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.20523809523809522,
+      "latency": 0.1017199207795784
+    },
+    "llm-keywords": {
+      "precision": 0.22000000000000003,
+      "recall": 0.25690476190476186,
+      "f1": 0.22888888888888892,
+      "hit_rate": 0.7,
+      "reciprocal_rank": 0.16,
+      "latency": 0.7286729376763106
+    },
+    "llm-parameters": {
+      "precision": 0.47888888888888886,
+      "recall": 0.8742857142857142,
+      "f1": 0.6040530058177117,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.20523809523809522,
+      "latency": 1.0395448626019061
+    },
+    "llm-parameters-few-shot": {
+      "precision": 0.47888888888888886,
+      "recall": 0.8742857142857142,
+      "f1": 0.6040530058177117,
+      "hit_rate": 1.0,
+      "reciprocal_rank": 0.20523809523809522,
+      "latency": 1.0492427665973083
+    },
+    "llm": {
+      "precision": 0.4488888888888889,
+      "recall": 0.7742857142857142,
+      "f1": 0.5578991596638655,
+      "hit_rate": 0.9,
+      "reciprocal_rank": 0.19095238095238096,
+      "latency": 2.282724279211834
+    }
+  }
+}

@@ -607,6 +607,14 @@ two long page titles into unmatched fragments. Mean F1 falls from 0.4672 with
 local keywords to 0.3922 with LLM keywords. The conditions and one-time held-out
 procedure are specified in `FROZEN_EXPERIMENT_PROTOCOL.md`.
 
+The one-time frozen held-out evaluation is complete: 40 questions, eight
+conditions, and 320 traces. Rules ranks first on mean per-question F1 at 0.5625;
+zero-shot `llm-parameters` follows at 0.5557. The paired difference is -0.0068
+with a 10,000-sample 95% bootstrap interval of [-0.0267, 0.0116], so this study
+does not establish a clear difference between them. Full results, per-type
+analysis, request accounting, and limitations are recorded in
+`results/facebook_frozen_test_20260909/REPORT.md`.
+
 ## 12. Limitations
 
 The current version intentionally prioritizes clarity over production complexity.
@@ -660,8 +668,8 @@ These limitations are appropriate for the first prototype and provide concrete d
 
 ### Main evaluation
 
-10. Run the held-out Facebook test set once for every frozen condition.
-11. Calculate paired uncertainty estimates and analyze results by question type.
+10. The one-time held-out Facebook evaluation is complete for all frozen conditions.
+11. Paired uncertainty and question-type analyses are complete and preserved.
 12. Add manually authored semantic questions with independently prepared human
     relevance labels.
 13. Generate answers from saved contexts and conduct blind correctness and
