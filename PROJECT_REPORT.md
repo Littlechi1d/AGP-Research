@@ -265,10 +265,18 @@ OPENAI_API_KEY=your-api-key
 AGP_MODEL=a-model-available-to-your-account
 OPENAI_BASE_URL=https://api.openai.com/v1
 AGP_LLM_TIMEOUT=60
+AGP_LLM_CACHE_DIR=.agp_cache/llm
+AGP_LLM_LOG_PATH=.agp_logs/llm_requests.jsonl
 ```
 
 The real `.env` is ignored by Git. Shell environment variables remain supported
 and take precedence. For a compatible provider, change `OPENAI_BASE_URL`.
+
+LLM calls use a deterministic SHA-256 response cache by default. A metadata-only
+JSONL log records the model, endpoint, cache status, latency, response mode, and
+provider-reported token counts. It deliberately excludes credentials, prompts,
+and responses. Both local storage paths are ignored by Git and can be disabled
+by assigning an empty value in `.env`.
 
 ```bash
 export OPENAI_BASE_URL="https://provider.example/v1"
@@ -573,7 +581,7 @@ This taxonomy will make the discussion more informative than reporting aggregate
 
 The delivered project has been checked in the target directory:
 
-- 33 unit tests pass using the Python standard library;
+- 35 unit tests pass using the Python standard library;
 - the demonstration graph and 22,470-node Facebook graph load successfully;
 - the Facebook conversion checksum and row-count checks pass;
 - both Python and paper backends complete a real-data NASA query;
@@ -610,7 +618,8 @@ The current version intentionally prioritizes clarity over production complexity
   not establish semantic relevance or answer correctness.
 - Current batch evaluation measures retrieval but does not generate or score answers.
 - The LLM client depends on a chat-completions-compatible API and structured JSON support.
-- There is no caching, retry, or token/cost logging for API experiments yet.
+- Response caching and request/token metadata logging are implemented, but
+  bounded retries and provider-specific cost calculation are not.
 - The batch runner accepts fixed parameters through `experiment --depth`,
   `--decay`, and `--top-k`, but automated grid search is not implemented.
 - Fine-tuning a small model has not been implemented and is not justified until prompted baselines are evaluated.
@@ -636,7 +645,8 @@ These limitations are appropriate for the first prototype and provide concrete d
 
 6. Preserve the completed zero-shot and few-shot `llm-parameters` results as
    prompt ablations; do not retune them on the same development questions.
-7. Add API retries, caching, latency, token, and cost logging.
+7. Response caching and metadata-only request/token logging are complete. Add
+   bounded retries and provider-specific cost calculation if needed.
 8. Implement local-keywords/LLM-parameters and LLM-keywords/fixed-parameters
    ablations.
 9. Freeze all code, prompts, model versions, metrics, and random settings.

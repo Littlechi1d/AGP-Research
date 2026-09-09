@@ -102,10 +102,20 @@ OPENAI_API_KEY=your-key
 AGP_MODEL=a-model-available-to-your-account
 OPENAI_BASE_URL=https://api.openai.com/v1
 AGP_LLM_TIMEOUT=60
+AGP_LLM_CACHE_DIR=.agp_cache/llm
+AGP_LLM_LOG_PATH=.agp_logs/llm_requests.jsonl
 ```
 
 `.env` is ignored by Git. Shell environment variables take precedence. Never
 commit, publish, or paste the real key into a report.
+
+Identical calls are cached by default, so a rerun does not send the same model
+request twice. Each call appends a metadata-only JSON record to
+`.agp_logs/llm_requests.jsonl`, including latency, cache status, and provider
+token counts when available. API keys, prompts, and responses are not logged.
+Both directories are ignored by Git. Set either setting to an empty value to
+disable that feature; delete `.agp_cache/llm` when you intentionally need fresh
+model responses.
 
 ```bash
 python3 -m agp_research ask \
@@ -288,7 +298,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 33 tests
+Ran 35 tests
 OK
 ```
 
@@ -314,5 +324,6 @@ OK
 - The graph is treated as undirected.
 - The Python backend prioritizes clarity over large-scale optimization.
 - Batch evaluation does not score answers or automatically search parameters.
-- LLM experiments still need frozen prompts, retries/caching, and cost logging.
+- LLM responses are cached and request/token metadata is logged; bounded retries
+  and provider-specific cost calculation are not yet implemented.
 - The paper adapter currently supports static queries, not dynamic updates.

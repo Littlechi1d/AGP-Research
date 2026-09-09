@@ -4,6 +4,8 @@ __pycache__/
 .pytest_cache/
 .venv/
 .env
+.agp_cache/
+.agp_logs/
 build/
 results/*.jsonl
 !results/.gitkeep

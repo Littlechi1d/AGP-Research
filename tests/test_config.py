@@ -46,6 +46,8 @@ class ConfigTest(unittest.TestCase):
             self.assertEqual(client.model, "test-model")
             self.assertEqual(client.base_url, "https://example.test/v1")
             self.assertEqual(client.timeout, 12)
+            self.assertEqual(client.cache_dir, Path(".agp_cache/llm"))
+            self.assertEqual(client.log_path, Path(".agp_logs/llm_requests.jsonl"))
 
     def test_missing_key_returns_none(self):
         with tempfile.TemporaryDirectory() as directory:
