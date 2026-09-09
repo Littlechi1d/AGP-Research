@@ -599,7 +599,8 @@ The separately named four-example few-shot condition is also recorded. It raises
 recall from 0.83 to 0.88 but lowers mean per-question F1 from 0.5134 to 0.4922;
 rules remains strongest at 0.5218. The few-shot model exactly copies each
 question-type demonstration, exposing the templated benchmark's limitations.
-The end-to-end `llm` condition is not yet a frozen research run.
+The frozen end-to-end `llm` condition has completed its development smoke run.
+All 20 responses were valid, and mean F1 was 0.3977; no prompt change followed.
 The complementary `llm-keywords` ablation uses fixed `(2, 0.3, 5)` parameters.
 Qwen matches intended seed titles on 18 of 20 development questions, but splits
 two long page titles into unmatched fragments. Mean F1 falls from 0.4672 with

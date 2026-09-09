@@ -1,0 +1,10 @@
+{
+  "llm": {
+    "precision": 0.30587301587301596,
+    "recall": 0.725,
+    "hit_rate": 0.75,
+    "reciprocal_rank": 0.25583333333333336,
+    "latency": 2.130779729189817,
+    "mean_per_question_f1": 0.39770290167348993
+  }
+}

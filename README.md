@@ -317,7 +317,8 @@ OK
 5. The `llm-keywords`/fixed-parameters ablation is complete; Qwen exactly matched
    18 of 20 development questions but split two long page titles.
 6. Follow [FROZEN_EXPERIMENT_PROTOCOL.md](FROZEN_EXPERIMENT_PROTOCOL.md). Run an
-   end-to-end `llm` development smoke test before the one-time held-out run.
+   end-to-end `llm` development smoke test before the one-time held-out run. The
+   smoke test is complete with mean F1 0.3977 and no prompt changes afterward.
 7. Run the held-out test once and report paired uncertainty estimates.
 8. Add manually authored questions and human relevance/answer labels.
 

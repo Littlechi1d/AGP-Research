@@ -40,9 +40,12 @@ backend is the primary backend; the paper adapter is reported separately.
 5. Produce question-level traces plus overall and per-type summaries.
 6. Report negative and null findings. Do not tune on held-out errors.
 
-## Before running held-out evaluation
+## Pre-test smoke check: completed
 
-The end-to-end `llm` condition should first receive a development-only smoke run
-to verify JSON validity and establish that its advertised parameter choices are
-accepted. This is an execution check, not another prompt-tuning round. After the
-smoke run and final commit, execute all frozen conditions on held-out data once.
+The end-to-end `llm` condition completed a 20-question development-only smoke run.
+Every response was valid JSON and every parameter choice was accepted. No prompt
+change followed the result. Its mean F1 was 0.3977; see
+`results/facebook_llm_end_to_end_dev_20260909/REPORT.md`.
+
+After committing this smoke-run evidence, execute all frozen conditions on
+held-out data once. Do not add another development tuning round.
