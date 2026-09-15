@@ -49,6 +49,9 @@ def parser() -> argparse.ArgumentParser:
     ask.add_argument("--decay", type=float, default=0.6)
     ask.add_argument("--top-k", type=int, default=10)
     ask.add_argument("--no-answer", action="store_true")
+    ask.add_argument("--match-mode", choices=["exact", "approximate"], default="exact")
+    ask.add_argument("--match-threshold", type=float, default=0.85)
+    ask.add_argument("--match-margin", type=float, default=0.10)
     experiment = commands.add_parser("experiment", help="Compare retrieval strategies")
     experiment.add_argument("--questions", default="data/questions.json")
     experiment.add_argument("--output", default="results/experiment.jsonl")
@@ -56,6 +59,9 @@ def parser() -> argparse.ArgumentParser:
     experiment.add_argument("--depth", type=int, default=2, help="Fixed strategy only: propagation depth 0-5 (default: 2)")
     experiment.add_argument("--decay", type=float, default=0.6, help="Fixed strategy only: decay 0-1 (default: 0.6)")
     experiment.add_argument("--top-k", type=int, default=10, help="Fixed strategy only: positive result limit (default: 10)")
+    experiment.add_argument("--match-mode", choices=["exact", "approximate"], default="exact")
+    experiment.add_argument("--match-threshold", type=float, default=0.85)
+    experiment.add_argument("--match-margin", type=float, default=0.10)
     return result
 
 
@@ -96,12 +102,18 @@ def main() -> None:
             strategy=args.strategy,
             fixed_parameters=AGPParameters(args.depth, args.decay, args.top_k),
             generate_answer=not args.no_answer,
+            match_mode=args.match_mode,
+            match_threshold=args.match_threshold,
+            match_margin=args.match_margin,
         )
         print(json.dumps(result.to_dict(), indent=2))
     else:
         summary = run_experiment(
             pipeline, args.questions, args.output, args.strategies,
             fixed_parameters=AGPParameters(args.depth, args.decay, args.top_k),
+            match_mode=args.match_mode,
+            match_threshold=args.match_threshold,
+            match_margin=args.match_margin,
         )
         print(json.dumps(summary, indent=2))
 

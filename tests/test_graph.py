@@ -1,7 +1,7 @@
 from pathlib import Path
 import unittest
 
-from agp_research.graph import KnowledgeGraph
+from agp_research.graph import KnowledgeGraph, edit_similarity
 from agp_research.models import Node
 
 
@@ -42,3 +42,58 @@ class GraphTest(unittest.TestCase):
         )
         self.assertEqual(graph.title_mentions("Example"), [("Example", 0, 7)])
         self.assertEqual(graph.exact_match(["Example"]), (["last"], []))
+
+    def test_edit_similarity_is_normalized(self):
+        self.assertEqual(edit_similarity("Census Australia", "census   australia"), 1.0)
+        self.assertGreater(edit_similarity("Censuz Australia", "Census Australia"), 0.9)
+        self.assertEqual(edit_similarity("", "Census Australia"), 0.0)
+
+    def test_approximate_match_accepts_typo_and_preserves_evidence(self):
+        graph = KnowledgeGraph(
+            nodes={"n1": Node("n1", "Census Australia", "")}, edges=[]
+        )
+        matched, unmatched, details = graph.approximate_match(
+            ["Censuz Australia"], threshold=0.8, margin=0.05
+        )
+        self.assertEqual(matched, ["n1"])
+        self.assertEqual(unmatched, [])
+        self.assertTrue(details[0].accepted)
+        self.assertEqual(details[0].method, "approximate")
+        self.assertEqual(details[0].matched_title, "Census Australia")
+
+    def test_approximate_match_rejects_ambiguous_candidate(self):
+        graph = KnowledgeGraph(
+            nodes={
+                "n1": Node("n1", "Example Alpha", ""),
+                "n2": Node("n2", "Example Alphi", ""),
+            },
+            edges=[],
+        )
+        matched, unmatched, details = graph.approximate_match(
+            ["Example Alphx"], threshold=0.8, margin=0.05
+        )
+        self.assertEqual(matched, [])
+        self.assertEqual(unmatched, ["Example Alphx"])
+        self.assertFalse(details[0].accepted)
+        self.assertEqual(details[0].method, "unresolved")
+
+    def test_approximate_match_recovers_split_compound_title(self):
+        graph = KnowledgeGraph(
+            nodes={"1": Node("1", "Chrisley Knows Best on USA", "")},
+            edges=[],
+        )
+
+        matched, unmatched, details = graph.approximate_match(
+            ["Chrisley Knows Best", "USA"], threshold=0.8, margin=0.05
+        )
+
+        self.assertEqual(matched, ["1"])
+        self.assertEqual(unmatched, [])
+        self.assertEqual(details[0].method, "approximate-compound")
+
+    def test_approximate_match_validates_controls(self):
+        graph = KnowledgeGraph(nodes={"n1": Node("n1", "Example", "")}, edges=[])
+        with self.assertRaises(ValueError):
+            graph.approximate_match(["Example"], threshold=1.1)
+        with self.assertRaises(ValueError):
+            graph.approximate_match(["Example"], margin=-0.1)

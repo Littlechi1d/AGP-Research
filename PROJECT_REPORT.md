@@ -31,9 +31,10 @@ Five retrieval strategies are supported:
 The prototype includes a command-line interface, a demonstration graph, the UCI
 Facebook Large Page-Page graph, deterministic topology-grounded development and
 test questions, retrieval evaluation, JSON Lines logging, a C++ reference-code
-adapter, `.env` configuration, and 31 passing unit tests. A three-strategy
-development experiment is complete. The held-out test set remains intentionally
-unused until model and parameter choices are frozen.
+adapter and persistent native API, exact and approximate mapping, `.env`
+configuration, and 56 passing unit tests. Development tuning and the one-time
+frozen held-out evaluation are complete. Approximate mapping was added afterward
+and has so far been tuned only on development data.
 
 ## 2. Scope and relationship to Microsoft GraphRAG
 
@@ -67,7 +68,7 @@ For `llm`, an LLM is prompted to return entity keywords together with the propag
 
 If no graph title occurs in a question, a simple token heuristic is used only to expose potential unmatched keywords. It is not intended as a sophisticated entity recognizer.
 
-### 3.2 Exact keyword-to-node mapping
+### 3.2 Exact and approximate keyword-to-node mapping
 
 Both keywords and graph titles are normalized by:
 
@@ -75,9 +76,18 @@ Both keywords and graph titles are normalized by:
 - removing leading and trailing whitespace;
 - reducing repeated internal whitespace to one space.
 
-The system then performs exact title matching. For example, `donald   trump` matches the node title `Donald Trump`. Aliases, abbreviations, spelling errors, and implicit entities are not handled in the current version.
+The baseline performs normalized exact title matching. For example,
+`donald   trump` matches the node title `Donald Trump`. The post-test extension
+adds indexed approximate matching using character trigrams for candidate
+generation and normalized Levenshtein similarity for final scoring. Exact matches
+still take priority. A candidate is accepted only when it exceeds both a score
+threshold and a margin over the runner-up. Before matching keywords separately,
+the mapper also tries adjacent unresolved keywords together; this repairs cases
+where an LLM splits one long graph title into several fragments.
 
-Matched entities become seed nodes. Unmatched keywords are retained in the output so entity-mapping failures can be measured and inspected.
+Matched entities become seed nodes. Unmatched keywords and structured evidence
+(candidate title, best and second scores, method, and acceptance decision) are
+retained so mapping failures can be measured and inspected.
 
 ### 3.3 Parameter selection
 
@@ -641,50 +651,58 @@ The current version intentionally prioritizes clarity over production complexity
 
 These limitations are appropriate for the first prototype and provide concrete directions for extensions and ablation studies.
 
+### 12.1 Post-test approximate-mapping development study
+
+The approximate mapper was tuned on the saved LLM keywords for the 20 development
+questions. The grid covered thresholds 0.70 through 0.95 and ambiguity margins
+0.00 through 0.10. Selection maximized micro precision first, because a false
+seed can redirect the entire propagation query, then used F1, recall, and stricter
+controls as tie-breakers.
+
+Exact matching found 28 of 30 intended seeds: precision 1.000, recall 0.933,
+F1 0.966, and 18/20 exact seed sets. The selected approximate configuration
+(`threshold=0.85`, `margin=0.10`) found all 30 seeds with no false positives and
+20/20 exact sets. Both recovered examples involved an LLM splitting one long
+title into fragments, so this result demonstrates the value of compound recovery
+on development data; it is not yet an unbiased held-out estimate. Full hashes,
+the 24-cell grid, and per-question decisions are preserved in
+`results/facebook_entity_mapping_dev_20260915/`.
+
 ## 13. Prioritized next steps
 
 ### Immediate
 
-1. Use the now-configurable batch `--depth`, `--decay`, and `--top-k` options to
-   compare fixed configurations; other strategies retain their own parameters.
-2. Add per-question-type summaries and preferably F1@k.
-3. Fixed tuning is complete on the 20 development questions. The declared
-   36-configuration search selected depth 2, decay 0.3, top-k 5 by mean F1.
-   See [FIXED_PARAMETER_TUNING.md](FIXED_PARAMETER_TUNING.md) for all scores,
-   ties, recall trade-offs, and the budget-matched k=10 baseline.
-4. Analyze the two missed development similarity questions and decide whether
-   planner or propagation changes are justified.
-5. Freeze the chosen fixed baseline and rule definitions.
+1. Define and preregister the answer-quality comparison between LLM-only answers
+   and answers grounded in retrieved AGP context.
+2. Create independently judged semantic questions and reference criteria that do
+   not reuse the topology-template labels.
+3. Run a development smoke test of answer generation and the blind evaluation
+   form before collecting final ratings.
 
 ### Before the main experiment
 
-6. Preserve the completed zero-shot and few-shot `llm-parameters` results as
-   prompt ablations; do not retune them on the same development questions.
-7. Response caching and metadata-only request/token logging are complete. Add
-   bounded retries and provider-specific cost calculation if needed.
-8. The local-keywords/LLM-parameters and LLM-keywords/fixed-parameters ablations
-   are complete on development data.
-9. Follow the frozen protocol. Run only an end-to-end development smoke check,
-   then commit before evaluating the held-out set once.
+4. Preserve all completed frozen results and clearly label approximate mapping as
+   a post-test extension.
+5. Decide whether a new untouched question split or cross-validation will provide
+   an unbiased evaluation of approximate mapping.
+6. Freeze the answer prompts, model, decoding settings, contexts, judge rubric,
+   randomization, and statistical tests before answer-quality evaluation.
 
 ### Main evaluation
 
-10. The one-time held-out Facebook evaluation is complete for all frozen conditions.
-11. Paired uncertainty and question-type analyses are complete and preserved.
-12. Add manually authored semantic questions with independently prepared human
-    relevance labels.
-13. Generate answers from saved contexts and conduct blind correctness and
-    faithfulness evaluation.
-14. Classify failures using the taxonomy in Section 10.
+7. The one-time held-out Facebook retrieval evaluation is complete for all
+   original frozen conditions; do not rerun it as though it were unseen.
+8. Generate paired LLM-only and AGP-grounded answers under equal model and token
+   budgets, then conduct blind correctness and faithfulness evaluation.
+9. Report paired uncertainty, question-type results, latency/cost, and failures.
 
 ### Optional extensions
 
-15. Compare exact matching with thresholded approximate title matching.
-16. Extend the persistent C++ API with dynamic edge updates if they become part
+10. Extend the persistent C++ API with dynamic edge updates if they become part
     of the research question.
-17. Test directed propagation or relation-type-specific weights on a dataset that
+11. Test directed propagation or relation-type-specific weights on a dataset that
     contains those semantics.
-18. Consider fine-tuning only after prompted baselines show a measurable weakness
+12. Consider fine-tuning only after prompted baselines show a measurable weakness
     and sufficient labeled parameter examples exist.
 
 ## 14. Suggested final dissertation/report structure
@@ -706,11 +724,12 @@ The current document can support the implementation and methodology chapters, bu
 The project now has a complete, executable foundation for studying query-adaptive graph propagation without requiring detailed knowledge of the Microsoft GraphRAG codebase. It supports reproducible local retrieval, multiple baselines, LLM-based adaptation, transparent context construction, batch logging, and standard retrieval metrics.
 
 The project has progressed beyond architecture and data preparation: a real graph,
-a controlled 60-question benchmark, split isolation, and initial development
-baselines and a completed fixed-parameter search now exist. The immediate work is to freeze the rule
-conditions on development data, evaluate the LLM condition and ablations, and only
-then run the held-out test set. A later human-labeled semantic evaluation is still
-needed because topology-defined questions alone cannot demonstrate answer quality.
+a controlled 60-question benchmark, split isolation, development tuning, a frozen
+held-out retrieval evaluation, persistent native AGP, and development-tested
+approximate mapping now exist. The immediate work is to preregister and run the
+paired LLM-only versus AGP-grounded answer-quality study. Human-labelled semantic
+evaluation is still needed because topology-defined questions alone cannot
+demonstrate answer quality.
 Fine-tuning should remain optional until simpler prompted baselines establish a
 clear need.
 

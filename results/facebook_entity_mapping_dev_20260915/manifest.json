@@ -1,0 +1,53 @@
+{
+  "created_utc": "2026-09-15T03:42:20.452621+00:00",
+  "development_only": true,
+  "selection_rule": "maximize precision, then F1, recall, threshold, and margin",
+  "inputs": {
+    "data/facebook_large/nodes.csv": "a5a89bb0e0bf77eaaff9059a784da0cd5b930ba5e3d9018f80f6156c9af28daa",
+    "data/facebook_large/edges.csv": "f3c3aeec27afa4389cd5042fabd21585804cf41506dce79df7ee0c74a81f2fb0",
+    "data/facebook_large/facebook_questions_dev.json": "cf0df205bca318f8650a8c9eb4e9406a4a94c4a686af737d6da475be415d6d48",
+    "results/facebook_llm_keywords_fixed_dev_20260909/results.jsonl": "300c3161b4da983c71240c5717e9a7a13e2d82110259260dbb7aa3af6f553737"
+  },
+  "thresholds": [
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95
+  ],
+  "margins": [
+    0.0,
+    0.03,
+    0.05,
+    0.1
+  ],
+  "exact_baseline": {
+    "mode": "exact",
+    "threshold": null,
+    "margin": null,
+    "examples": 20,
+    "true_positive": 28,
+    "false_positive": 0,
+    "false_negative": 2,
+    "precision": 1.0,
+    "recall": 0.9333333333333333,
+    "f1": 0.9655172413793104,
+    "exact_set_accuracy": 0.9,
+    "exact_sets": 18
+  },
+  "selected": {
+    "mode": "approximate",
+    "threshold": 0.85,
+    "margin": 0.1,
+    "examples": 20,
+    "true_positive": 30,
+    "false_positive": 0,
+    "false_negative": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "exact_set_accuracy": 1.0,
+    "exact_sets": 20
+  }
+}

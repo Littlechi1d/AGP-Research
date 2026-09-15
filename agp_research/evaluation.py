@@ -38,6 +38,9 @@ def run_experiment(
     strategies: list[str],
     *,
     fixed_parameters: AGPParameters | None = None,
+    match_mode: str = "exact",
+    match_threshold: float = 0.85,
+    match_margin: float = 0.10,
 ) -> dict[str, dict[str, float]]:
     # Preserve the old defaults, and reject invalid settings before opening output.
     parameters = (fixed_parameters or AGPParameters()).validate()
@@ -54,6 +57,9 @@ def run_experiment(
                     strategy=strategy,
                     fixed_parameters=parameters,
                     generate_answer=False,
+                    match_mode=match_mode,
+                    match_threshold=match_threshold,
+                    match_margin=match_margin,
                 )
                 ranked_ids = [item.node.id for item in result.ranked_nodes]
                 metrics = retrieval_metrics(ranked_ids, example["relevant_node_ids"])

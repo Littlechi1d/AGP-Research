@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import time
+from dataclasses import asdict
 from typing import Protocol
 
 from agp_research.graph import KnowledgeGraph
@@ -42,6 +43,9 @@ class AGPPipeline:
         strategy: str = "rules",
         fixed_parameters: AGPParameters | None = None,
         generate_answer: bool = True,
+        match_mode: str = "exact",
+        match_threshold: float = 0.85,
+        match_margin: float = 0.10,
     ) -> PipelineResult:
         started = time.perf_counter()
 
@@ -87,7 +91,15 @@ class AGPPipeline:
             keywords = heuristic_keywords(question)
 
         # Match the extracted keywords against the graph to find seed nodes for propagation
-        seed_ids, unmatched = self.graph.exact_match(keywords)
+        keyword_matches = None
+        if match_mode == "exact":
+            seed_ids, unmatched = self.graph.exact_match(keywords)
+        elif match_mode == "approximate":
+            seed_ids, unmatched, keyword_matches = self.graph.approximate_match(
+                keywords, threshold=match_threshold, margin=match_margin
+            )
+        else:
+            raise ValueError("match_mode must be exact or approximate")
 
         # execute graph propagation to retrieve relevant nodes based on the seed nodes and parameters
         ranked_nodes = (
@@ -125,6 +137,12 @@ class AGPPipeline:
                     type(self.propagation_backend).__name__
                     if self.propagation_backend is not None
                     else "python-exact"
+                ),
+                "match_mode": match_mode,
+                "keyword_matches": (
+                    [asdict(item) for item in keyword_matches]
+                    if keyword_matches is not None
+                    else None
                 ),
             },
         )

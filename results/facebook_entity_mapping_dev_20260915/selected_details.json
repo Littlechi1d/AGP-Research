@@ -1,0 +1,639 @@
+{
+  "mode": "approximate",
+  "threshold": 0.85,
+  "margin": 0.1,
+  "examples": 20,
+  "true_positive": 30,
+  "false_positive": 0,
+  "false_negative": 0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact_set_accuracy": 1.0,
+  "exact_sets": 20,
+  "rows": [
+    {
+      "example_id": "facebook_direct_01",
+      "keywords": [
+        "Headquarters Marine Corps",
+        "Henderson Hall",
+        "Headquarters & Service Battalion"
+      ],
+      "expected_seed_ids": [
+        "fb_8503"
+      ],
+      "predicted_seed_ids": [
+        "fb_8503"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Headquarters Marine Corps, Henderson Hall, Headquarters & Service Battalion",
+          "node_id": "fb_8503",
+          "matched_title": "Headquarters Marine Corps, Henderson Hall, Headquarters & Service Battalion",
+          "score": 1.0,
+          "second_score": 0.45333333333333337,
+          "method": "approximate-compound",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_direct_02",
+      "keywords": [
+        "Gluten-Free Girl"
+      ],
+      "expected_seed_ids": [
+        "fb_1855"
+      ],
+      "predicted_seed_ids": [
+        "fb_1855"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Gluten-Free Girl",
+          "node_id": "fb_1855",
+          "matched_title": "Gluten-Free Girl",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_direct_03",
+      "keywords": [
+        "Census Australia"
+      ],
+      "expected_seed_ids": [
+        "fb_10592"
+      ],
+      "predicted_seed_ids": [
+        "fb_10592"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Census Australia",
+          "node_id": "fb_10592",
+          "matched_title": "Census Australia",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_direct_04",
+      "keywords": [
+        "Nasdaq Tallinn"
+      ],
+      "expected_seed_ids": [
+        "fb_18330"
+      ],
+      "predicted_seed_ids": [
+        "fb_18330"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Nasdaq Tallinn",
+          "node_id": "fb_18330",
+          "matched_title": "Nasdaq Tallinn",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_direct_05",
+      "keywords": [
+        "Chrisley Knows Best",
+        "USA"
+      ],
+      "expected_seed_ids": [
+        "fb_6559"
+      ],
+      "predicted_seed_ids": [
+        "fb_6559"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Chrisley Knows Best USA",
+          "node_id": "fb_6559",
+          "matched_title": "Chrisley Knows Best on USA",
+          "score": 0.8846153846153846,
+          "second_score": 0.4782608695652174,
+          "method": "approximate-compound",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_comparison_01",
+      "keywords": [
+        "Meet the Press",
+        "Hardball with Chris Matthews"
+      ],
+      "expected_seed_ids": [
+        "fb_20349",
+        "fb_20363"
+      ],
+      "predicted_seed_ids": [
+        "fb_20349",
+        "fb_20363"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Meet the Press",
+          "node_id": "fb_20363",
+          "matched_title": "Meet the Press",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        },
+        {
+          "keyword": "Hardball with Chris Matthews",
+          "node_id": "fb_20349",
+          "matched_title": "Hardball with Chris Matthews",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_comparison_02",
+      "keywords": [
+        "Katharina Schulze",
+        "Harald Terpe"
+      ],
+      "expected_seed_ids": [
+        "fb_15411",
+        "fb_1653"
+      ],
+      "predicted_seed_ids": [
+        "fb_15411",
+        "fb_1653"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Katharina Schulze",
+          "node_id": "fb_1653",
+          "matched_title": "Katharina Schulze",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        },
+        {
+          "keyword": "Harald Terpe",
+          "node_id": "fb_15411",
+          "matched_title": "Harald Terpe",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_comparison_03",
+      "keywords": [
+        "Tarbijakaitseamet",
+        "Estonian Embassy in Dublin"
+      ],
+      "expected_seed_ids": [
+        "fb_2301",
+        "fb_9815"
+      ],
+      "predicted_seed_ids": [
+        "fb_2301",
+        "fb_9815"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Tarbijakaitseamet",
+          "node_id": "fb_2301",
+          "matched_title": "Tarbijakaitseamet",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        },
+        {
+          "keyword": "Estonian Embassy in Dublin",
+          "node_id": "fb_9815",
+          "matched_title": "Estonian Embassy in Dublin",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_comparison_04",
+      "keywords": [
+        "Rui Palmeira",
+        "Maur\u00edcio Quintella Lessa"
+      ],
+      "expected_seed_ids": [
+        "fb_16679",
+        "fb_17533"
+      ],
+      "predicted_seed_ids": [
+        "fb_16679",
+        "fb_17533"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Rui Palmeira",
+          "node_id": "fb_16679",
+          "matched_title": "Rui Palmeira",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        },
+        {
+          "keyword": "Maur\u00edcio Quintella Lessa",
+          "node_id": "fb_17533",
+          "matched_title": "Maur\u00edcio Quintella Lessa",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_comparison_05",
+      "keywords": [
+        "Emerald",
+        "Polaner"
+      ],
+      "expected_seed_ids": [
+        "fb_10166",
+        "fb_6265"
+      ],
+      "predicted_seed_ids": [
+        "fb_10166",
+        "fb_6265"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Emerald",
+          "node_id": "fb_6265",
+          "matched_title": "Emerald",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        },
+        {
+          "keyword": "Polaner",
+          "node_id": "fb_10166",
+          "matched_title": "Polaner",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_path_01",
+      "keywords": [
+        "TOYOTA GAZOO Racing",
+        "SPORT1 Doppelpass"
+      ],
+      "expected_seed_ids": [
+        "fb_22469",
+        "fb_9837"
+      ],
+      "predicted_seed_ids": [
+        "fb_22469",
+        "fb_9837"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "TOYOTA GAZOO Racing",
+          "node_id": "fb_9837",
+          "matched_title": "TOYOTA GAZOO Racing",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        },
+        {
+          "keyword": "SPORT1 Doppelpass",
+          "node_id": "fb_22469",
+          "matched_title": "SPORT1 Doppelpass",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_path_02",
+      "keywords": [
+        "Michal Ku\u010dera",
+        "Markus Wallner"
+      ],
+      "expected_seed_ids": [
+        "fb_6093",
+        "fb_6332"
+      ],
+      "predicted_seed_ids": [
+        "fb_6093",
+        "fb_6332"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Michal Ku\u010dera",
+          "node_id": "fb_6093",
+          "matched_title": "Michal Ku\u010dera",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        },
+        {
+          "keyword": "Markus Wallner",
+          "node_id": "fb_6332",
+          "matched_title": "Markus Wallner",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_path_03",
+      "keywords": [
+        "OBI",
+        "Ko\u00e7ta\u015f"
+      ],
+      "expected_seed_ids": [
+        "fb_11925",
+        "fb_9155"
+      ],
+      "predicted_seed_ids": [
+        "fb_11925",
+        "fb_9155"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "OBI",
+          "node_id": "fb_11925",
+          "matched_title": "OBI",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        },
+        {
+          "keyword": "Ko\u00e7ta\u015f",
+          "node_id": "fb_9155",
+          "matched_title": "Ko\u00e7ta\u015f",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_path_04",
+      "keywords": [
+        "Joachim Brudzi\u0144ski",
+        "Auschwitz Memorial / Muzeum Auschwitz"
+      ],
+      "expected_seed_ids": [
+        "fb_12221",
+        "fb_6801"
+      ],
+      "predicted_seed_ids": [
+        "fb_12221",
+        "fb_6801"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Joachim Brudzi\u0144ski",
+          "node_id": "fb_6801",
+          "matched_title": "Joachim Brudzi\u0144ski",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        },
+        {
+          "keyword": "Auschwitz Memorial / Muzeum Auschwitz",
+          "node_id": "fb_12221",
+          "matched_title": "Auschwitz Memorial / Muzeum Auschwitz",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_path_05",
+      "keywords": [
+        "Alarm f\u00fcr Cobra 11",
+        "Boxen bei RTL"
+      ],
+      "expected_seed_ids": [
+        "fb_12985",
+        "fb_18361"
+      ],
+      "predicted_seed_ids": [
+        "fb_12985",
+        "fb_18361"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Alarm f\u00fcr Cobra 11",
+          "node_id": "fb_18361",
+          "matched_title": "Alarm f\u00fcr Cobra 11",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        },
+        {
+          "keyword": "Boxen bei RTL",
+          "node_id": "fb_12985",
+          "matched_title": "Boxen bei RTL",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_similarity_01",
+      "keywords": [
+        "Hey Qween"
+      ],
+      "expected_seed_ids": [
+        "fb_15197"
+      ],
+      "predicted_seed_ids": [
+        "fb_15197"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Hey Qween",
+          "node_id": "fb_15197",
+          "matched_title": "Hey Qween",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_similarity_02",
+      "keywords": [
+        "djuice pakistan"
+      ],
+      "expected_seed_ids": [
+        "fb_17199"
+      ],
+      "predicted_seed_ids": [
+        "fb_17199"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "djuice pakistan",
+          "node_id": "fb_17199",
+          "matched_title": "djuice pakistan",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_similarity_03",
+      "keywords": [
+        "ESPN Capitales del F\u00fatbol"
+      ],
+      "expected_seed_ids": [
+        "fb_6711"
+      ],
+      "predicted_seed_ids": [
+        "fb_6711"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "ESPN Capitales del F\u00fatbol",
+          "node_id": "fb_6711",
+          "matched_title": "ESPN Capitales del F\u00fatbol",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_similarity_04",
+      "keywords": [
+        "Jornal da EPTV e Bom Dia Cidade - Ribeir\u00e3o Preto"
+      ],
+      "expected_seed_ids": [
+        "fb_5020"
+      ],
+      "predicted_seed_ids": [
+        "fb_5020"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Jornal da EPTV e Bom Dia Cidade - Ribeir\u00e3o Preto",
+          "node_id": "fb_5020",
+          "matched_title": "Jornal da EPTV e Bom Dia Cidade - Ribeir\u00e3o Preto",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "example_id": "facebook_similarity_05",
+      "keywords": [
+        "Profiss\u00e3o Rep\u00f3rter"
+      ],
+      "expected_seed_ids": [
+        "fb_4726"
+      ],
+      "predicted_seed_ids": [
+        "fb_4726"
+      ],
+      "unmatched_keywords": [],
+      "correct_set": true,
+      "match_details": [
+        {
+          "keyword": "Profiss\u00e3o Rep\u00f3rter",
+          "node_id": "fb_4726",
+          "matched_title": "Profiss\u00e3o Rep\u00f3rter",
+          "score": 1.0,
+          "second_score": null,
+          "method": "exact",
+          "accepted": true
+        }
+      ]
+    }
+  ]
+}

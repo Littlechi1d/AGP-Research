@@ -11,14 +11,15 @@ Completed components include:
 - a question → entity seeds → propagation → context → optional LLM answer pipeline;
 - seed-only, fixed, rule-adaptive, and LLM-adaptive strategies;
 - a dependency-free Python propagation backend;
-- an optional C++ adapter for the paper authors' AGP-Dynamic code;
+- a persistent in-process C++ API for the paper authors' AGP-Dynamic code;
+- exact and thresholded approximate entity mapping, including split-title recovery;
 - the prepared UCI Facebook Large Page-Page graph;
 - deterministic development and held-out test questions with topology labels;
-- a completed three-strategy development experiment;
-- 31 passing unit tests.
+- completed development tuning and a one-time frozen held-out evaluation;
+- 56 passing unit tests.
 
-The held-out Facebook test set has intentionally not been evaluated. Freeze the
-parameters and planner before using it.
+The original frozen held-out evaluation is complete. New approximate-mapping work
+is treated as a post-test extension and is tuned only on the development split.
 
 Further documentation:
 
@@ -32,7 +33,8 @@ Further documentation:
 
 1. Receive a natural-language question.
 2. Extract entity keywords.
-3. Map keywords to graph nodes using normalized exact-title matching.
+3. Map keywords to graph nodes using normalized exact matching or conservative
+   approximate title matching.
 4. Select `depth`, `decay`, and `top_k` using fixed values, rules, or an LLM.
 5. Propagate relevance and rank nodes.
 6. Convert selected nodes and edges into readable context.
@@ -50,7 +52,7 @@ Further documentation:
 | Path | Purpose |
 |---|---|
 | `agp_research/config.py` | Reads `.env` and shell settings. |
-| `agp_research/graph.py` | Loads CSV graphs and caches indexes for exact matching. |
+| `agp_research/graph.py` | Loads CSV graphs and caches exact/fuzzy title indexes. |
 | `agp_research/agp_native_backend.py` | Calls a persistent in-process AGP C++ API. |
 | `agp_research/planner.py` | Extracts keywords and selects parameters. |
 | `agp_research/propagation.py` | Runs local Python graph propagation. |
@@ -60,6 +62,7 @@ Further documentation:
 | `agp_research/cli.py` | Implements `ask` and `experiment`. |
 | `scripts/prepare_facebook_large.py` | Converts the UCI dataset. |
 | `scripts/generate_facebook_questions.py` | Builds and validates the benchmark. |
+| `scripts/tune_entity_mapping.py` | Tunes fuzzy matching on development data only. |
 
 ## Run the small demonstration
 
@@ -182,6 +185,37 @@ python3 -m agp_research \
   ask "Which pages are connected to NASA Student Launch through the network" \
   --strategy rules --no-answer
 ```
+
+Use development-tuned approximate entity mapping with the persistent native AGP
+backend:
+
+```bash
+python3 -m agp_research \
+  --nodes data/facebook_large/nodes.csv \
+  --edges data/facebook_large/edges.csv \
+  --backend native \
+  ask "Which pages directly neighbor Chrisley Knows Best on USA" \
+  --strategy llm-keywords --match-mode approximate --no-answer
+```
+
+Approximate mode tries exact matching first, then joins adjacent unresolved LLM
+keywords when they may be pieces of one title, and finally applies normalized
+edit similarity. The development-selected defaults are `--match-threshold 0.85`
+and `--match-margin 0.10`. The margin requires the best candidate to beat the
+runner-up, reducing ambiguous matches.
+
+Reproduce the development-only mapping sweep:
+
+```bash
+python3 scripts/tune_entity_mapping.py \
+  --nodes data/facebook_large/nodes.csv \
+  --edges data/facebook_large/edges.csv \
+  --questions data/facebook_large/facebook_questions_dev.json \
+  --keyword-results results/facebook_llm_keywords_fixed_dev_20260909/results.jsonl \
+  --output results/facebook_entity_mapping_dev_REPRODUCED
+```
+
+The preserved result is in `results/facebook_entity_mapping_dev_20260915/`.
 
 ## Facebook benchmark and development result
 
