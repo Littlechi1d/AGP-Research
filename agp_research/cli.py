@@ -6,6 +6,7 @@ import argparse
 import json
 from pathlib import Path
 
+from agp_research.agp_native_backend import NativeAGPBackend, default_native_library
 from agp_research.evaluation import run_experiment
 from agp_research.graph import KnowledgeGraph
 from agp_research.llm import OpenAICompatibleClient
@@ -18,8 +19,11 @@ def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(description="Query-adaptive graph propagation prototype")
     result.add_argument("--nodes", default="data/nodes.csv")
     result.add_argument("--edges", default="data/edges.csv")
-    result.add_argument("--backend", choices=["python", "paper"], default="python")
+    result.add_argument(
+        "--backend", choices=["python", "paper", "native"], default="python"
+    )
     result.add_argument("--paper-executable", default="build/paper_backend/agp_query_bridge")
+    result.add_argument("--native-library", default=str(default_native_library()))
     result.add_argument("--paper-a", type=float, default=0.0)
     result.add_argument("--paper-b", type=float, default=1.0)
     result.add_argument("--paper-delta", type=float)
@@ -49,8 +53,8 @@ def parser() -> argparse.ArgumentParser:
     experiment.add_argument("--questions", default="data/questions.json")
     experiment.add_argument("--output", default="results/experiment.jsonl")
     experiment.add_argument("--strategies", nargs="+", default=["seed-only", "fixed", "rules"])
-    experiment.add_argument("--depth", type=int, default=2, help="Fixed strategy only: propagation depth 0–5 (default: 2)")
-    experiment.add_argument("--decay", type=float, default=0.6, help="Fixed strategy only: decay 0–1 (default: 0.6)")
+    experiment.add_argument("--depth", type=int, default=2, help="Fixed strategy only: propagation depth 0-5 (default: 2)")
+    experiment.add_argument("--decay", type=float, default=0.6, help="Fixed strategy only: decay 0-1 (default: 0.6)")
     experiment.add_argument("--top-k", type=int, default=10, help="Fixed strategy only: positive result limit (default: 10)")
     return result
 
@@ -62,6 +66,17 @@ def main() -> None:
     if args.backend == "paper":
         backend = PaperAGPBackend(
             Path(args.paper_executable),
+            PaperBackendConfig(
+                a=args.paper_a,
+                b=args.paper_b,
+                delta=args.paper_delta,
+                relative_error=args.paper_relative_error,
+                query_type=args.paper_query_type,
+            ),
+        )
+    elif args.backend == "native":
+        backend = NativeAGPBackend(
+            Path(args.native_library),
             PaperBackendConfig(
                 a=args.paper_a,
                 b=args.paper_b,

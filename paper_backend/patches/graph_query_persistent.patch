@@ -1,0 +1,7 @@
+--- Graph.cpp
++++ Graph.cpp
+@@ -169,4 +169,3 @@ double *Graph::query(double *x, float a, float b, int L, double *w, double eps,
+     } else {
+-        construct_DS_static(a, b);
+ //        printf("constructed\n");
+         naive_initialize(r, x);

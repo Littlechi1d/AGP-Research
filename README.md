@@ -51,6 +51,7 @@ Further documentation:
 |---|---|
 | `agp_research/config.py` | Reads `.env` and shell settings. |
 | `agp_research/graph.py` | Loads CSV graphs and caches indexes for exact matching. |
+| `agp_research/agp_native_backend.py` | Calls a persistent in-process AGP C++ API. |
 | `agp_research/planner.py` | Extracts keywords and selects parameters. |
 | `agp_research/propagation.py` | Runs local Python graph propagation. |
 | `agp_research/paper_backend.py` | Calls the optional C++ backend. |
@@ -291,6 +292,37 @@ The build applies `graph_query_zero_based.patch` to a temporary copy of upstream
 and unweighted, approximate mode is randomized, and each CLI request currently
 reloads the graph. Dynamic update lifecycle support is not implemented.
 
+### Persistent native AGP API
+
+The one-shot paper backend above is useful for compatibility checks, but reloads
+the complete graph for every query. Build the persistent shared library instead:
+
+```bash
+bash scripts/build_agp_library.sh \
+  /Users/feiyuzhang/Desktop/COMP90055/AGP-dynamic
+```
+
+Then select it through the existing pipeline:
+
+```bash
+python3 -m agp_research \
+  --nodes data/facebook_large/nodes.csv \
+  --edges data/facebook_large/edges.csv \
+  --backend native --paper-query-type S \
+  ask "Which pages directly neighbor Census Australia" \
+  --strategy rules --no-answer
+```
+
+`NativeAGPBackend` loads the graph and prepares AGP-Static++ once, then reuses the
+same C++ graph handle for every query made through that backend instance. On the
+22,470-node Facebook graph, the verified first call—including native graph setup—
+took about 0.183 seconds; two subsequent calls using the same handle took about
+0.0015 and 0.0014 seconds. These are implementation checks, not a controlled
+performance study.
+
+See [NATIVE_AGP_API.md](NATIVE_AGP_API.md) for the C/Python lifecycle, validation,
+and current limitations.
+
 ## Tests
 
 ```bash
@@ -300,7 +332,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 44 tests
+Ran 49 tests
 OK
 ```
 

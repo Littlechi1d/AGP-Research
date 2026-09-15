@@ -150,6 +150,7 @@ Without an API key, all graph retrieval and evaluation features still work. Answ
 | `agp_research/models.py` | Defines nodes, edges, parameters, ranked results, and pipeline output. |
 | `agp_research/config.py` | Loads optional `.env` settings while giving shell variables precedence. |
 | `agp_research/graph.py` | Loads CSV data, validates endpoints, and builds cached title indexes for exact matching. |
+| `agp_research/agp_native_backend.py` | Keeps the authors' C++ graph in memory and calls AGP through `ctypes`. |
 | `agp_research/propagation.py` | Implements matrix-free truncated graph propagation. |
 | `agp_research/planner.py` | Implements local keyword extraction, rule-based parameters, and LLM planning. |
 | `agp_research/llm.py` | Implements a minimal OpenAI-compatible chat client using the Python standard library. |
@@ -581,7 +582,7 @@ This taxonomy will make the discussion more informative than reporting aggregate
 
 The delivered project has been checked in the target directory:
 
-- 44 unit tests pass using the Python standard library;
+- 49 unit tests pass using the Python standard library;
 - the demonstration graph and 22,470-node Facebook graph load successfully;
 - the Facebook conversion checksum and row-count checks pass;
 - both Python and paper backends complete a real-data NASA query;
@@ -678,9 +679,9 @@ These limitations are appropriate for the first prototype and provide concrete d
 
 ### Optional extensions
 
-15. Compare exact matching with alias or embedding-based matching.
-16. Implement a persistent C++ service if dynamic edge updates become part of the
-    research question.
+15. Compare exact matching with thresholded approximate title matching.
+16. Extend the persistent C++ API with dynamic edge updates if they become part
+    of the research question.
 17. Test directed propagation or relation-type-specific weights on a dataset that
     contains those semantics.
 18. Consider fine-tuning only after prompted baselines show a measurable weakness
@@ -745,8 +746,15 @@ the truncation level `L`; existing `decay` is translated to personalized PageRan
 weights `w_i = (1-decay) decay^i`; and exact-matched seeds form a normalized vector
 `x`. See the README for build and execution commands.
 
-This integration currently exercises the paper's query algorithm on a static graph.
-Using the dynamic update advantage requires keeping one C++ graph instance alive
-while processing insertions, deletions, and queries. A persistent JSON Lines or
-socket service is the appropriate next extension if graph updates are part of the
-experimental research question.
+The project now also provides a persistent native API. `paper_backend/agp_api.cpp`
+exposes C-compatible create, query, size, error, and destroy functions;
+`agp_research/agp_native_backend.py` loads that shared library using `ctypes`.
+The graph and AGP-Static++ sampling structure are initialized once per backend
+instance rather than once per question. The existing one-shot bridge remains as
+an independent compatibility oracle.
+
+On the full Facebook graph, a three-query verification reused one native handle:
+setup plus the first query took about 0.183 seconds and subsequent queries took
+about 0.0015 seconds each. These timings demonstrate reuse but are not a
+controlled performance result. Dynamic insertion and deletion functions remain
+future work if dynamic updates enter the research question.
