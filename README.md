@@ -16,7 +16,8 @@ Completed components include:
 - the prepared UCI Facebook Large Page-Page graph;
 - deterministic development and held-out test questions with topology labels;
 - completed development tuning and a one-time frozen held-out evaluation;
-- 56 passing unit tests.
+- a paired LLM-only versus AGP-grounded answer-quality study runner;
+- 60 passing unit tests.
 
 The original frozen held-out evaluation is complete. New approximate-mapping work
 is treated as a post-test extension and is tuned only on the development split.
@@ -28,6 +29,8 @@ Further documentation:
   conversion, statistics, and checksums;
 - [`FACEBOOK_BENCHMARK.md`](FACEBOOK_BENCHMARK.md): benchmark rules,
   regeneration, development results, and final-test protocol.
+- [`ANSWER_QUALITY_PROTOCOL.md`](ANSWER_QUALITY_PROTOCOL.md): paired generation,
+  automatic metrics, blind review, and final-study controls.
 
 ## Pipeline
 
@@ -389,16 +392,19 @@ OK
    (0.5625); zero-shot LLM parameters is close at 0.5557, with a paired 95%
    bootstrap interval that includes zero. See
    `results/facebook_frozen_test_20260909/REPORT.md`.
-8. Add manually authored questions and human relevance/answer labels. Treat any
-   further implementation changes as post-test research.
+8. The paired answer-quality runner and a two-question development smoke test are
+   complete. Freeze the protocol in `ANSWER_QUALITY_PROTOCOL.md`, then collect
+   blind human ratings on a sufficiently large, independently labelled set.
 
 ## Limitations
 
-- Exact matching does not handle aliases, misspellings, or implicit entities.
+- Approximate title matching handles spelling variation and split titles, but not
+  general aliases or implicit entities.
 - The topology benchmark is controlled but cannot replace semantic evaluation.
 - The graph is treated as undirected.
 - The Python backend prioritizes clarity over large-scale optimization.
-- Batch evaluation does not score answers or automatically search parameters.
+- Automatic answer metrics recognize explicit graph titles but not paraphrases;
+  blind human evaluation remains necessary.
 - LLM responses are cached and request/token metadata is logged; bounded retries
   and provider-specific cost calculation are not yet implemented.
 - The paper adapter currently supports static queries, not dynamic updates.

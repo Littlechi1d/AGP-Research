@@ -509,7 +509,15 @@ Retrieval quality and answer quality must be evaluated separately. Extend the ba
 - abstention when evidence is insufficient;
 - input/output tokens, API cost, and latency.
 
-Human evaluation is strongest but expensive. A practical design is blind human assessment on a representative subset, supplemented by an LLM judge using a fixed rubric. Randomize system labels and order to reduce evaluator bias. Never ask a judge to score faithfulness without giving it the exact retrieved context.
+This design is now implemented in `agp_research/answer_evaluation.py`. It produces
+paired LLM-only and AGP-grounded answers from previously saved retrieval contexts,
+calculates conservative graph-title entity metrics, records token and latency
+metadata, and creates randomized blind-review artifacts. Human evaluation remains
+necessary because exact title detection cannot credit paraphrases. A practical
+design is blind human assessment on a representative subset, supplemented by an
+LLM judge using a fixed rubric. Randomize system labels and order to reduce
+evaluator bias. Never ask a judge to score faithfulness without giving it the
+exact retrieved context. See `ANSWER_QUALITY_PROTOCOL.md`.
 
 ### 9.7 Statistical comparison
 
@@ -570,9 +578,15 @@ The latter uses local keywords so parameter selection is isolated. It achieved
 precision 0.4125, recall 0.8300, and mean per-question F1 0.5134. Few-shot
 planning, end-to-end `llm`, further ablations, and prompt freezing remain.
 
-### Phase 5: Evaluate answers — not started
+### Phase 5: Evaluate answers — infrastructure and development smoke completed
 
-Generate answers from identical answer prompts and model settings, varying only retrieved context. Evaluate correctness and faithfulness, and compare retrieval improvements with answer improvements.
+The paired runner now generates LLM-only and AGP-grounded answers with the same
+local Qwen model and question wording, varying the availability of saved graph
+context. A two-question development smoke run produced the expected artifacts and
+validated scoring and blinding. LLM-only entity F1 was 0.000 and grounded entity
+F1 was 1.000 on those two examples, but this tiny development result is only a
+software check and must not be presented as an experimental conclusion. The full
+protocol and human evaluation remain to be frozen and executed.
 
 ### Phase 6: Analyze failures
 

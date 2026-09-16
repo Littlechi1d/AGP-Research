@@ -1,0 +1,10 @@
+{
+  "dd4dbf163072": {
+    "answer_a": "llm_only",
+    "answer_b": "agp_grounded"
+  },
+  "781e25f2b4fd": {
+    "answer_a": "agp_grounded",
+    "answer_b": "llm_only"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "questions": 2,
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "base_url": "http://localhost:11434/v1",
+  "retrieval_strategy": "rules",
+  "random_seed": 90055,
+  "automatic_metrics_are_conservative": true,
+  "macro_average": {
+    "llm_only": {
+      "entity_precision": 0.0,
+      "entity_recall": 0.0,
+      "entity_f1": 0.0
+    },
+    "agp_grounded": {
+      "entity_precision": 1.0,
+      "entity_recall": 1.0,
+      "entity_f1": 1.0,
+      "context_faithfulness": 1.0
+    }
+  },
+  "input_sha256": {
+    "questions": "cf0df205bca318f8650a8c9eb4e9406a4a94c4a686af737d6da475be415d6d48",
+    "retrieval_results": "58a9880b1d017a0b94965967a1b6440e40c37be4087d4a0ae7b5c3c5fe658d0c"
+  }
+}
