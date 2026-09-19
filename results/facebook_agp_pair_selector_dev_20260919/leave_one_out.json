@@ -1,0 +1,167 @@
+{
+  "question_count": 20,
+  "adaptive_mean_f1": 0.45321249012425485,
+  "global_mean_f1": 0.45321249012425485,
+  "decisions": [
+    {
+      "example_id": "facebook_direct_01",
+      "question_type": "direct",
+      "selected_arm": "C2",
+      "selected_f1": 0.4615384615384615,
+      "global_arm": "C2",
+      "global_f1": 0.4615384615384615
+    },
+    {
+      "example_id": "facebook_direct_02",
+      "question_type": "direct",
+      "selected_arm": "C2",
+      "selected_f1": 0.888888888888889,
+      "global_arm": "C2",
+      "global_f1": 0.888888888888889
+    },
+    {
+      "example_id": "facebook_direct_03",
+      "question_type": "direct",
+      "selected_arm": "C2",
+      "selected_f1": 0.8235294117647058,
+      "global_arm": "C2",
+      "global_f1": 0.8235294117647058
+    },
+    {
+      "example_id": "facebook_direct_04",
+      "question_type": "direct",
+      "selected_arm": "C2",
+      "selected_f1": 0.5714285714285715,
+      "global_arm": "C2",
+      "global_f1": 0.5714285714285715
+    },
+    {
+      "example_id": "facebook_direct_05",
+      "question_type": "direct",
+      "selected_arm": "C2",
+      "selected_f1": 0.4615384615384615,
+      "global_arm": "C2",
+      "global_f1": 0.4615384615384615
+    },
+    {
+      "example_id": "facebook_comparison_01",
+      "question_type": "comparison",
+      "selected_arm": "C2",
+      "selected_f1": 0.7499999999999999,
+      "global_arm": "C2",
+      "global_f1": 0.7499999999999999
+    },
+    {
+      "example_id": "facebook_comparison_02",
+      "question_type": "comparison",
+      "selected_arm": "C2",
+      "selected_f1": 0.33333333333333337,
+      "global_arm": "C2",
+      "global_f1": 0.33333333333333337
+    },
+    {
+      "example_id": "facebook_comparison_03",
+      "question_type": "comparison",
+      "selected_arm": "C2",
+      "selected_f1": 0.33333333333333337,
+      "global_arm": "C2",
+      "global_f1": 0.33333333333333337
+    },
+    {
+      "example_id": "facebook_comparison_04",
+      "question_type": "comparison",
+      "selected_arm": "C2",
+      "selected_f1": 0.33333333333333337,
+      "global_arm": "C2",
+      "global_f1": 0.33333333333333337
+    },
+    {
+      "example_id": "facebook_comparison_05",
+      "question_type": "comparison",
+      "selected_arm": "C2",
+      "selected_f1": 0.5714285714285715,
+      "global_arm": "C2",
+      "global_f1": 0.5714285714285715
+    },
+    {
+      "example_id": "facebook_path_01",
+      "question_type": "path",
+      "selected_arm": "C2",
+      "selected_f1": 0.33333333333333337,
+      "global_arm": "C2",
+      "global_f1": 0.33333333333333337
+    },
+    {
+      "example_id": "facebook_path_02",
+      "question_type": "path",
+      "selected_arm": "C2",
+      "selected_f1": 0.33333333333333337,
+      "global_arm": "C2",
+      "global_f1": 0.33333333333333337
+    },
+    {
+      "example_id": "facebook_path_03",
+      "question_type": "path",
+      "selected_arm": "C2",
+      "selected_f1": 0.33333333333333337,
+      "global_arm": "C2",
+      "global_f1": 0.33333333333333337
+    },
+    {
+      "example_id": "facebook_path_04",
+      "question_type": "path",
+      "selected_arm": "C2",
+      "selected_f1": 0.33333333333333337,
+      "global_arm": "C2",
+      "global_f1": 0.33333333333333337
+    },
+    {
+      "example_id": "facebook_path_05",
+      "question_type": "path",
+      "selected_arm": "C2",
+      "selected_f1": 0.33333333333333337,
+      "global_arm": "C2",
+      "global_f1": 0.33333333333333337
+    },
+    {
+      "example_id": "facebook_similarity_01",
+      "question_type": "similarity",
+      "selected_arm": "C3",
+      "selected_f1": 0.6,
+      "global_arm": "C2",
+      "global_f1": 0.6
+    },
+    {
+      "example_id": "facebook_similarity_02",
+      "question_type": "similarity",
+      "selected_arm": "C3",
+      "selected_f1": 0.7692307692307693,
+      "global_arm": "C2",
+      "global_f1": 0.7692307692307693
+    },
+    {
+      "example_id": "facebook_similarity_03",
+      "question_type": "similarity",
+      "selected_arm": "C2",
+      "selected_f1": 0.5,
+      "global_arm": "C2",
+      "global_f1": 0.5
+    },
+    {
+      "example_id": "facebook_similarity_04",
+      "question_type": "similarity",
+      "selected_arm": "C3",
+      "selected_f1": 0.0,
+      "global_arm": "C2",
+      "global_f1": 0.0
+    },
+    {
+      "example_id": "facebook_similarity_05",
+      "question_type": "similarity",
+      "selected_arm": "C3",
+      "selected_f1": 0.0,
+      "global_arm": "C2",
+      "global_f1": 0.0
+    }
+  ]
+}

@@ -31,6 +31,8 @@ Further documentation:
   regeneration, development results, and final-test protocol.
 - [`ANSWER_QUALITY_PROTOCOL.md`](ANSWER_QUALITY_PROTOCOL.md): paired generation,
   automatic metrics, blind review, and final-study controls.
+- [`EIGHT_CONDITION_EXPERIMENT.md`](EIGHT_CONDITION_EXPERIMENT.md): proposed
+  eight-arm AGP experiment, shared budgets, controls, and remaining freeze items.
 
 ## Pipeline
 
@@ -57,6 +59,10 @@ Further documentation:
 | `agp_research/config.py` | Reads `.env` and shell settings. |
 | `agp_research/graph.py` | Loads CSV graphs and caches exact/fuzzy title indexes. |
 | `agp_research/agp_native_backend.py` | Calls a persistent in-process AGP C++ API. |
+| `agp_research/eight_condition_retrieval.py` | Direct-neighbour baseline and five-pair native AGP handle pool for the proposed study. |
+| `agp_research/agp_pair_selector.py` | Question-type selector that chooses one of the five fixed AGP pairs. |
+| `scripts/tune_agp_pair_selector.py` | Scores five native pairs on development questions and validates C7 leave-one-out. |
+| `scripts/run_eight_condition_contexts.py` | Saves all eight retrieval contexts before any answer generation. |
 | `agp_research/planner.py` | Extracts keywords and selects parameters. |
 | `agp_research/propagation.py` | Runs local Python graph propagation. |
 | `agp_research/paper_backend.py` | Calls the optional C++ backend. |
@@ -359,6 +365,28 @@ performance study.
 
 See [NATIVE_AGP_API.md](NATIVE_AGP_API.md) for the C/Python lifecycle, validation,
 and current limitations.
+
+### Eight-condition retrieval contexts (development smoke)
+
+The proposed eight-arm answer study first saves every context before making any
+answer-model calls. Reproduce its two-question development smoke run with:
+
+```bash
+python3 scripts/run_eight_condition_contexts.py \
+  --nodes data/facebook_large/nodes.csv \
+  --edges data/facebook_large/edges.csv \
+  --questions data/facebook_large/facebook_questions_dev.json \
+  --selector results/facebook_agp_pair_selector_dev_20260919/selector.json \
+  --keyword-results results/facebook_llm_keywords_fixed_dev_20260909/results.jsonl \
+  --output results/facebook_eight_contexts_smoke_REPRODUCED \
+  --limit 2
+```
+
+Omit `--keyword-results` to call the configured LLM once per question for keyword
+extraction. The runner refuses to overwrite an output directory. See the
+[smoke report](results/facebook_eight_contexts_smoke_dev_20260919/REPORT.md)
+for the important node-versus-token-budget limitation; these contexts have not
+yet been scored as answers.
 
 ## Tests
 

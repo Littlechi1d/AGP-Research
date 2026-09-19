@@ -1,0 +1,9 @@
+{
+  "arm_by_type": {
+    "direct": "C2",
+    "comparison": "C2",
+    "path": "C2",
+    "similarity": "C3"
+  },
+  "fallback_arm": "C2"
+}

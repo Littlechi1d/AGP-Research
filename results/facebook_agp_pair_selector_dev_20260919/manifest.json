@@ -1,0 +1,61 @@
+{
+  "created_utc": "2026-09-19T10:42:03.402712+00:00",
+  "development_only": true,
+  "selector_method": "question template type; highest mean retrieval F1 within type; lowest arm ID breaks ties",
+  "fixed_pairs": {
+    "C2": [
+      0.0,
+      1.0
+    ],
+    "C3": [
+      0.25,
+      0.75
+    ],
+    "C4": [
+      0.5,
+      0.5
+    ],
+    "C5": [
+      0.75,
+      0.25
+    ],
+    "C6": [
+      1.0,
+      0.0
+    ]
+  },
+  "agp_parameters": {
+    "depth": 2,
+    "decay": 0.3,
+    "top_k": 10
+  },
+  "query_type": "S",
+  "relative_error": 0.1,
+  "delta": "1/node_count",
+  "native_library_sha256": "8b881f6089cfc88632ee79c11c7380f51e66b7f3892ddbb082f9c67a832f3974",
+  "arm_by_type": {
+    "direct": "C2",
+    "comparison": "C2",
+    "path": "C2",
+    "similarity": "C3"
+  },
+  "fallback_arm": "C2",
+  "mean_f1_by_arm": {
+    "C2": 0.45321249012425485,
+    "C3": 0.44154582345758814,
+    "C4": 0.44154582345758814,
+    "C5": 0.4272601091718739,
+    "C6": 0.3916450298067945
+  },
+  "leave_one_out": {
+    "question_count": 20,
+    "adaptive_mean_f1": 0.45321249012425485,
+    "global_mean_f1": 0.45321249012425485
+  },
+  "input_sha256": {
+    "data/facebook_large/nodes.csv": "a5a89bb0e0bf77eaaff9059a784da0cd5b930ba5e3d9018f80f6156c9af28daa",
+    "data/facebook_large/edges.csv": "f3c3aeec27afa4389cd5042fabd21585804cf41506dce79df7ee0c74a81f2fb0",
+    "data/facebook_large/facebook_questions_dev.json": "cf0df205bca318f8650a8c9eb4e9406a4a94c4a686af737d6da475be415d6d48",
+    "results/facebook_llm_keywords_fixed_dev_20260909/results.jsonl": "300c3161b4da983c71240c5717e9a7a13e2d82110259260dbb7aa3af6f553737"
+  }
+}

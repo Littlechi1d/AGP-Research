@@ -1,5 +1,9 @@
 # Paired answer-quality evaluation protocol
 
+This document describes the implemented **two-condition** smoke-test runner.
+The proposed final eight-condition study and its additional controls are specified
+in [EIGHT_CONDITION_EXPERIMENT.md](EIGHT_CONDITION_EXPERIMENT.md).
+
 ## Research comparison
 
 For every question, use the same model, temperature, and question wording to
