@@ -64,6 +64,7 @@ Further documentation:
 | `scripts/tune_agp_pair_selector.py` | Scores five native pairs on development questions and validates C7 leave-one-out. |
 | `scripts/run_eight_condition_contexts.py` | Saves all eight retrieval contexts before any answer generation. |
 | `scripts/run_eight_condition_answers.py` | Generates answers from saved contexts and writes blinded A–H review forms. |
+| `scripts/prepare_eight_condition_eval.py` | Builds an unscored, seed-disjoint candidate evaluation set and criteria-review form. |
 | `agp_research/planner.py` | Extracts keywords and selects parameters. |
 | `agp_research/propagation.py` | Runs local Python graph propagation. |
 | `agp_research/paper_backend.py` | Calls the optional C++ backend. |
@@ -400,6 +401,30 @@ shared 256-token output ceiling by default (`--max-answer-tokens` overrides it)
 and records each call's finish reason. The [capped development smoke report](results/facebook_eight_answers_capped_smoke_dev_20260919/REPORT.md)
 checks that the local model accepts the request.
 
+### New eight-condition evaluation candidate
+
+The [revised candidate set](data/facebook_large/eight_condition_eval_candidate_v2_20260919/REPORT.md)
+contains 40 new topology-labelled questions, ten of each type. Its seed pages
+and exact question texts are disjoint from both earlier splits. Similarity
+questions describe the relation in ordinary language: pages of the same type
+reached through one other page, without a direct connection. To regenerate
+it into a fresh directory without calling AGP or an LLM:
+
+```bash
+python3 scripts/prepare_eight_condition_eval.py \
+  --nodes data/facebook_large/nodes.csv \
+  --edges data/facebook_large/edges.csv \
+  --targets ../datasets/facebook_large/raw/facebook_large/musae_facebook_target.csv \
+  --exclude-questions data/facebook_large/facebook_questions_dev.json \
+    data/facebook_large/facebook_questions_test.json \
+  --output data/facebook_large/eight_condition_eval_REPRODUCED \
+  --per-type 10 --random-seed 20260919
+```
+
+An independent reviewer must check `criteria_review.csv` against the graph and
+resolve ambiguous wording or incorrect labels before freezing this set. Do not
+run the eight-arm answer comparison on it yet.
+
 ## Tests
 
 ```bash
@@ -409,7 +434,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 83 tests
+Ran 87 tests
 OK
 ```
 
