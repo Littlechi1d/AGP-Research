@@ -392,7 +392,9 @@ for the important node-versus-token-budget limitation. Add
 sensitivity condition; it preserves complete evidence lines and records any
 truncation, but is not a true token ceiling. The 20-question development output
 is in `results/facebook_eight_contexts_char3000_dev_final_20260919/`.
-No contexts have been scored as answers in a final study. A one-question
+The earlier `results/facebook_eight_contexts_char3000_dev_20260919/` is an
+archived diagnostic with incomplete `context_truncated` flags; do not use it
+for analysis. No contexts have been scored as answers in a final study. A one-question
 development answer smoke run using the earlier uncapped contexts is documented in
 [this report](results/facebook_eight_answers_smoke_dev_20260919/REPORT.md). The
 eight-answer script creates condition-labelled raw answers, randomized A–H
@@ -410,8 +412,10 @@ questions describe the relation in ordinary language: pages of the same dataset
 category reached through one other page, without a direct connection. V3
 clarified path-answer order, and V4 replaced five questions with artificial
 `[page ID]` suffixes in their expected titles. V4 remains unreviewed; V2 and
-V3 are retained as its revision trail. The generator command below reproduces
-the original V2 candidate, not the subsequent reviewed-in-code revisions:
+V3 are retained as its revision trail. The still earlier V1 candidate is
+archived separately and must not be used for the eight-arm evaluation. The
+generator command below reproduces the original V2 candidate, not the later
+revisions:
 
 ```bash
 python3 scripts/prepare_eight_condition_eval.py \

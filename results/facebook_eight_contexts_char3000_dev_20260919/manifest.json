@@ -1,0 +1,60 @@
+{
+  "created_utc": "2026-09-19T12:08:44.792714+00:00",
+  "question_count": 20,
+  "conditions": [
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7"
+  ],
+  "fixed_pairs": {
+    "C2": [
+      0.0,
+      1.0
+    ],
+    "C3": [
+      0.25,
+      0.75
+    ],
+    "C4": [
+      0.5,
+      0.5
+    ],
+    "C5": [
+      0.75,
+      0.25
+    ],
+    "C6": [
+      1.0,
+      0.0
+    ]
+  },
+  "agp_parameters": {
+    "depth": 2,
+    "decay": 0.3,
+    "top_k": 10
+  },
+  "max_context_chars": 3000,
+  "context_budget_note": "Whole ranked entity and relationship lines only; this is a character ceiling, not a tokenizer-level token ceiling.",
+  "query_type": "S",
+  "relative_error": 0.1,
+  "match_threshold": 0.85,
+  "match_margin": 0.1,
+  "keyword_source": "saved_llm",
+  "input_sha256": {
+    "questions": "cf0df205bca318f8650a8c9eb4e9406a4a94c4a686af737d6da475be415d6d48",
+    "saved_keywords": "300c3161b4da983c71240c5717e9a7a13e2d82110259260dbb7aa3af6f553737",
+    "nodes": "a5a89bb0e0bf77eaaff9059a784da0cd5b930ba5e3d9018f80f6156c9af28daa",
+    "edges": "f3c3aeec27afa4389cd5042fabd21585804cf41506dce79df7ee0c74a81f2fb0",
+    "selector": "eb86f704344bf4e6fd85fb5e1c900ac838900c16f4b2693c59f4b7e4a19041eb",
+    "native_library": "8b881f6089cfc88632ee79c11c7380f51e66b7f3892ddbb082f9c67a832f3974"
+  },
+  "contexts_sha256": "d2adcc795f11d48bf719bff6f5fa8a7302580be1b4752f20f874844baf032ade",
+  "retrieval_only": true,
+  "adaptive_context_reuse": "C7 selects before AGP queries and copies the chosen fixed arm's ranking/context; its query_seconds is that arm's measured query time, not an additional executed query",
+  "timing_caveat": "first query for each pair includes lazy native graph initialization"
+}
