@@ -1,0 +1,614 @@
+[
+  {
+    "id": "eight_eval_direct_01",
+    "question": "Which pages directly neighbor 701st Military Police Battalion",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_11314"
+    ],
+    "relevant_node_ids": [
+      "fb_2442",
+      "fb_10303",
+      "fb_11323",
+      "fb_14497"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "eight_eval_direct_02",
+    "question": "Which pages directly neighbor صدى الملاعب",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_9765"
+    ],
+    "relevant_node_ids": [
+      "fb_281",
+      "fb_1642",
+      "fb_6654",
+      "fb_11447",
+      "fb_15062",
+      "fb_18070",
+      "fb_21382"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "eight_eval_direct_03",
+    "question": "Which pages directly neighbor Sören Link",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_19942"
+    ],
+    "relevant_node_ids": [
+      "fb_7860",
+      "fb_8351",
+      "fb_15523"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "eight_eval_direct_04",
+    "question": "Which pages directly neighbor Chris Ballard MPP",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_5028"
+    ],
+    "relevant_node_ids": [
+      "fb_1089",
+      "fb_2166",
+      "fb_3742",
+      "fb_7171",
+      "fb_11611",
+      "fb_13967"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "eight_eval_direct_05",
+    "question": "Which pages directly neighbor Chico Vigilante",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_21084"
+    ],
+    "relevant_node_ids": [
+      "fb_2664",
+      "fb_10284",
+      "fb_12555"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "eight_eval_direct_06",
+    "question": "Which pages directly neighbor Carrossel",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_3304"
+    ],
+    "relevant_node_ids": [
+      "fb_1644",
+      "fb_2440",
+      "fb_11320",
+      "fb_14121",
+      "fb_15529",
+      "fb_16284",
+      "fb_18324"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "eight_eval_direct_07",
+    "question": "Which pages directly neighbor Rainer Hable",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_7343"
+    ],
+    "relevant_node_ids": [
+      "fb_1342",
+      "fb_2916",
+      "fb_8377",
+      "fb_11121",
+      "fb_11403",
+      "fb_11712",
+      "fb_12064",
+      "fb_22453"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "eight_eval_direct_08",
+    "question": "Which pages directly neighbor AGT Auditions",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_6433"
+    ],
+    "relevant_node_ids": [
+      "fb_2365",
+      "fb_2828",
+      "fb_7956",
+      "fb_11890",
+      "fb_12677",
+      "fb_19696",
+      "fb_20310"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "eight_eval_direct_09",
+    "question": "Which pages directly neighbor Maron",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_19771"
+    ],
+    "relevant_node_ids": [
+      "fb_507",
+      "fb_6206",
+      "fb_14938",
+      "fb_18800",
+      "fb_20407"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "eight_eval_direct_10",
+    "question": "Which pages directly neighbor QuikTrip",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "fb_2801"
+    ],
+    "relevant_node_ids": [
+      "fb_2368",
+      "fb_3329",
+      "fb_4384",
+      "fb_16566",
+      "fb_19885",
+      "fb_21807"
+    ],
+    "generation_rule": "All graph nodes adjacent to the seed page."
+  },
+  {
+    "id": "eight_eval_comparison_01",
+    "question": "Which pages are liked by both Anne Arundel County Police Department and Mary Ann Lisanti",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_9844",
+      "fb_5509"
+    ],
+    "relevant_node_ids": [
+      "fb_21315",
+      "fb_21351"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "eight_eval_comparison_02",
+    "question": "Which pages are liked by both Institutul Polonez / Instytut Polski w Bukareszcie and Reprezentanta Permanenta a Romaniei pe langa UE",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_3971",
+      "fb_3487"
+    ],
+    "relevant_node_ids": [
+      "fb_8160",
+      "fb_18827"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "eight_eval_comparison_03",
+    "question": "Which pages are liked by both Primer Plano and Cocineros Chilenos",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_4905",
+      "fb_17754"
+    ],
+    "relevant_node_ids": [
+      "fb_11645",
+      "fb_14844"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "eight_eval_comparison_04",
+    "question": "Which pages are liked by both Alpha Company, 602D ASB, 2CAB, 2ID and 319th MPAD",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_9232",
+      "fb_301"
+    ],
+    "relevant_node_ids": [
+      "fb_2442",
+      "fb_14497"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "eight_eval_comparison_05",
+    "question": "Which pages are liked by both Rehman Chishti and Ben Howlett",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_21049",
+      "fb_10602"
+    ],
+    "relevant_node_ids": [
+      "fb_6848",
+      "fb_16809"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "eight_eval_comparison_06",
+    "question": "Which pages are liked by both Mario D. Barletta and G20 Argentina",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_16625",
+      "fb_18318"
+    ],
+    "relevant_node_ids": [
+      "fb_1408",
+      "fb_1722",
+      "fb_5049"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "eight_eval_comparison_07",
+    "question": "Which pages are liked by both Kirstin Korte and Thorsten Hoffmann",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_21825",
+      "fb_22407"
+    ],
+    "relevant_node_ids": [
+      "fb_5547",
+      "fb_20415"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "eight_eval_comparison_08",
+    "question": "Which pages are liked by both Atifete Jahjaga and 35th Infantry Division",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_16179",
+      "fb_10698"
+    ],
+    "relevant_node_ids": [
+      "fb_11467",
+      "fb_15468"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "eight_eval_comparison_09",
+    "question": "Which pages are liked by both Anandiben Patel and Rajiv Pratap Rudy",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_3983",
+      "fb_17094"
+    ],
+    "relevant_node_ids": [
+      "fb_4913",
+      "fb_8257"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "eight_eval_comparison_10",
+    "question": "Which pages are liked by both Transport Accident Commission (TAC) and Museums Victoria",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "fb_7390",
+      "fb_9412"
+    ],
+    "relevant_node_ids": [
+      "fb_7983",
+      "fb_11544",
+      "fb_11842"
+    ],
+    "generation_rule": "The intersection of the two seed pages' direct-neighbor sets."
+  },
+  {
+    "id": "eight_eval_path_01",
+    "question": "Which two intermediate pages, in order, connect Mulberry to Franco Sarto along their unique shortest path in the graph?",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_18639",
+      "fb_484"
+    ],
+    "relevant_node_ids": [
+      "fb_4111",
+      "fb_9992"
+    ],
+    "generation_rule": "The two internal nodes, in traversal order, on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "eight_eval_path_02",
+    "question": "Which two intermediate pages, in order, connect AM Joy on MSNBC to Charlie Rose along their unique shortest path in the graph?",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_5978",
+      "fb_8841"
+    ],
+    "relevant_node_ids": [
+      "fb_1418",
+      "fb_19092"
+    ],
+    "generation_rule": "The two internal nodes, in traversal order, on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "eight_eval_path_03",
+    "question": "Which two intermediate pages, in order, connect Lucho Bugallo to Seinfeld along their unique shortest path in the graph?",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_21402",
+      "fb_3589"
+    ],
+    "relevant_node_ids": [
+      "fb_3861",
+      "fb_12005"
+    ],
+    "generation_rule": "The two internal nodes, in traversal order, on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "eight_eval_path_04",
+    "question": "Which two intermediate pages, in order, connect Alfredo Barnechea to Estás en Todas along their unique shortest path in the graph?",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_10537",
+      "fb_9433"
+    ],
+    "relevant_node_ids": [
+      "fb_16070",
+      "fb_5713"
+    ],
+    "generation_rule": "The two internal nodes, in traversal order, on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "eight_eval_path_05",
+    "question": "Which two intermediate pages, in order, connect Fútbol en América to Metro de Lima y Callao along their unique shortest path in the graph?",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_22136",
+      "fb_11275"
+    ],
+    "relevant_node_ids": [
+      "fb_5713",
+      "fb_13888"
+    ],
+    "generation_rule": "The two internal nodes, in traversal order, on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "eight_eval_path_06",
+    "question": "Which two intermediate pages, in order, connect אילן גילאון to הסניגוריה הציבורית along their unique shortest path in the graph?",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_11531",
+      "fb_18213"
+    ],
+    "relevant_node_ids": [
+      "fb_13059",
+      "fb_8248"
+    ],
+    "generation_rule": "The two internal nodes, in traversal order, on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "eight_eval_path_07",
+    "question": "Which two intermediate pages, in order, connect Sven Volmering to Thomas Stelzer along their unique shortest path in the graph?",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_9847",
+      "fb_18426"
+    ],
+    "relevant_node_ids": [
+      "fb_11514",
+      "fb_4536"
+    ],
+    "generation_rule": "The two internal nodes, in traversal order, on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "eight_eval_path_08",
+    "question": "Which two intermediate pages, in order, connect Detto Fatto to Ambassade de France à Bangui along their unique shortest path in the graph?",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_5065",
+      "fb_12832"
+    ],
+    "relevant_node_ids": [
+      "fb_18690",
+      "fb_20308"
+    ],
+    "generation_rule": "The two internal nodes, in traversal order, on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "eight_eval_path_09",
+    "question": "Which two intermediate pages, in order, connect Hay una cosa que te quiero decir to NCIS: Los Angeles along their unique shortest path in the graph?",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_15659",
+      "fb_20934"
+    ],
+    "relevant_node_ids": [
+      "fb_6558",
+      "fb_17476"
+    ],
+    "generation_rule": "The two internal nodes, in traversal order, on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "eight_eval_path_10",
+    "question": "Which two intermediate pages, in order, connect Congressman G. K. Butterfield to Arkansas Auditor of State Andrea Lea along their unique shortest path in the graph?",
+    "question_type": "path",
+    "seed_node_ids": [
+      "fb_3018",
+      "fb_15509"
+    ],
+    "relevant_node_ids": [
+      "fb_3935",
+      "fb_20743"
+    ],
+    "generation_rule": "The two internal nodes, in traversal order, on the unique shortest path of exactly three edges."
+  },
+  {
+    "id": "eight_eval_similarity_01",
+    "question": "Which pages are in the same dataset category (company) as Topaz Energy and can be reached through exactly one intermediate page, but are not directly connected to Topaz Energy?",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_13023"
+    ],
+    "relevant_node_ids": [
+      "fb_2577",
+      "fb_2597",
+      "fb_17017",
+      "fb_17560",
+      "fb_18962"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "eight_eval_similarity_02",
+    "question": "Which pages are in the same dataset category (politician) as Markéta Pekarová Adamová and can be reached through exactly one intermediate page, but are not directly connected to Markéta Pekarová Adamová?",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_7485"
+    ],
+    "relevant_node_ids": [
+      "fb_6093",
+      "fb_11261",
+      "fb_14650",
+      "fb_19847",
+      "fb_19877",
+      "fb_21930"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "eight_eval_similarity_03",
+    "question": "Which pages are in the same dataset category (politician) as Saad Hariri and can be reached through exactly one intermediate page, but are not directly connected to Saad Hariri?",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_8931"
+    ],
+    "relevant_node_ids": [
+      "fb_2883",
+      "fb_5542",
+      "fb_7157",
+      "fb_11611",
+      "fb_13468"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "eight_eval_similarity_04",
+    "question": "Which pages are in the same dataset category (company) as IBM Careers & Jobs Israel and can be reached through exactly one intermediate page, but are not directly connected to IBM Careers & Jobs Israel?",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_4223"
+    ],
+    "relevant_node_ids": [
+      "fb_9091",
+      "fb_13979",
+      "fb_15173"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "eight_eval_similarity_05",
+    "question": "Which pages are in the same dataset category (politician) as 陳尚志 and can be reached through exactly one intermediate page, but are not directly connected to 陳尚志?",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_4679"
+    ],
+    "relevant_node_ids": [
+      "fb_2876",
+      "fb_5712",
+      "fb_14304",
+      "fb_18402",
+      "fb_18804"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "eight_eval_similarity_06",
+    "question": "Which pages are in the same dataset category (company) as Claro Honduras and can be reached through exactly one intermediate page, but are not directly connected to Claro Honduras?",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_18362"
+    ],
+    "relevant_node_ids": [
+      "fb_13911",
+      "fb_17154",
+      "fb_19288"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "eight_eval_similarity_07",
+    "question": "Which pages are in the same dataset category (company) as Lidl Cyprus and can be reached through exactly one intermediate page, but are not directly connected to Lidl Cyprus?",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_20728"
+    ],
+    "relevant_node_ids": [
+      "fb_4828",
+      "fb_7476",
+      "fb_12059",
+      "fb_14146"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "eight_eval_similarity_08",
+    "question": "Which pages are in the same dataset category (tvshow) as Casseta & Planeta - Oficial and can be reached through exactly one intermediate page, but are not directly connected to Casseta & Planeta - Oficial?",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_1541"
+    ],
+    "relevant_node_ids": [
+      "fb_921",
+      "fb_2042",
+      "fb_4364",
+      "fb_6534",
+      "fb_11475",
+      "fb_11766",
+      "fb_19937",
+      "fb_20034"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "eight_eval_similarity_09",
+    "question": "Which pages are in the same dataset category (company) as Tintas Coral and can be reached through exactly one intermediate page, but are not directly connected to Tintas Coral?",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_379"
+    ],
+    "relevant_node_ids": [
+      "fb_701",
+      "fb_1889",
+      "fb_3425",
+      "fb_3770",
+      "fb_6340",
+      "fb_6932",
+      "fb_8060",
+      "fb_9692",
+      "fb_10390",
+      "fb_11332"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "eight_eval_similarity_10",
+    "question": "Which pages are in the same dataset category (tvshow) as Balitang Amianan and can be reached through exactly one intermediate page, but are not directly connected to Balitang Amianan?",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "fb_20761"
+    ],
+    "relevant_node_ids": [
+      "fb_3794",
+      "fb_4692",
+      "fb_15819",
+      "fb_18349",
+      "fb_18713"
+    ],
+    "generation_rule": "Same-category nodes at shortest-path distance exactly two from the seed."
+  }
+]

@@ -1,0 +1,99 @@
+{
+  "created_utc": "2026-09-19T13:48:57.158482+00:00",
+  "status": "candidate_pending_independent_criteria_review",
+  "random_seed": 20260919,
+  "questions_per_type": 10,
+  "question_count": 40,
+  "type_counts": {
+    "direct": 10,
+    "comparison": 10,
+    "path": 10,
+    "similarity": 10
+  },
+  "question_types": [
+    "direct",
+    "comparison",
+    "path",
+    "similarity"
+  ],
+  "prior_question_counts": {
+    "data/facebook_large/facebook_questions_dev.json": 20,
+    "data/facebook_large/facebook_questions_test.json": 40
+  },
+  "prior_unique_seed_count": 90,
+  "candidate_unique_seed_count": 60,
+  "seed_overlap_with_prior": 0,
+  "question_text_overlap_with_prior": 0,
+  "label_source": "deterministic graph topology; no AGP or LLM outputs used",
+  "source_sha256": {
+    "nodes": "a5a89bb0e0bf77eaaff9059a784da0cd5b930ba5e3d9018f80f6156c9af28daa",
+    "edges": "f3c3aeec27afa4389cd5042fabd21585804cf41506dce79df7ee0c74a81f2fb0",
+    "targets": "7bd96eafea3c2ca40f44bfa9e73642194696c21e38c7b29ed409c32ad14075cd",
+    "excluded:data/facebook_large/facebook_questions_dev.json": "cf0df205bca318f8650a8c9eb4e9406a4a94c4a686af737d6da475be415d6d48",
+    "excluded:data/facebook_large/facebook_questions_test.json": "988a6882bf9bd5ff0457097a837f8f6933b0d13ddc26fe009404705ea0f8e211"
+  },
+  "questions_sha256": "1c01d1714c190f2b39ab1be26e15bf37ba32f8d8ffe38abc70d7bd078a11bb44",
+  "criteria_review_sha256": "1a18f849d2a28869e61f673f012cf1f1fd187691b299e65bb8cb41f401125315",
+  "revision_from": "data/facebook_large/eight_condition_eval_candidate_v3_20260919",
+  "revision_changes": [
+    "Replaced all five questions containing a [page ID] suffix in an expected answer."
+  ],
+  "reordered_path_examples": [
+    "eight_eval_path_04",
+    "eight_eval_path_06",
+    "eight_eval_path_07",
+    "eight_eval_path_08"
+  ],
+  "previous_questions_sha256": "bcea77e91787398ead311003e45b48f9f4374ca3a6587db70e351c959787f44a",
+  "previous_criteria_review_sha256": "862a889e604f53fe4ea54a0b6ae0e6af60ad185f2961fca4010b261dd7d1725e",
+  "replacement_selection_rule": "Exclude prior development/test and all v3 seed pages; use deterministic graph-generator order; reject suffixed seed/answer titles; preserve company category for similarity questions; require titles of at least five characters and at most eight answers for similarity replacements.",
+  "replaced_examples": [
+    {
+      "example_id": "eight_eval_direct_09",
+      "old_seed_ids": [
+        "fb_14099"
+      ],
+      "new_seed_ids": [
+        "fb_19771"
+      ]
+    },
+    {
+      "example_id": "eight_eval_path_08",
+      "old_seed_ids": [
+        "fb_5175",
+        "fb_21916"
+      ],
+      "new_seed_ids": [
+        "fb_5065",
+        "fb_12832"
+      ]
+    },
+    {
+      "example_id": "eight_eval_similarity_01",
+      "old_seed_ids": [
+        "fb_7831"
+      ],
+      "new_seed_ids": [
+        "fb_13023"
+      ]
+    },
+    {
+      "example_id": "eight_eval_similarity_04",
+      "old_seed_ids": [
+        "fb_19078"
+      ],
+      "new_seed_ids": [
+        "fb_4223"
+      ]
+    },
+    {
+      "example_id": "eight_eval_similarity_06",
+      "old_seed_ids": [
+        "fb_10321"
+      ],
+      "new_seed_ids": [
+        "fb_18362"
+      ]
+    }
+  ]
+}

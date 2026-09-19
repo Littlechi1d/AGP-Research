@@ -159,9 +159,11 @@ declaring a winner from raw mean scores alone.
       `results/facebook_eight_contexts_char3000_dev_final_20260919/`.
 - [ ] Independently check the new evaluation questions and answer criteria.
       A 40-question topology-labelled candidate set now exists in
-      `data/facebook_large/eight_condition_eval_candidate_v2_20260919/`, with zero
+      `data/facebook_large/eight_condition_eval_candidate_v4_20260919/`, with zero
       seed or exact-text overlap against the prior development and test sets.
-      Its similarity questions use plain-language wording for distance two.
+      V3/V4 revise wording, path-answer order, and five awkward page titles;
+      their manifest files preserve the revision trail. Similarity questions
+      use plain-language wording for distance two.
       The blank review form must be completed before this item can be checked.
 - [ ] Conduct a development smoke run and resolve failures before freezing.
 - [ ] Freeze, execute, rate, and analyze the new final evaluation once.

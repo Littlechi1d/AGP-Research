@@ -1,0 +1,51 @@
+{
+  "created_utc": "2026-09-19T13:27:56.327844+00:00",
+  "status": "candidate_pending_independent_criteria_review",
+  "random_seed": 20260919,
+  "questions_per_type": 10,
+  "question_count": 40,
+  "type_counts": {
+    "direct": 10,
+    "comparison": 10,
+    "path": 10,
+    "similarity": 10
+  },
+  "question_types": [
+    "direct",
+    "comparison",
+    "path",
+    "similarity"
+  ],
+  "prior_question_counts": {
+    "data/facebook_large/facebook_questions_dev.json": 20,
+    "data/facebook_large/facebook_questions_test.json": 40
+  },
+  "prior_unique_seed_count": 90,
+  "candidate_unique_seed_count": 60,
+  "seed_overlap_with_prior": 0,
+  "question_text_overlap_with_prior": 0,
+  "label_source": "deterministic graph topology; no AGP or LLM outputs used",
+  "source_sha256": {
+    "nodes": "a5a89bb0e0bf77eaaff9059a784da0cd5b930ba5e3d9018f80f6156c9af28daa",
+    "edges": "f3c3aeec27afa4389cd5042fabd21585804cf41506dce79df7ee0c74a81f2fb0",
+    "targets": "7bd96eafea3c2ca40f44bfa9e73642194696c21e38c7b29ed409c32ad14075cd",
+    "excluded:data/facebook_large/facebook_questions_dev.json": "cf0df205bca318f8650a8c9eb4e9406a4a94c4a686af737d6da475be415d6d48",
+    "excluded:data/facebook_large/facebook_questions_test.json": "988a6882bf9bd5ff0457097a837f8f6933b0d13ddc26fe009404705ea0f8e211"
+  },
+  "questions_sha256": "bcea77e91787398ead311003e45b48f9f4374ca3a6587db70e351c959787f44a",
+  "criteria_review_sha256": "862a889e604f53fe4ea54a0b6ae0e6af60ad185f2961fca4010b261dd7d1725e",
+  "revision_from": "data/facebook_large/eight_condition_eval_candidate_v2_20260919",
+  "revision_changes": [
+    "Clarified all path questions to request two intermediate pages in traversal order.",
+    "Clarified all similarity questions to mean the explicit dataset category.",
+    "Ordered four path answer lists from first named seed to second named seed."
+  ],
+  "reordered_path_examples": [
+    "eight_eval_path_04",
+    "eight_eval_path_06",
+    "eight_eval_path_07",
+    "eight_eval_path_08"
+  ],
+  "previous_questions_sha256": "bb9d0776017450276576eaf40ccd86a30a303d096a123cecc438695fd10a4e31",
+  "previous_criteria_review_sha256": "705c0268c605709eef2059116bad2f576938d67301ab00318dfc1e93e6fbb508"
+}

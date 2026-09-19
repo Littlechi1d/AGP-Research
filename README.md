@@ -403,12 +403,15 @@ checks that the local model accepts the request.
 
 ### New eight-condition evaluation candidate
 
-The [revised candidate set](data/facebook_large/eight_condition_eval_candidate_v2_20260919/REPORT.md)
+The [current candidate set](data/facebook_large/eight_condition_eval_candidate_v4_20260919/REPORT.md)
 contains 40 new topology-labelled questions, ten of each type. Its seed pages
 and exact question texts are disjoint from both earlier splits. Similarity
-questions describe the relation in ordinary language: pages of the same type
-reached through one other page, without a direct connection. To regenerate
-it into a fresh directory without calling AGP or an LLM:
+questions describe the relation in ordinary language: pages of the same dataset
+category reached through one other page, without a direct connection. V3
+clarified path-answer order, and V4 replaced five questions with artificial
+`[page ID]` suffixes in their expected titles. V4 remains unreviewed; V2 and
+V3 are retained as its revision trail. The generator command below reproduces
+the original V2 candidate, not the subsequent reviewed-in-code revisions:
 
 ```bash
 python3 scripts/prepare_eight_condition_eval.py \
