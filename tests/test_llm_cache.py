@@ -70,6 +70,33 @@ class LLMCacheTest(unittest.TestCase):
             )
             self.assertNotEqual(json_key, text_key)
 
+    def test_output_limit_is_sent_logged_and_part_of_cache_identity(self):
+        result = {
+            "choices": [{"message": {"content": "short"}, "finish_reason": "length"}],
+            "usage": {"prompt_tokens": 3, "completion_tokens": 8, "total_tokens": 11},
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            client = OpenAICompatibleClient(
+                api_key="test-key", model="test-model", cache_dir=root / "cache"
+            )
+            urlopen = Mock(return_value=FakeResponse(result))
+            with patch("agp_research.llm.urllib.request.urlopen", urlopen):
+                self.assertEqual(client.complete_text("system", "question", max_tokens=8), "short")
+                first_key = client.last_call["cache_key"]
+                self.assertEqual(client.last_call["finish_reason"], "length")
+                self.assertEqual(client.last_call["max_tokens"], 8)
+                payload = json.loads(urlopen.call_args.args[0].data)
+                self.assertEqual(payload["max_tokens"], 8)
+                self.assertEqual(client.complete_text("system", "question", max_tokens=8), "short")
+                self.assertTrue(client.last_call["cache_hit"])
+                self.assertEqual(client.last_call["finish_reason"], "length")
+                self.assertEqual(client.complete_text("system", "question", max_tokens=16), "short")
+                self.assertNotEqual(client.last_call["cache_key"], first_key)
+            self.assertEqual(urlopen.call_count, 2)
+            with self.assertRaisesRegex(ValueError, "positive integer"):
+                client.complete_text("system", "question", max_tokens=0)
+
 
 if __name__ == "__main__":
     unittest.main()

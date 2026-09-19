@@ -10,7 +10,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from agp_research.eight_condition_answers import run_eight_condition_answers
+from agp_research.eight_condition_answers import (
+    DEFAULT_MAX_ANSWER_TOKENS,
+    run_eight_condition_answers,
+)
 from agp_research.graph import KnowledgeGraph
 from agp_research.llm import OpenAICompatibleClient
 
@@ -24,6 +27,8 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--random-seed", type=int, default=90055)
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--max-answer-tokens", type=int, default=DEFAULT_MAX_ANSWER_TOKENS,
+                        help="Maximum generated tokens per answer (default: 256)")
     args = parser.parse_args()
     client = OpenAICompatibleClient.from_environment()
     if client is None:
@@ -33,6 +38,7 @@ def main() -> None:
         KnowledgeGraph.from_csv(args.nodes, args.edges),
         args.questions, args.contexts, args.output,
         random_seed=args.random_seed,
+        max_answer_tokens=args.max_answer_tokens,
         limit=args.limit,
         input_paths={"nodes": args.nodes, "edges": args.edges},
     )

@@ -24,6 +24,7 @@ ANSWER_SYSTEM = (
     "If no context is supplied, answer from your own knowledge. "
     "If the available information is insufficient, say so explicitly."
 )
+DEFAULT_MAX_ANSWER_TOKENS = 256
 
 
 def _hash(path: Path) -> str:
@@ -73,6 +74,7 @@ def run_eight_condition_answers(
     output_dir: str | Path,
     *,
     random_seed: int = 90055,
+    max_answer_tokens: int = DEFAULT_MAX_ANSWER_TOKENS,
     limit: int | None = None,
     input_paths: dict[str, str | Path] | None = None,
 ) -> dict[str, Any]:
@@ -82,6 +84,9 @@ def run_eight_condition_answers(
         raise FileExistsError(f"refusing to overwrite existing output: {output}")
     if limit is not None and limit <= 0:
         raise ValueError("limit must be positive")
+    if (not isinstance(max_answer_tokens, int) or isinstance(max_answer_tokens, bool)
+            or max_answer_tokens <= 0):
+        raise ValueError("max_answer_tokens must be a positive integer")
     questions_file = Path(questions_path)
     contexts_file = Path(contexts_path)
     questions = json.loads(questions_file.read_text(encoding="utf-8"))
@@ -119,7 +124,7 @@ def run_eight_condition_answers(
     faithfulness_totals = {condition: 0.0 for condition in CONDITION_IDS[1:]}
     prompt_tokens = {condition: 0 for condition in CONDITION_IDS[:7]}
     completion_tokens = {condition: 0 for condition in CONDITION_IDS[:7]}
-    request_count = cache_hits = 0
+    request_count = cache_hits = length_limited_answers = 0
     with tempfile.TemporaryDirectory(prefix="agp-eight-answers-", dir=output.parent) as temporary:
         temporary_path = Path(temporary)
         key: dict[str, dict[str, str]] = {}
@@ -139,10 +144,15 @@ def run_eight_condition_answers(
                     user = f"Question: {question['question']}"
                     if condition != "C0":
                         user += f"\n\nGraph context:\n{graph_context}"
-                    answers[condition] = client.complete_text(ANSWER_SYSTEM, user)
+                    answers[condition] = client.complete_text(
+                        ANSWER_SYSTEM, user, max_tokens=max_answer_tokens
+                    )
                     calls[condition] = dict(client.last_call)
                     request_count += int(bool(calls[condition].get("network_request", True)))
                     cache_hits += int(bool(calls[condition].get("cache_hit", False)))
+                    length_limited_answers += int(
+                        calls[condition].get("finish_reason") == "length"
+                    )
                     prompt_tokens[condition] += calls[condition].get("prompt_tokens") or 0
                     completion_tokens[condition] += calls[condition].get("completion_tokens") or 0
 
@@ -255,6 +265,8 @@ def run_eight_condition_answers(
             "model": client.model,
             "base_url": client.base_url,
             "temperature": 0,
+            "max_answer_tokens": max_answer_tokens,
+            "length_limited_answers": length_limited_answers,
             "random_seed": random_seed,
             "answer_system_prompt_sha256": hashlib.sha256(ANSWER_SYSTEM.encode()).hexdigest(),
             "generation_calls_per_question": 7,

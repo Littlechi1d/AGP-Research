@@ -100,9 +100,12 @@ difference is whether and which graph context is supplied. Record input/output
 tokens, answer latency, and cache status separately from retrieval latency.
 The implemented answer runner calls the model for C0–C6 and copies C7 from its
 chosen fixed arm, guaranteeing identical text for identical evidence while
-avoiding a redundant or stochastic extra call. It does not yet set an explicit
-output-token cap; all arms use the same provider default. Choose and implement
-an explicit cap, or document the default, before final evaluation.
+avoiding a redundant or stochastic extra call. It now requests a common
+256-token output ceiling (override with `--max-answer-tokens`) and records the
+requested ceiling plus the provider's finish reason per call. Any answer with
+`finish_reason=length` must be flagged as truncated in analysis. The one-question
+development smoke check had zero such answers; this does not guarantee the
+same on a larger evaluation set.
 
 Primary answer measures: blinded human correctness and completeness ratings
 against independently prepared answer criteria. Reviewers also check factual
@@ -148,6 +151,8 @@ declaring a winner from raw mean scores alone.
       manifest, input hashes, and refusal to overwrite prior results.
 - [x] Add an eight-condition answer runner and blind-review form using saved
       contexts, with a separate context-aware factual-support review panel.
+- [x] Add and development-test a common 256-token answer ceiling, including
+      cache separation by ceiling and provider finish-reason logging.
 - [x] Add and development-test an optional 3,000-character sensitivity ceiling.
       It is not a tokenizer-level cap; choose the primary-versus-sensitivity
       analysis before final evaluation. See

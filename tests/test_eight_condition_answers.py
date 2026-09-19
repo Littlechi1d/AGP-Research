@@ -30,8 +30,8 @@ class FakeClient:
         self.calls = []
         self.last_call = {}
 
-    def complete_text(self, system, user):
-        self.calls.append((system, user))
+    def complete_text(self, system, user, *, max_tokens=None):
+        self.calls.append((system, user, max_tokens))
         self.last_call = {
             "network_request": True, "cache_hit": False,
             "prompt_tokens": 10, "completion_tokens": 2,
@@ -78,8 +78,11 @@ class EightConditionAnswersTest(unittest.TestCase):
                 client, self.graph, questions, contexts / "contexts.jsonl", output
             )
             self.assertEqual(len(client.calls), 7)
+            self.assertEqual({call[2] for call in client.calls}, {256})
             self.assertEqual(summary["question_count"], 1)
             self.assertEqual(summary["network_requests"], 7)
+            self.assertEqual(summary["max_answer_tokens"], 256)
+            self.assertEqual(summary["length_limited_answers"], 0)
             row = json.loads((output / "answers.jsonl").read_text())
             self.assertEqual(tuple(row["answers"]), tuple(f"C{i}" for i in range(8)))
             self.assertEqual(row["adaptive_reused_from"], "C3")
@@ -137,6 +140,18 @@ class EightConditionAnswersTest(unittest.TestCase):
             context_file.write_text(row + row)
             with self.assertRaisesRegex(ValueError, "duplicate"):
                 load_eight_contexts(context_file)
+
+    def test_invalid_output_limit_fails_before_model_calls(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            questions, contexts = self._inputs(root)
+            client = FakeClient()
+            with self.assertRaisesRegex(ValueError, "max_answer_tokens"):
+                run_eight_condition_answers(
+                    client, self.graph, questions, contexts / "contexts.jsonl",
+                    root / "answers", max_answer_tokens=0,
+                )
+            self.assertEqual(client.calls, [])
 
 
 if __name__ == "__main__":

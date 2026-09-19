@@ -395,7 +395,10 @@ No contexts have been scored as answers in a final study. A one-question
 development answer smoke run using the earlier uncapped contexts is documented in
 [this report](results/facebook_eight_answers_smoke_dev_20260919/REPORT.md). The
 eight-answer script creates condition-labelled raw answers, randomized A–H
-review copies, separate answer keys, and blank rating forms.
+review copies, separate answer keys, and blank rating forms. It requests a
+shared 256-token output ceiling by default (`--max-answer-tokens` overrides it)
+and records each call's finish reason. The [capped development smoke report](results/facebook_eight_answers_capped_smoke_dev_20260919/REPORT.md)
+checks that the local model accepts the request.
 
 ## Tests
 
@@ -406,7 +409,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 81 tests
+Ran 83 tests
 OK
 ```
 

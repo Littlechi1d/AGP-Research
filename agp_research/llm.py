@@ -62,10 +62,20 @@ class OpenAICompatibleClient:
         content = self._request(system, user, json_mode=True)
         return json.loads(content)
 
-    def complete_text(self, system: str, user: str) -> str:
-        return self._request(system, user, json_mode=False)
+    def complete_text(
+        self, system: str, user: str, *, max_tokens: int | None = None
+    ) -> str:
+        return self._request(system, user, json_mode=False, max_tokens=max_tokens)
 
-    def _request(self, system: str, user: str, *, json_mode: bool) -> str:
+    def _request(
+        self, system: str, user: str, *, json_mode: bool,
+        max_tokens: int | None = None,
+    ) -> str:
+        if max_tokens is not None and (
+            not isinstance(max_tokens, int) or isinstance(max_tokens, bool)
+            or max_tokens <= 0
+        ):
+            raise ValueError("max_tokens must be a positive integer")
         payload: dict = {
             "model": self.model,
             "temperature": 0,
@@ -76,6 +86,8 @@ class OpenAICompatibleClient:
         }
         if json_mode:
             payload["response_format"] = {"type": "json_object"}
+        if max_tokens is not None:
+            payload["max_tokens"] = max_tokens
         cache_key = self._cache_key(payload, system, user, json_mode)
         cached = self._read_cache(cache_key)
         if cached is not None:
@@ -86,6 +98,8 @@ class OpenAICompatibleClient:
                 elapsed_seconds=0.0,
                 usage=cached.get("usage"),
                 status="ok",
+                max_tokens=max_tokens,
+                finish_reason=cached.get("finish_reason"),
             )
             return str(cached["content"])
 
@@ -111,11 +125,14 @@ class OpenAICompatibleClient:
                 elapsed_seconds=time.perf_counter() - started,
                 usage=None,
                 status=f"http_error_{error.code}",
+                max_tokens=max_tokens,
+                finish_reason=None,
             )
             raise RuntimeError(f"LLM API returned HTTP {error.code}: {detail}") from error
         content = str(result["choices"][0]["message"]["content"])
+        finish_reason = result["choices"][0].get("finish_reason")
         usage = result.get("usage")
-        self._write_cache(cache_key, content, usage)
+        self._write_cache(cache_key, content, usage, finish_reason)
         self._record_call(
             cache_key=cache_key,
             json_mode=json_mode,
@@ -123,6 +140,8 @@ class OpenAICompatibleClient:
             elapsed_seconds=time.perf_counter() - started,
             usage=usage,
             status="ok",
+            max_tokens=max_tokens,
+            finish_reason=finish_reason,
         )
         return content
 
@@ -138,6 +157,8 @@ class OpenAICompatibleClient:
             "system": system,
             "user": user,
         }
+        if "max_tokens" in payload:
+            identity["max_tokens"] = payload["max_tokens"]
         encoded = json.dumps(identity, sort_keys=True, ensure_ascii=False).encode()
         return hashlib.sha256(encoded).hexdigest()
 
@@ -153,14 +174,19 @@ class OpenAICompatibleClient:
             return None
         return data if isinstance(data, dict) and "content" in data else None
 
-    def _write_cache(self, cache_key: str, content: str, usage: Any) -> None:
+    def _write_cache(
+        self, cache_key: str, content: str, usage: Any,
+        finish_reason: str | None,
+    ) -> None:
         if self.cache_dir is None:
             return
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         path = self.cache_dir / f"{cache_key}.json"
         temporary = path.with_suffix(".tmp")
         temporary.write_text(
-            json.dumps({"content": content, "usage": usage}, ensure_ascii=False),
+            json.dumps({
+                "content": content, "usage": usage, "finish_reason": finish_reason,
+            }, ensure_ascii=False),
             encoding="utf-8",
         )
         temporary.replace(path)
@@ -174,6 +200,8 @@ class OpenAICompatibleClient:
         elapsed_seconds: float,
         usage: Any,
         status: str,
+        max_tokens: int | None = None,
+        finish_reason: str | None = None,
     ) -> None:
         usage_data = usage if isinstance(usage, dict) else {}
         record = {
@@ -186,6 +214,8 @@ class OpenAICompatibleClient:
             "network_request": not cache_hit,
             "elapsed_seconds": elapsed_seconds,
             "status": status,
+            "max_tokens": max_tokens,
+            "finish_reason": finish_reason,
             "prompt_tokens": usage_data.get("prompt_tokens"),
             "completion_tokens": usage_data.get("completion_tokens"),
             "total_tokens": usage_data.get("total_tokens"),
