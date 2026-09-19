@@ -35,19 +35,36 @@ def format_study_context(
     graph: KnowledgeGraph,
     ranked_nodes: list[RankedNode],
     seed_ids: list[str],
+    max_context_chars: int | None = None,
 ) -> str:
     """Use identical evidence formatting for all seven graph-backed arms.
 
     Seed-to-result edges are shown even when the seed is not itself in the ranked
     top 10. This lets the direct-neighbour arm expose *why* a page was retrieved.
     """
+    return _format_context(graph, ranked_nodes, seed_ids, max_context_chars)[0]
+
+
+def _format_context(
+    graph: KnowledgeGraph,
+    ranked_nodes: list[RankedNode],
+    seed_ids: list[str],
+    max_context_chars: int | None,
+) -> tuple[str, list[str]]:
     if not ranked_nodes:
-        return "No graph evidence was retrieved."
-    selected = {item.node.id for item in ranked_nodes}
-    seeds = set(seed_ids) & graph.nodes.keys()
+        return "No graph evidence was retrieved.", []
     lines = ["Retrieved entities:"]
+    displayed_ids: list[str] = []
     for item in ranked_nodes:
-        lines.append(f"- {item.node.title}: {item.node.description}")
+        line = f"- {item.node.title}: {item.node.description}"
+        if max_context_chars is not None and len("\n".join([*lines, line])) > max_context_chars:
+            break  # Keep ranked entities in order and never cut an evidence line.
+        lines.append(line)
+        displayed_ids.append(item.node.id)
+    if not displayed_ids:
+        raise ValueError("context cap cannot fit the highest-ranked entity line")
+    selected = set(displayed_ids)
+    seeds = set(seed_ids) & graph.nodes.keys()
 
     relationships = []
     seen: set[tuple[str, str, str]] = set()
@@ -63,13 +80,18 @@ def format_study_context(
             seen.add(key)
             relationships.append(edge)
     if relationships:
-        lines.append("Retrieved relationships:")
+        relationship_lines = []
         for edge in relationships:
-            lines.append(
+            line = (
                 f"- {graph.nodes[edge.source].title} -> "
                 f"{graph.nodes[edge.target].title}: {edge.description}"
             )
-    return "\n".join(lines)
+            proposed = [*lines, "Retrieved relationships:", *relationship_lines, line]
+            if max_context_chars is None or len("\n".join(proposed)) <= max_context_chars:
+                relationship_lines.append(line)
+        if relationship_lines:
+            lines.extend(["Retrieved relationships:", *relationship_lines])
+    return "\n".join(lines), displayed_ids
 
 
 def load_saved_keywords(path: str | Path) -> dict[str, list[str]]:
@@ -98,12 +120,21 @@ def _condition(
     *,
     pair: tuple[float, float] | None = None,
     reused_from: str | None = None,
+    max_context_chars: int | None = None,
 ) -> dict[str, Any]:
     if len(ranked_nodes) > AGP_STUDY_PARAMETERS.top_k:
         raise ValueError("retriever exceeded the shared 10-node context budget")
-    context = format_study_context(graph, ranked_nodes, seed_ids)
+    context, context_node_ids = _format_context(
+        graph, ranked_nodes, seed_ids, max_context_chars
+    )
+    full_context = (
+        _format_context(graph, ranked_nodes, seed_ids, None)[0]
+        if max_context_chars is not None else context
+    )
     return {
         "ranked_node_ids": [item.node.id for item in ranked_nodes],
+        "context_node_ids": context_node_ids,
+        "context_truncated": context != full_context,
         "scores": [item.score for item in ranked_nodes],
         "context": context,
         "context_characters": len(context),
@@ -124,6 +155,7 @@ def run_eight_condition_contexts(
     keyword_results_path: str | Path | None = None,
     input_paths: dict[str, str | Path] | None = None,
     limit: int | None = None,
+    max_context_chars: int | None = None,
 ) -> dict[str, Any]:
     """Save C0–C7 contexts atomically; never use relevance labels for retrieval."""
     output = Path(output_dir)
@@ -133,6 +165,8 @@ def run_eight_condition_contexts(
         raise ValueError("provide saved LLM keywords or an LLM client")
     if limit is not None and limit <= 0:
         raise ValueError("limit must be positive")
+    if max_context_chars is not None and max_context_chars < 512:
+        raise ValueError("max_context_chars must be at least 512")
     questions_file = Path(questions_path)
     questions = json.loads(questions_file.read_text(encoding="utf-8"))
     if limit is not None:
@@ -173,7 +207,8 @@ def run_eight_condition_contexts(
                 selector_seconds = time.perf_counter() - started
                 conditions: dict[str, dict[str, Any]] = {
                     "C0": {
-                        "ranked_node_ids": [], "scores": [], "context": "",
+                        "ranked_node_ids": [], "context_node_ids": [],
+                        "context_truncated": False, "scores": [], "context": "",
                         "context_characters": 0,
                         "query_seconds": 0.0, "pair": None, "reused_from": None,
                     }
@@ -184,14 +219,15 @@ def run_eight_condition_contexts(
                     graph, seed_ids, top_k=AGP_STUDY_PARAMETERS.top_k
                 )
                 conditions["C1"] = _condition(
-                    graph, neighbours, seed_ids, time.perf_counter() - started
+                    graph, neighbours, seed_ids, time.perf_counter() - started,
+                    max_context_chars=max_context_chars,
                 )
                 for arm, pair in FIXED_AGP_PAIRS.items():
                     started = time.perf_counter()
                     ranked = pool.query(seed_ids, pair)
                     conditions[arm] = _condition(
                         graph, ranked, seed_ids, time.perf_counter() - started,
-                        pair=pair,
+                        pair=pair, max_context_chars=max_context_chars,
                     )
 
                 chosen = conditions[selection.condition]
@@ -228,6 +264,11 @@ def run_eight_condition_contexts(
             "conditions": list(CONDITION_IDS),
             "fixed_pairs": FIXED_AGP_PAIRS,
             "agp_parameters": asdict(AGP_STUDY_PARAMETERS),
+            "max_context_chars": max_context_chars,
+            "context_budget_note": (
+                "Whole ranked entity and relationship lines only; this is a "
+                "character ceiling, not a tokenizer-level token ceiling."
+            ),
             "query_type": "S",
             "relative_error": 0.10,
             "match_threshold": 0.85,

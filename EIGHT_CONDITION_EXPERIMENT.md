@@ -68,10 +68,14 @@ experimental arms, **not** five values selected after looking at test scores.
 - Empty mapping or evidence: save an explicit empty-context result; never fall
   back to gold seeds or a different retriever.
 
-This is a **node-count** budget, not a strict token budget: descriptions and
-relationship counts may vary. Record prompt-token counts and context lengths,
-and report them as a potential confound. A later token-capped sensitivity check
-may be added if these lengths differ substantially.
+The primary runner has a **node-count** budget, not a strict token budget:
+descriptions and relationship counts may vary. An optional `--max-context-chars`
+development sensitivity run limits each graph context to complete ranked-entity
+and relationship lines. It records `context_node_ids` (entities actually shown),
+`context_truncated` (any omitted entity or relationship), and the configured
+character ceiling in the manifest. This is a character proxy, **not** a true
+token cap or equal-token allocation. Record actual prompt-token counts in the
+answer run and report remaining length differences as a confound.
 
 ## Adaptive `(a, b)` selector
 
@@ -94,6 +98,11 @@ generate eight answers with the same model, model file/quantization, temperature
 `0`, output limit, and substantive answer instruction. The only intended input
 difference is whether and which graph context is supplied. Record input/output
 tokens, answer latency, and cache status separately from retrieval latency.
+The implemented answer runner calls the model for C0–C6 and copies C7 from its
+chosen fixed arm, guaranteeing identical text for identical evidence while
+avoiding a redundant or stochastic extra call. It does not yet set an explicit
+output-token cap; all arms use the same provider default. Choose and implement
+an explicit cap, or document the default, before final evaluation.
 
 Primary answer measures: blinded human correctness and completeness ratings
 against independently prepared answer criteria. Reviewers also check factual
@@ -137,7 +146,12 @@ declaring a winner from raw mean scores alone.
       artifact and report in `results/facebook_agp_pair_selector_dev_20260919/`.
 - [x] Write one eight-condition retrieval-only context runner with an output
       manifest, input hashes, and refusal to overwrite prior results.
-- [ ] Generalize the two-condition answer runner and blind-review form to eight.
+- [x] Add an eight-condition answer runner and blind-review form using saved
+      contexts, with a separate context-aware factual-support review panel.
+- [x] Add and development-test an optional 3,000-character sensitivity ceiling.
+      It is not a tokenizer-level cap; choose the primary-versus-sensitivity
+      analysis before final evaluation. See
+      `results/facebook_eight_contexts_char3000_dev_final_20260919/`.
 - [ ] Prepare independently checked new evaluation questions and answer criteria.
 - [ ] Conduct a development smoke run and resolve failures before freezing.
 - [ ] Freeze, execute, rate, and analyze the new final evaluation once.

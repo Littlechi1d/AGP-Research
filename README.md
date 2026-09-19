@@ -63,6 +63,7 @@ Further documentation:
 | `agp_research/agp_pair_selector.py` | Question-type selector that chooses one of the five fixed AGP pairs. |
 | `scripts/tune_agp_pair_selector.py` | Scores five native pairs on development questions and validates C7 leave-one-out. |
 | `scripts/run_eight_condition_contexts.py` | Saves all eight retrieval contexts before any answer generation. |
+| `scripts/run_eight_condition_answers.py` | Generates answers from saved contexts and writes blinded A–H review forms. |
 | `agp_research/planner.py` | Extracts keywords and selects parameters. |
 | `agp_research/propagation.py` | Runs local Python graph propagation. |
 | `agp_research/paper_backend.py` | Calls the optional C++ backend. |
@@ -385,8 +386,16 @@ python3 scripts/run_eight_condition_contexts.py \
 Omit `--keyword-results` to call the configured LLM once per question for keyword
 extraction. The runner refuses to overwrite an output directory. See the
 [smoke report](results/facebook_eight_contexts_smoke_dev_20260919/REPORT.md)
-for the important node-versus-token-budget limitation; these contexts have not
-yet been scored as answers.
+for the important node-versus-token-budget limitation. Add
+`--max-context-chars 3000` for the optional development-tested character-ceiling
+sensitivity condition; it preserves complete evidence lines and records any
+truncation, but is not a true token ceiling. The 20-question development output
+is in `results/facebook_eight_contexts_char3000_dev_final_20260919/`.
+No contexts have been scored as answers in a final study. A one-question
+development answer smoke run using the earlier uncapped contexts is documented in
+[this report](results/facebook_eight_answers_smoke_dev_20260919/REPORT.md). The
+eight-answer script creates condition-labelled raw answers, randomized A–H
+review copies, separate answer keys, and blank rating forms.
 
 ## Tests
 
@@ -397,7 +406,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 49 tests
+Ran 81 tests
 OK
 ```
 

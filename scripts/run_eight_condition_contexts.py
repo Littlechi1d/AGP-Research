@@ -29,6 +29,8 @@ def main() -> None:
                         help="Use saved LLM keywords; otherwise call the configured model once per question")
     parser.add_argument("--native-library", type=Path, default=default_native_library())
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--max-context-chars", type=int,
+                        help="Optional per-arm character ceiling (minimum 512); not a token limit")
     args = parser.parse_args()
 
     client = None if args.keyword_results else OpenAICompatibleClient.from_environment()
@@ -46,6 +48,7 @@ def main() -> None:
                 "selector": args.selector, "native_library": args.native_library,
             },
             limit=args.limit,
+            max_context_chars=args.max_context_chars,
         )
     print(json.dumps(manifest, indent=2))
 
