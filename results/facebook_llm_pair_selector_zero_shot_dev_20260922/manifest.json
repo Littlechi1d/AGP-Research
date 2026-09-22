@@ -1,0 +1,36 @@
+{
+  "created_utc": "2026-09-22T04:38:38.982906+00:00",
+  "development_only": true,
+  "selector": "zero-shot question-only LLM pair selection",
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "base_url": "http://localhost:11434/v1",
+  "temperature": 0,
+  "system_prompt": "Choose one graph-propagation setting for retrieving context for a question.\nYou see only the question, not the graph, relevance labels, or retrieval scores.\nAvailable settings are C2: a=0,b=1; C3: a=0.25,b=0.75;\nC4: a=0.5,b=0.5; C5: a=0.75,b=0.25; C6: a=1,b=0.\nThe settings change how graph propagation weights nodes of different degree.\nThere is no guaranteed best choice from wording alone. Make your best prediction.\nRespond with JSON containing exactly one key, \"arm\", whose value is C2, C3, C4, C5, or C6.",
+  "fixed_pairs": {
+    "C2": [
+      0.0,
+      1.0
+    ],
+    "C3": [
+      0.25,
+      0.75
+    ],
+    "C4": [
+      0.5,
+      0.5
+    ],
+    "C5": [
+      0.75,
+      0.25
+    ],
+    "C6": [
+      1.0,
+      0.0
+    ]
+  },
+  "input_sha256": {
+    "data/facebook_large/facebook_questions_dev.json": "cf0df205bca318f8650a8c9eb4e9406a4a94c4a686af737d6da475be415d6d48",
+    "results/facebook_agp_pair_selector_dev_20260919/scores.jsonl": "9b26848a493d3efd842b93f5bd73b59a2244e81167261c00aad0f932668e3823"
+  },
+  "warning": "Development-only exploratory comparison; not held-out evidence. V5 wording was previously inspected."
+}
