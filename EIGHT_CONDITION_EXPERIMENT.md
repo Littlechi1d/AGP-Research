@@ -1,8 +1,10 @@
 # Eight-condition AGP answer experiment: design specification
 
-**Status:** design for implementation and development checks, **not yet frozen for
-final evaluation**. The adaptive selector, a new untouched question set, and the
-human-rating procedure still require validation and a dated freeze. Do not treat
+**Status:** preflight in progress, **not yet frozen for final evaluation**. See
+[EIGHT_CONDITION_PREFLIGHT_20260922.md](EIGHT_CONDITION_PREFLIGHT_20260922.md)
+for verified settings, the unchanged selector's V5 fallback limitation, and
+remaining gates.
+The new candidate and human-rating procedure still require a dated freeze. Do not treat
 the earlier 40-question held-out retrieval set as unseen again.
 
 ## Research question
@@ -159,11 +161,16 @@ declaring a winner from raw mean scores alone.
       `results/facebook_eight_contexts_char3000_dev_final_20260919/`.
 - [ ] Independently check the new evaluation questions and answer criteria.
       A 40-question topology-labelled candidate set now exists in
-      `data/facebook_large/eight_condition_eval_candidate_v4_20260919/`, with zero
+      `data/facebook_large/eight_condition_eval_candidate_v5_20260922/`, with zero
       seed or exact-text overlap against the prior development and test sets.
       V3/V4 revise wording, path-answer order, and five awkward page titles;
-      their manifest files preserve the revision trail. Similarity questions
+      V5 puts all path questions in plainer language without changing labels.
+      Their manifest files preserve the revision trail. Similarity questions
       use plain-language wording for distance two.
       The blank review form must be completed before this item can be checked.
+- [ ] Resolve the preflight limitation without test-informed selector changes:
+      the original recognizer falls back to C2 on V5 path and similarity
+      questions, making C7 identical to C2 for all 40 V5 questions. If this
+      design is retained, report it as a limitation, not an adaptive gain.
 - [ ] Conduct a development smoke run and resolve failures before freezing.
 - [ ] Freeze, execute, rate, and analyze the new final evaluation once.

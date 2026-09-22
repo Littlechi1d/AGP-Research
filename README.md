@@ -65,6 +65,7 @@ Further documentation:
 | `scripts/run_eight_condition_contexts.py` | Saves all eight retrieval contexts before any answer generation. |
 | `scripts/run_eight_condition_answers.py` | Generates answers from saved contexts and writes blinded A–H review forms. |
 | `scripts/prepare_eight_condition_eval.py` | Builds an unscored, seed-disjoint candidate evaluation set and criteria-review form. |
+| `scripts/rephrase_eight_eval_paths.py` | Makes a new candidate version with plain-language path questions while preserving answer IDs. |
 | `agp_research/planner.py` | Extracts keywords and selects parameters. |
 | `agp_research/propagation.py` | Runs local Python graph propagation. |
 | `agp_research/paper_backend.py` | Calls the optional C++ backend. |
@@ -405,14 +406,15 @@ checks that the local model accepts the request.
 
 ### New eight-condition evaluation candidate
 
-The [current candidate set](data/facebook_large/eight_condition_eval_candidate_v4_20260919/REPORT.md)
+The [current candidate set](data/facebook_large/eight_condition_eval_candidate_v5_20260922/REPORT.md)
 contains 40 new topology-labelled questions, ten of each type. Its seed pages
 and exact question texts are disjoint from both earlier splits. Similarity
 questions describe the relation in ordinary language: pages of the same dataset
 category reached through one other page, without a direct connection. V3
-clarified path-answer order, and V4 replaced five questions with artificial
-`[page ID]` suffixes in their expected titles. V4 remains unreviewed; V2 and
-V3 are retained as its revision trail. The still earlier V1 candidate is
+clarified path-answer order, V4 replaced five questions with artificial
+`[page ID]` suffixes in their expected titles, and V5 rephrased all ten path
+questions in plain language. V5 remains unreviewed; V2–V4 are retained as its
+revision trail. The still earlier V1 candidate is
 archived separately and must not be used for the eight-arm evaluation. The
 generator command below reproduces the original V2 candidate, not the later
 revisions:
@@ -431,6 +433,20 @@ python3 scripts/prepare_eight_condition_eval.py \
 An independent reviewer must check `criteria_review.csv` against the graph and
 resolve ambiguous wording or incorrect labels before freezing this set. Do not
 run the eight-arm answer comparison on it yet.
+The [dated preflight record](EIGHT_CONDITION_PREFLIGHT_20260922.md) documents
+the verified settings and remaining freeze gates. The original selector is
+unchanged: on V5, C7 would choose C2 for all 40 questions. This cannot test an
+adaptive-pair benefit and must be disclosed if V5 is used.
+
+To reproduce V5 from the saved V4 candidate in a fresh directory:
+
+```bash
+python3 scripts/rephrase_eight_eval_paths.py \
+  --previous data/facebook_large/eight_condition_eval_candidate_v4_20260919 \
+  --nodes data/facebook_large/nodes.csv \
+  --edges data/facebook_large/edges.csv \
+  --output data/facebook_large/eight_condition_eval_candidate_v5_REPRODUCED
+```
 
 ## Tests
 
@@ -441,7 +457,7 @@ python3 -m unittest discover -s tests -p "test_*.py"
 Current verified result:
 
 ```text
-Ran 87 tests
+Ran 89 tests
 OK
 ```
 
