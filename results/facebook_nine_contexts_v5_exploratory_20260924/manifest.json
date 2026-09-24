@@ -1,0 +1,74 @@
+{
+  "created_utc": "2026-09-24T03:17:52.393239+00:00",
+  "question_count": 40,
+  "conditions": [
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8"
+  ],
+  "fixed_pairs": {
+    "C2": [
+      0.0,
+      1.0
+    ],
+    "C3": [
+      0.25,
+      0.75
+    ],
+    "C4": [
+      0.5,
+      0.5
+    ],
+    "C5": [
+      0.75,
+      0.25
+    ],
+    "C6": [
+      1.0,
+      0.0
+    ]
+  },
+  "agp_parameters": {
+    "depth": 2,
+    "decay": 0.3,
+    "top_k": 10
+  },
+  "max_context_chars": null,
+  "context_budget_note": "Whole ranked entity and relationship lines only; this is a character ceiling, not a tokenizer-level token ceiling.",
+  "query_type": "S",
+  "relative_error": 0.1,
+  "match_threshold": 0.85,
+  "match_margin": 0.1,
+  "keyword_source": "live_llm",
+  "input_sha256": {
+    "questions": "c4fbf01fc2feb5fbd46a6cff9f84c146fa6d8517bc9d131d6fedce4a4d1cdb35",
+    "nodes": "a5a89bb0e0bf77eaaff9059a784da0cd5b930ba5e3d9018f80f6156c9af28daa",
+    "edges": "f3c3aeec27afa4389cd5042fabd21585804cf41506dce79df7ee0c74a81f2fb0",
+    "selector": "eb86f704344bf4e6fd85fb5e1c900ac838900c16f4b2693c59f4b7e4a19041eb",
+    "native_library": "8b881f6089cfc88632ee79c11c7380f51e66b7f3892ddbb082f9c67a832f3974"
+  },
+  "contexts_sha256": "ec807a47f03094e422ebfc72bb7e18bb949cec990f5cbcd50c1f0649ada95bf6",
+  "retrieval_only": true,
+  "adaptive_context_reuse": "C7 selects before AGP queries and copies the chosen fixed arm's ranking/context; its query_seconds is that arm's measured query time, not an additional executed query; C8 copies the fixed arm chosen by the question-only LLM",
+  "timing_caveat": "first query for each pair includes lazy native graph initialization",
+  "source_contexts_sha256": "e837222c7d38eee277f11d8e3af591da331dff44178b0ab31e449eda6ccbbe35",
+  "c8_selector": {
+    "method": "zero-shot question-only LLM selection among C2-C6",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "base_url": "http://localhost:11434/v1",
+    "temperature": 0,
+    "system_prompt": "Choose one graph-propagation setting for retrieving context for a question.\nYou see only the question, not the graph, relevance labels, or retrieval scores.\nAvailable settings are C2: a=0,b=1; C3: a=0.25,b=0.75;\nC4: a=0.5,b=0.5; C5: a=0.75,b=0.25; C6: a=1,b=0.\nThe settings change how graph propagation weights nodes of different degree.\nThere is no guaranteed best choice from wording alone. Make your best prediction.\nRespond with JSON containing exactly one key, \"arm\", whose value is C2, C3, C4, C5, or C6.",
+    "selection_counts": {
+      "C3": 6,
+      "C4": 34
+    },
+    "selection_before_answer_access": true
+  },
+  "exploratory": true
+}
