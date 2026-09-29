@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-09-29T02:24:04.168574+00:00",
+  "dataset": "deezer",
+  "random_seed": 90055,
+  "development_questions": 20,
+  "evaluation_questions": 40,
+  "questions_per_type": {
+    "development": 5,
+    "evaluation": 10
+  },
+  "development_unique_seeds": 30,
+  "evaluation_unique_seeds": 60,
+  "seed_overlap_between_splits": 0,
+  "label_source": "deterministic graph topology; no AGP or LLM output used",
+  "keyword_mapping_note": "Questions contain every intended stable 'Deezer user <ID>' seed title; experiment retrieval must use the same frozen keyword-extraction and title-mapping procedure as the other datasets.",
+  "source_sha256": {
+    "nodes": "6067a8364c4e25a9365310f9c9310f072fda88e57b0987080393ed177b801450",
+    "edges": "52fa5e8b10d8ece473ac062000e3f17983b4eeeae63227fcde7c3ff6192adf46",
+    "targets": "9d5c5736e1d55361e9caa5ae4f96ea5f40c3a70a8cfaad332defac9d84c6b2c6"
+  },
+  "question_sha256": {
+    "development": "de6bf0d940e34fef64da2682eeeba19789aa38c9ccdedabc4d67bad6047521b8",
+    "evaluation": "2cb2f6a7cc340b070037c5866f7a0c9bb7171eb698c362972754e704fa044490"
+  }
+}

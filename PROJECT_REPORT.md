@@ -3,8 +3,9 @@
 ## Complete implementation and experimental report
 
 **Project location:** `/Users/feiyuzhang/Desktop/COMP90055/agp_research`  
-**Status:** Working prototype with a prepared real graph, development benchmark,
-and held-out test set  
+**Status:** Completed prototype with three prepared real graphs, frozen
+cross-dataset evaluation, and preserved outputs
+
 **Python requirement:** Python 3.10 or newer  
 **External dependencies:** None for local retrieval and evaluation; an OpenAI-compatible API is optional
 
@@ -28,13 +29,14 @@ Five retrieval strategies are supported:
    selects only depth, decay, and top-k. This separates parameter selection from
    LLM entity-extraction errors.
 
-The prototype includes a command-line interface, a demonstration graph, the UCI
-Facebook Large Page-Page graph, deterministic topology-grounded development and
-test questions, retrieval evaluation, JSON Lines logging, a C++ reference-code
-adapter and persistent native API, exact and approximate mapping, `.env`
-configuration, and 56 passing unit tests. Development tuning and the one-time
-frozen held-out evaluation are complete. Approximate mapping was added afterward
-and has so far been tuned only on development data.
+The prototype includes a command-line interface, a demonstration graph, three
+real social graphs (Facebook Large, GitHub MUSAE, and Deezer Europe),
+deterministic topology-grounded development and evaluation questions, retrieval
+and conservative answer evaluation, JSON Lines logging, a C++ reference-code
+adapter and persistent native API, exact and approximate mapping, and `.env`
+configuration. The current suite passes 103 tests plus 20 parameterized
+subtests. Development tuning, the original Facebook held-out study, and the
+checksum-locked GitHub/Deezer C0–C8 evaluation are complete.
 
 ## 2. Scope and relationship to Microsoft GraphRAG
 
@@ -433,7 +435,8 @@ this benchmark because labels deliberately describe related pages rather than th
 seed itself. Rule adaptation improves overall precision mainly by using depth 1
 for direct-neighbor questions. Both fixed and rule strategies achieve only 0.52
 mean recall on the development similarity questions, making that the clearest
-current failure mode. The held-out test set has not been run.
+development failure mode. The later held-out Facebook evaluation is summarized
+in Section 11 and preserved under `results/facebook_frozen_test_20260909/`.
 
 ## 9. Experimental methodology for the real study
 
@@ -571,22 +574,22 @@ with a separately recorded k=10 baseline for matched-budget comparisons.
 Per-question-type summaries and all traces are saved. See
 [FIXED_PARAMETER_TUNING.md](FIXED_PARAMETER_TUNING.md).
 
-### Phase 4: Evaluate adaptation — partially completed
+### Phase 4: Evaluate adaptation — completed
 
-Rule-adaptive and zero-shot `llm-parameters` development results are recorded.
-The latter uses local keywords so parameter selection is isolated. It achieved
-precision 0.4125, recall 0.8300, and mean per-question F1 0.5134. Few-shot
-planning, end-to-end `llm`, further ablations, and prompt freezing remain.
+Rule-adaptive and zero-shot LLM selectors were developed without using the new
+evaluation splits. In the final GitHub/Deezer experiment, C7 always fell back to
+C2. C8 selected C3/C4 on GitHub and C4 for every Deezer question. Neither
+adaptive selector beat the direct-neighbour baseline or strongest fixed AGP arm.
 
-### Phase 5: Evaluate answers — infrastructure and development smoke completed
+### Phase 5: Evaluate answers — automatic study completed
 
-The paired runner now generates LLM-only and AGP-grounded answers with the same
-local Qwen model and question wording, varying the availability of saved graph
-context. A two-question development smoke run produced the expected artifacts and
-validated scoring and blinding. LLM-only entity F1 was 0.000 and grounded entity
-F1 was 1.000 on those two examples, but this tiny development result is only a
-software check and must not be presented as an experimental conclusion. The full
-protocol and human evaluation remain to be frozen and executed.
+The runner generated LLM-only and graph-grounded answers with the same local
+Qwen model, question wording, temperature, and 256-token ceiling. C7 and C8
+reused their selected fixed-arm answers. The final automatic entity-title metric
+favoured C2 on GitHub (0.5813 F1) and C3 on Deezer (0.4080 F1). These values are
+not semantic correctness judgements: C0 cannot know graph-specific usernames or
+anonymous IDs, and exact-title matching cannot recognize paraphrases. Blind
+human evaluation remains optional follow-up rather than a completed claim.
 
 ### Phase 6: Analyze failures
 
@@ -606,7 +609,7 @@ This taxonomy will make the discussion more informative than reporting aggregate
 
 The delivered project has been checked in the target directory:
 
-- 49 unit tests pass using the Python standard library;
+- 103 tests and 20 parameterized subtests pass;
 - the demonstration graph and 22,470-node Facebook graph load successfully;
 - the Facebook conversion checksum and row-count checks pass;
 - both Python and paper backends complete a real-data NASA query;
@@ -640,6 +643,15 @@ does not establish a clear difference between them. Full results, per-type
 analysis, request accounting, and limitations are recorded in
 `results/facebook_frozen_test_20260909/REPORT.md`.
 
+The later cross-dataset study is also complete. It used 40 untouched questions
+on GitHub MUSAE and 40 on Deezer Europe, with exact intended-seed mapping on all
+80 questions. Direct neighbours achieved the highest overall retrieval F1 on
+both graphs (0.4394 and 0.4450). C2 was the strongest fixed AGP arm (0.4129 and
+0.4134). C8 scored 0.3682 and 0.3895 and therefore did not improve over fixed
+AGP. Full settings, hashes, question-type results, automatic answer metrics, and
+generation diagnostics are in
+`results/cross_dataset_frozen_evaluation_20260929/REPORT.md`.
+
 ## 12. Limitations
 
 The current version intentionally prioritizes clarity over production complexity.
@@ -655,7 +667,8 @@ The current version intentionally prioritizes clarity over production complexity
   retained for teaching and software checks, not used as the real benchmark.
 - The Facebook questions have objective topology labels but are templated and do
   not establish semantic relevance or answer correctness.
-- Current batch evaluation measures retrieval but does not generate or score answers.
+- Automatic answer scoring detects exact graph titles but does not measure full
+  semantic correctness, completeness, or paraphrased references.
 - The LLM client depends on a chat-completions-compatible API and structured JSON support.
 - Response caching and request/token metadata logging are implemented, but
   bounded retries and provider-specific cost calculation are not.
@@ -684,40 +697,28 @@ the 24-cell grid, and per-question decisions are preserved in
 
 ## 13. Prioritized next steps
 
-### Immediate
+### Immediate reporting work
 
-1. Define and preregister the answer-quality comparison between LLM-only answers
-   and answers grounded in retrieved AGP context.
-2. Create independently judged semantic questions and reference criteria that do
-   not reuse the topology-template labels.
-3. Run a development smoke test of answer generation and the blind evaluation
-   form before collecting final ratings.
+1. Preserve all frozen outputs and report any later run as exploratory or a
+   replication.
+2. Add paired uncertainty estimates and plots without changing conditions.
+3. Perform qualitative failure analysis, separating extraction, mapping,
+   propagation, context, and answer-generation failures.
+4. Explain the high rate of 256-token truncation and the limits of exact-title
+   answer metrics.
 
-### Before the main experiment
+### Optional extensions requiring a new protocol
 
-4. Preserve all completed frozen results and clearly label approximate mapping as
-   a post-test extension.
-5. Decide whether a new untouched question split or cross-validation will provide
-   an unbiased evaluation of approximate mapping.
-6. Freeze the answer prompts, model, decoding settings, contexts, judge rubric,
-   randomization, and statistical tests before answer-quality evaluation.
-
-### Main evaluation
-
-7. The one-time held-out Facebook retrieval evaluation is complete for all
-   original frozen conditions; do not rerun it as though it were unseen.
-8. Generate paired LLM-only and AGP-grounded answers under equal model and token
-   budgets, then conduct blind correctness and faithfulness evaluation.
-9. Report paired uncertainty, question-type results, latency/cost, and failures.
-
-### Optional extensions
-
-10. Extend the persistent C++ API with dynamic edge updates if they become part
-    of the research question.
-11. Test directed propagation or relation-type-specific weights on a dataset that
-    contains those semantics.
-12. Consider fine-tuning only after prompted baselines show a measurable weakness
-    and sufficient labeled parameter examples exist.
+5. Collect semantic reference criteria and blind ratings if stronger answer-
+   quality claims are required.
+6. Train a parameter classifier only with a clearly separated training set and
+   evaluate it on a new untouched split or dataset.
+7. Extend the persistent C++ API with dynamic edge updates if they become part
+   of the research question.
+8. Test directed propagation or relation-type-specific weights on a dataset that
+   contains those semantics.
+9. Consider fine-tuning only after prompted baselines show a measurable weakness
+   and sufficient labeled parameter examples exist.
 
 ## 14. Suggested final dissertation/report structure
 
@@ -731,19 +732,23 @@ The eventual academic report can use this structure:
 6. **Discussion:** why adaptation succeeds or fails, qualitative examples, limitations, and threats to validity.
 7. **Conclusion:** direct answers to the research questions and future work.
 
-The current document can support the implementation and methodology chapters, but final results and conclusions must be written only after the real experiment is completed.
+The current document now supports the implementation, methodology, and results
+chapters. Statistical uncertainty and qualitative examples should still be added
+before dissertation submission.
 
 ## 15. Conclusion
 
 The project now has a complete, executable foundation for studying query-adaptive graph propagation without requiring detailed knowledge of the Microsoft GraphRAG codebase. It supports reproducible local retrieval, multiple baselines, LLM-based adaptation, transparent context construction, batch logging, and standard retrieval metrics.
 
-The project has progressed beyond architecture and data preparation: a real graph,
-a controlled 60-question benchmark, split isolation, development tuning, a frozen
-held-out retrieval evaluation, persistent native AGP, and development-tested
-approximate mapping now exist. The immediate work is to preregister and run the
-paired LLM-only versus AGP-grounded answer-quality study. Human-labelled semantic
-evaluation is still needed because topology-defined questions alone cannot
-demonstrate answer quality.
+The project has progressed beyond architecture and data preparation: three real
+graphs, seed-isolated question splits, development-only tuning, frozen held-out
+evaluations, persistent native AGP, approximate mapping, C0–C8 retrieval, and
+equal-budget answer generation now exist. On the two new graphs, the tested
+adaptive selectors did not outperform direct neighbours or the strongest fixed
+AGP setting. The result is scientifically useful because it rejects the current
+form of the adaptation hypothesis while exposing question-type differences that
+can motivate better learned selectors in future work. Human-labelled semantic
+evaluation is still required for claims beyond topology-defined entity coverage.
 Fine-tuning should remain optional until simpler prompted baselines establish a
 clear need.
 

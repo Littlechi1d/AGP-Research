@@ -1,0 +1,615 @@
+[
+  {
+    "id": "github_eval_direct_01",
+    "question": "Which developers have a direct mutual-follow connection with cyansoul",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "gh_29809"
+    ],
+    "relevant_node_ids": [
+      "gh_2504",
+      "gh_10595",
+      "gh_20528",
+      "gh_29889"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "github_eval_direct_02",
+    "question": "Which developers have a direct mutual-follow connection with de-sh",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "gh_10272"
+    ],
+    "relevant_node_ids": [
+      "gh_978",
+      "gh_6403",
+      "gh_9051",
+      "gh_12535",
+      "gh_21839",
+      "gh_24009",
+      "gh_27803",
+      "gh_31916",
+      "gh_34314"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "github_eval_direct_03",
+    "question": "Which developers have a direct mutual-follow connection with apratap",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "gh_36138"
+    ],
+    "relevant_node_ids": [
+      "gh_239",
+      "gh_15347",
+      "gh_24157",
+      "gh_28337"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "github_eval_direct_04",
+    "question": "Which developers have a direct mutual-follow connection with alliejones",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "gh_1569"
+    ],
+    "relevant_node_ids": [
+      "gh_17166",
+      "gh_27803",
+      "gh_34114"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "github_eval_direct_05",
+    "question": "Which developers have a direct mutual-follow connection with jfw10973",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "gh_34644"
+    ],
+    "relevant_node_ids": [
+      "gh_3712",
+      "gh_31098",
+      "gh_31890"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "github_eval_direct_06",
+    "question": "Which developers have a direct mutual-follow connection with feikaifeng",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "gh_33761"
+    ],
+    "relevant_node_ids": [
+      "gh_3922",
+      "gh_4174",
+      "gh_31890"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "github_eval_direct_07",
+    "question": "Which developers have a direct mutual-follow connection with Romain",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "gh_30140"
+    ],
+    "relevant_node_ids": [
+      "gh_12648",
+      "gh_15108",
+      "gh_20610",
+      "gh_22321",
+      "gh_22395",
+      "gh_29381",
+      "gh_34467"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "github_eval_direct_08",
+    "question": "Which developers have a direct mutual-follow connection with santospatrick",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "gh_25674"
+    ],
+    "relevant_node_ids": [
+      "gh_73",
+      "gh_15099",
+      "gh_20465",
+      "gh_23838",
+      "gh_27803",
+      "gh_35237",
+      "gh_37175"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "github_eval_direct_09",
+    "question": "Which developers have a direct mutual-follow connection with baisong",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "gh_33954"
+    ],
+    "relevant_node_ids": [
+      "gh_2752",
+      "gh_3468",
+      "gh_32082",
+      "gh_36027"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "github_eval_direct_10",
+    "question": "Which developers have a direct mutual-follow connection with hakuturu583",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "gh_24223"
+    ],
+    "relevant_node_ids": [
+      "gh_2988",
+      "gh_22777",
+      "gh_28098"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "github_eval_comparison_01",
+    "question": "Which developers have direct mutual-follow connections with both liaojw and shaomingquan",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "gh_17438",
+      "gh_14108"
+    ],
+    "relevant_node_ids": [
+      "gh_3153",
+      "gh_31890"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "github_eval_comparison_02",
+    "question": "Which developers have direct mutual-follow connections with both rajanit2000 and FadiZahhar",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "gh_6354",
+      "gh_21185"
+    ],
+    "relevant_node_ids": [
+      "gh_14666",
+      "gh_33571"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "github_eval_comparison_03",
+    "question": "Which developers have direct mutual-follow connections with both nbfontana and nyambati",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "gh_12134",
+      "gh_28947"
+    ],
+    "relevant_node_ids": [
+      "gh_31890",
+      "gh_36652"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "github_eval_comparison_04",
+    "question": "Which developers have direct mutual-follow connections with both hallix and Glitchbone",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "gh_1367",
+      "gh_8031"
+    ],
+    "relevant_node_ids": [
+      "gh_19253",
+      "gh_36652"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "github_eval_comparison_05",
+    "question": "Which developers have direct mutual-follow connections with both ishiikurisu and matheusportela",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "gh_30063",
+      "gh_10590"
+    ],
+    "relevant_node_ids": [
+      "gh_3370",
+      "gh_30837"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "github_eval_comparison_06",
+    "question": "Which developers have direct mutual-follow connections with both ankitshah009 and horse-latitudes",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "gh_27101",
+      "gh_2493"
+    ],
+    "relevant_node_ids": [
+      "gh_19253",
+      "gh_27803",
+      "gh_31890",
+      "gh_36652"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "github_eval_comparison_07",
+    "question": "Which developers have direct mutual-follow connections with both Zayelion and oriolmirosa",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "gh_21546",
+      "gh_9104"
+    ],
+    "relevant_node_ids": [
+      "gh_9051",
+      "gh_27803"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "github_eval_comparison_08",
+    "question": "Which developers have direct mutual-follow connections with both daredream and jasonweng",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "gh_28468",
+      "gh_13824"
+    ],
+    "relevant_node_ids": [
+      "gh_31890",
+      "gh_35008"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "github_eval_comparison_09",
+    "question": "Which developers have direct mutual-follow connections with both plusoneee and ChanYiLin",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "gh_23016",
+      "gh_27165"
+    ],
+    "relevant_node_ids": [
+      "gh_31107",
+      "gh_37340"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "github_eval_comparison_10",
+    "question": "Which developers have direct mutual-follow connections with both MohammadShawon and leemour",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "gh_470",
+      "gh_27279"
+    ],
+    "relevant_node_ids": [
+      "gh_24593",
+      "gh_33029"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "github_eval_path_01",
+    "question": "To get from TimDurward to jacksinn using the fewest mutual-follow connections, which two developers do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "gh_14632",
+      "gh_24371"
+    ],
+    "relevant_node_ids": [
+      "gh_31890",
+      "gh_36273"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "github_eval_path_02",
+    "question": "To get from jacebot to DeathSy using the fewest mutual-follow connections, which two developers do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "gh_23959",
+      "gh_11110"
+    ],
+    "relevant_node_ids": [
+      "gh_17530",
+      "gh_11615"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "github_eval_path_03",
+    "question": "To get from faldyif to SK-CSE using the fewest mutual-follow connections, which two developers do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "gh_19622",
+      "gh_17893"
+    ],
+    "relevant_node_ids": [
+      "gh_18000",
+      "gh_21754"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "github_eval_path_04",
+    "question": "To get from Vallista to Moriarty12138 using the fewest mutual-follow connections, which two developers do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "gh_465",
+      "gh_29159"
+    ],
+    "relevant_node_ids": [
+      "gh_31007",
+      "gh_694"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "github_eval_path_05",
+    "question": "To get from njellinas to abhijeet2096 using the fewest mutual-follow connections, which two developers do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "gh_26521",
+      "gh_4872"
+    ],
+    "relevant_node_ids": [
+      "gh_27803",
+      "gh_18200"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "github_eval_path_06",
+    "question": "To get from Ymiku to kostandinang using the fewest mutual-follow connections, which two developers do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "gh_3673",
+      "gh_10698"
+    ],
+    "relevant_node_ids": [
+      "gh_9295",
+      "gh_31890"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "github_eval_path_07",
+    "question": "To get from bkt92 to nicarq using the fewest mutual-follow connections, which two developers do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "gh_28745",
+      "gh_4995"
+    ],
+    "relevant_node_ids": [
+      "gh_29212",
+      "gh_27803"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "github_eval_path_08",
+    "question": "To get from fobabs to EthanOrange using the fewest mutual-follow connections, which two developers do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "gh_16285",
+      "gh_17356"
+    ],
+    "relevant_node_ids": [
+      "gh_20532",
+      "gh_15191"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "github_eval_path_09",
+    "question": "To get from rajsingh8220 to adrianoaguiar using the fewest mutual-follow connections, which two developers do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "gh_36240",
+      "gh_1436"
+    ],
+    "relevant_node_ids": [
+      "gh_30235",
+      "gh_8342"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "github_eval_path_10",
+    "question": "To get from flyer-dev to ekkun using the fewest mutual-follow connections, which two developers do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "gh_25758",
+      "gh_34278"
+    ],
+    "relevant_node_ids": [
+      "gh_28832",
+      "gh_18995"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "github_eval_similarity_01",
+    "question": "Which developers are in the same dataset class as sudhanshuptl and can be reached through exactly one intermediate developer, but are not directly connected to sudhanshuptl",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "gh_17793"
+    ],
+    "relevant_node_ids": [
+      "gh_166",
+      "gh_9037",
+      "gh_21330",
+      "gh_34899"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "github_eval_similarity_02",
+    "question": "Which developers are in the same dataset class as brunoeris and can be reached through exactly one intermediate developer, but are not directly connected to brunoeris",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "gh_12458"
+    ],
+    "relevant_node_ids": [
+      "gh_1238",
+      "gh_1853",
+      "gh_3166",
+      "gh_9553",
+      "gh_17205",
+      "gh_19222",
+      "gh_25902",
+      "gh_27803",
+      "gh_31890"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "github_eval_similarity_03",
+    "question": "Which developers are in the same dataset class as rajatdeshpande and can be reached through exactly one intermediate developer, but are not directly connected to rajatdeshpande",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "gh_5377"
+    ],
+    "relevant_node_ids": [
+      "gh_3379",
+      "gh_3594",
+      "gh_25402"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "github_eval_similarity_04",
+    "question": "Which developers are in the same dataset class as TrojanMe and can be reached through exactly one intermediate developer, but are not directly connected to TrojanMe",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "gh_15566"
+    ],
+    "relevant_node_ids": [
+      "gh_3086",
+      "gh_8637",
+      "gh_20528",
+      "gh_28909"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "github_eval_similarity_05",
+    "question": "Which developers are in the same dataset class as Mhaiyang and can be reached through exactly one intermediate developer, but are not directly connected to Mhaiyang",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "gh_34340"
+    ],
+    "relevant_node_ids": [
+      "gh_6016",
+      "gh_10108",
+      "gh_12685",
+      "gh_15365",
+      "gh_17383",
+      "gh_19714",
+      "gh_19728",
+      "gh_22545",
+      "gh_25297"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "github_eval_similarity_06",
+    "question": "Which developers are in the same dataset class as lifesaver0129 and can be reached through exactly one intermediate developer, but are not directly connected to lifesaver0129",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "gh_22122"
+    ],
+    "relevant_node_ids": [
+      "gh_1631",
+      "gh_4243",
+      "gh_4501",
+      "gh_4818",
+      "gh_7391",
+      "gh_16288",
+      "gh_17792",
+      "gh_26110",
+      "gh_35099"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "github_eval_similarity_07",
+    "question": "Which developers are in the same dataset class as RuiqingQiu and can be reached through exactly one intermediate developer, but are not directly connected to RuiqingQiu",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "gh_26091"
+    ],
+    "relevant_node_ids": [
+      "gh_10124",
+      "gh_10578",
+      "gh_11578",
+      "gh_23621",
+      "gh_25257",
+      "gh_31898"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "github_eval_similarity_08",
+    "question": "Which developers are in the same dataset class as Eden1114 and can be reached through exactly one intermediate developer, but are not directly connected to Eden1114",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "gh_25690"
+    ],
+    "relevant_node_ids": [
+      "gh_7905",
+      "gh_11339",
+      "gh_16050",
+      "gh_32692"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "github_eval_similarity_09",
+    "question": "Which developers are in the same dataset class as radonys and can be reached through exactly one intermediate developer, but are not directly connected to radonys",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "gh_3802"
+    ],
+    "relevant_node_ids": [
+      "gh_2701",
+      "gh_3724",
+      "gh_5617",
+      "gh_6371",
+      "gh_10603",
+      "gh_17317",
+      "gh_25270",
+      "gh_25666"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "github_eval_similarity_10",
+    "question": "Which developers are in the same dataset class as droter and can be reached through exactly one intermediate developer, but are not directly connected to droter",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "gh_13933"
+    ],
+    "relevant_node_ids": [
+      "gh_4522",
+      "gh_6726",
+      "gh_7008",
+      "gh_7666",
+      "gh_15383",
+      "gh_17792",
+      "gh_21320",
+      "gh_30536"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  }
+]

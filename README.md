@@ -13,14 +13,17 @@ Completed components include:
 - a dependency-free Python propagation backend;
 - a persistent in-process C++ API for the paper authors' AGP-Dynamic code;
 - exact and thresholded approximate entity mapping, including split-title recovery;
-- the prepared UCI Facebook Large Page-Page graph;
-- deterministic development and held-out test questions with topology labels;
-- completed development tuning and a one-time frozen held-out evaluation;
+- three prepared real social graphs: Facebook Large, GitHub MUSAE, and Deezer Europe;
+- deterministic, seed-disjoint development and held-out questions with topology labels;
+- completed development tuning and frozen held-out evaluations;
+- a nine-condition comparison covering LLM-only, direct neighbours, five fixed
+  AGP pairs, a rule selector, and a zero-shot LLM selector;
 - a paired LLM-only versus AGP-grounded answer-quality study runner;
-- 60 passing unit tests.
+- 103 passing tests plus 20 parameterized subtests.
 
-The original frozen held-out evaluation is complete. New approximate-mapping work
-is treated as a post-test extension and is tuned only on the development split.
+The original Facebook evaluation and the later GitHub/Deezer cross-dataset
+evaluation are complete. The latter used a checksum-locked protocol and must not
+be rerun as though it were unseen. Further runs are replications or exploratory.
 
 Further documentation:
 
@@ -33,6 +36,12 @@ Further documentation:
   automatic metrics, blind review, and final-study controls.
 - [`EIGHT_CONDITION_EXPERIMENT.md`](EIGHT_CONDITION_EXPERIMENT.md): proposed
   eight-arm AGP experiment, shared budgets, controls, and remaining freeze items.
+- [`ADDITIONAL_DATASETS.md`](ADDITIONAL_DATASETS.md): GitHub and Deezer source,
+  conversion, question generation, and checksums.
+- [`FINAL_EXPERIMENT_PROTOCOL.md`](FINAL_EXPERIMENT_PROTOCOL.md): frozen C0–C8
+  settings and one-time evaluation rule.
+- [`results/cross_dataset_frozen_evaluation_20260929/REPORT.md`](results/cross_dataset_frozen_evaluation_20260929/REPORT.md):
+  final cross-dataset results.
 
 ## Pipeline
 
@@ -62,8 +71,12 @@ Further documentation:
 | `agp_research/eight_condition_retrieval.py` | Direct-neighbour baseline and five-pair native AGP handle pool for the proposed study. |
 | `agp_research/agp_pair_selector.py` | Question-type selector that chooses one of the five fixed AGP pairs. |
 | `scripts/tune_agp_pair_selector.py` | Scores five native pairs on development questions and validates C7 leave-one-out. |
-| `scripts/run_eight_condition_contexts.py` | Saves all eight retrieval contexts before any answer generation. |
-| `scripts/run_eight_condition_answers.py` | Generates answers from saved contexts and writes blinded A–H review forms. |
+| `scripts/run_eight_condition_contexts.py` | Saves C0–C7 base contexts before answer generation. |
+| `scripts/run_eight_condition_answers.py` | Generates C0–C7 answers and blinded review artifacts. |
+| `scripts/add_llm_c8.py` | Adds question-only LLM-selected C8 by reusing a fixed-arm context and answer. |
+| `scripts/prepare_additional_social_graph.py` | Converts GitHub MUSAE and Deezer Europe archives. |
+| `scripts/generate_additional_questions.py` | Generates balanced, seed-disjoint questions for the new graphs. |
+| `scripts/validate_experiment_protocol.py` | Validates frozen inputs and implementation checksums. |
 | `scripts/prepare_eight_condition_eval.py` | Builds an unscored, seed-disjoint candidate evaluation set and criteria-review form. |
 | `scripts/rephrase_eight_eval_paths.py` | Makes a new candidate version with plain-language path questions while preserving answer IDs. |
 | `agp_research/planner.py` | Extracts keywords and selects parameters. |
@@ -282,7 +295,7 @@ The experiment command accepts `--depth`, `--decay`, and `--top-k` for the
 `--depth 1 --decay 0.3 --top-k 10` after `experiment` to evaluate another fixed
 configuration. These options do not override the rules, seed-only, or LLM planner.
 Use a distinct `--output` path for each configuration: existing logs are overwritten.
-Do not run the test set until all choices are frozen.
+For any new benchmark, do not run its test set until all choices are frozen.
 
 ## Data formats
 
@@ -395,8 +408,9 @@ truncation, but is not a true token ceiling. The 20-question development output
 is in `results/facebook_eight_contexts_char3000_dev_final_20260919/`.
 The earlier `results/facebook_eight_contexts_char3000_dev_20260919/` is an
 archived diagnostic with incomplete `context_truncated` flags; do not use it
-for analysis. No contexts have been scored as answers in a final study. A one-question
-development answer smoke run using the earlier uncapped contexts is documented in
+for analysis. That Facebook candidate was not used for the later cross-dataset
+final answer study. A one-question development answer smoke run using the earlier
+uncapped contexts is documented in
 [this report](results/facebook_eight_answers_smoke_dev_20260919/REPORT.md). The
 eight-answer script creates condition-labelled raw answers, randomized A–H
 review copies, separate answer keys, and blank rating forms. It requests a
@@ -448,41 +462,49 @@ python3 scripts/rephrase_eight_eval_paths.py \
   --output data/facebook_large/eight_condition_eval_candidate_v5_REPRODUCED
 ```
 
+### Completed GitHub and Deezer frozen evaluation
+
+The later cross-dataset study used 40 untouched questions on GitHub MUSAE and
+40 on Deezer Europe. Its machine-readable settings are in
+`experiment_protocol_v1.json`; validate them with:
+
+```bash
+PYTHONPATH=. python3 scripts/validate_experiment_protocol.py
+```
+
+Direct neighbours achieved the highest overall retrieval F1 on GitHub (`0.4394`)
+and Deezer (`0.4450`). C2 was the strongest fixed AGP arm (`0.4129`, `0.4134`).
+C7 reproduced C2 because its frozen rules fell back for every new question. C8
+scored `0.3682` and `0.3895`, so the zero-shot question-only LLM selector did not
+beat the strongest fixed setting. See the
+[complete report](results/cross_dataset_frozen_evaluation_20260929/REPORT.md).
+
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -p "test_*.py"
+PYTHONPATH=. python3 -m pytest -q
 ```
 
-Current verified result:
+Current verified result with `pytest`:
 
 ```text
-Ran 89 tests
-OK
+103 passed, 20 subtests passed
 ```
 
 ## Next steps
 
-1. Fixed tuning is complete: see [FIXED_PARAMETER_TUNING.md](FIXED_PARAMETER_TUNING.md).
-   Use depth 2, decay 0.3, k=5 for the selected mean-F1 baseline; also report the
-   budget-matched k=10 baseline. Defaults remain unchanged.
-2. Improve and freeze the rule planner, especially for similarity questions.
-3. Report metrics per question type (batch fixed parameters are now configurable).
-4. Zero-shot and few-shot `llm-parameters` development runs are complete; see
-   their reports under `results/facebook_llm_parameters*_dev_20260909/`. Few-shot
-   improved recall but did not improve mean F1.
-5. The `llm-keywords`/fixed-parameters ablation is complete; Qwen exactly matched
-   18 of 20 development questions but split two long page titles.
-6. Follow [FROZEN_EXPERIMENT_PROTOCOL.md](FROZEN_EXPERIMENT_PROTOCOL.md). Run an
-   end-to-end `llm` development smoke test before the one-time held-out run. The
-   smoke test is complete with mean F1 0.3977 and no prompt changes afterward.
-7. The one-time held-out evaluation is complete. Rules ranks first by mean F1
-   (0.5625); zero-shot LLM parameters is close at 0.5557, with a paired 95%
-   bootstrap interval that includes zero. See
-   `results/facebook_frozen_test_20260909/REPORT.md`.
-8. The paired answer-quality runner and a two-question development smoke test are
-   complete. Freeze the protocol in `ANSWER_QUALITY_PROTOCOL.md`, then collect
-   blind human ratings on a sufficiently large, independently labelled set.
+1. Preserve the frozen Facebook, GitHub, and Deezer outputs; do not retune and
+   present a rerun as unseen evaluation.
+2. Add paired uncertainty estimates and compact figures for the final report.
+3. Perform qualitative failure analysis by question type, especially the strong
+   direct-neighbour baseline and the different behaviour on similarity questions.
+4. Explain that C7 reduced to its C2 fallback and C8 did not beat the strongest
+   fixed arm on either new graph.
+5. Treat semantic human or model-assisted answer judging as optional follow-up:
+   the exact-title automatic metric is conservative and many outputs reached the
+   frozen 256-token ceiling.
+6. Leave learned parameter classifiers and whole-graph LLM prompting as future
+   work requiring a new training/evaluation design.
 
 ## Limitations
 
@@ -493,6 +515,10 @@ OK
 - The Python backend prioritizes clarity over large-scale optimization.
 - Automatic answer metrics recognize explicit graph titles but not paraphrases;
   blind human evaluation remains necessary.
+- GitHub and Deezer answer generation hit the 256-token ceiling for 140 and 166
+  of 280 base calls respectively.
+- C7 did not recognize the new question wording and always used C2; C8 selected
+  C4 for every Deezer evaluation question.
 - LLM responses are cached and request/token metadata is logged; bounded retries
   and provider-specific cost calculation are not yet implemented.
 - The paper adapter currently supports static queries, not dynamic updates.

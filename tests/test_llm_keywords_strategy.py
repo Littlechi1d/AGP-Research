@@ -32,11 +32,20 @@ class LLMKeywordsStrategyTest(unittest.TestCase):
         self.assertNotIn("depth", prompt)
         self.assertNotIn("decay", prompt)
         self.assertNotIn("top_k", prompt)
+        self.assertIn("deezer user 32", prompt)
         self.assertEqual(client.calls[0][1], self.question)
 
     def test_empty_keywords_are_rejected(self):
         with self.assertRaisesRegex(ValueError, "at least one keyword"):
             llm_keywords(self.question, FakeClient({"keywords": []}))
+
+    def test_explicit_deezer_ids_override_llm_digit_copy_errors(self):
+        question = "Which users connect Deezer user 12994 and Deezer user 25451"
+        client = FakeClient({"keywords": ["Deezer user 12994", "Deezer user 25491"]})
+        self.assertEqual(
+            llm_keywords(question, client),
+            ["Deezer user 12994", "Deezer user 25451"],
+        )
 
     def test_strategy_uses_llm_keywords_and_supplied_fixed_parameters(self):
         parameters = AGPParameters(depth=2, decay=0.3, top_k=5)

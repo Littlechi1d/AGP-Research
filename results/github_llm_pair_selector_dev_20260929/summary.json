@@ -1,0 +1,27 @@
+{
+  "created_utc": "2026-09-29T05:33:55.514504+00:00",
+  "development_only": true,
+  "question_count": 20,
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "base_url": "http://localhost:11434/v1",
+  "selection_counts": {
+    "C3": 11,
+    "C4": 9
+  },
+  "llm_selected_mean_retrieval_f1": 0.45195028483728167,
+  "mean_retrieval_f1_by_fixed_arm": {
+    "C2": 0.4611475804896856,
+    "C3": 0.45376023958841294,
+    "C4": 0.43002046027587826,
+    "C5": 0.3951695698522324,
+    "C6": 0.325934925927186
+  },
+  "oracle_mean_retrieval_f1": 0.4846769922543916,
+  "system_prompt": "Choose one graph-propagation setting for retrieving context for a question.\nYou see only the question, not the graph, relevance labels, or retrieval scores.\nAvailable settings are C2: a=0,b=1; C3: a=0.25,b=0.75;\nC4: a=0.5,b=0.5; C5: a=0.75,b=0.25; C6: a=1,b=0.\nThe settings change how graph propagation weights nodes of different degree.\nThere is no guaranteed best choice from wording alone. Make your best prediction.\nRespond with JSON containing exactly one key, \"arm\", whose value is C2, C3, C4, C5, or C6.",
+  "selection_completed_before_context_access": true,
+  "input_sha256": {
+    "questions": "4d229e42b3265b176359d06c68a7de34014d574d5151593047a2c94ea8424643",
+    "contexts": "030bcc2e6615ecb5a528924a692cde7c3e6e94be5bbdb49166143573b56c0c7c",
+    "context_manifest": "2842a14bc4a4feecc4d7e8678c4c0f5e1e3090d9293fd469ec410a8ef2c1cd62"
+  }
+}

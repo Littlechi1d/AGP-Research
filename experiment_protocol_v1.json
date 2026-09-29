@@ -1,0 +1,60 @@
+{
+  "protocol_version": 1,
+  "status": "frozen_before_cross_dataset_evaluation",
+  "frozen_date": "2026-09-29",
+  "conditions": {
+    "C0": "LLM only; no graph context",
+    "C1": "direct neighbours",
+    "C2": {"method": "native AGP", "a": 0.0, "b": 1.0},
+    "C3": {"method": "native AGP", "a": 0.25, "b": 0.75},
+    "C4": {"method": "native AGP", "a": 0.5, "b": 0.5},
+    "C5": {"method": "native AGP", "a": 0.75, "b": 0.25},
+    "C6": {"method": "native AGP", "a": 1.0, "b": 0.0},
+    "C7": "frozen rule selector; reuses one of C2-C6",
+    "C8": "frozen zero-shot question-only LLM selector; reuses one of C2-C6"
+  },
+  "retrieval": {
+    "depth": 2,
+    "decay": 0.3,
+    "top_k": 10,
+    "query_type": "S",
+    "relative_error": 0.1,
+    "max_context_chars": null,
+    "match_threshold": 0.85,
+    "match_margin": 0.1
+  },
+  "generation": {
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "temperature": 0,
+    "max_answer_tokens": 256,
+    "random_seed": 90055,
+    "answer_system_prompt_sha256": "beaf35db2a34d1a4b93407d5cb69020e285e57dbc7f418234a2de80c6c22fb34"
+  },
+  "procedure": [
+    "validate every frozen input checksum",
+    "generate and save C0-C7 retrieval contexts",
+    "generate C0-C6 answers in deterministic randomized order and let C7 reuse its selected fixed-arm answer",
+    "choose every C8 arm from question text before reading answer outputs or scores, then reuse that fixed-arm context and answer",
+    "calculate retrieval and conservative automatic answer metrics only after all outputs are saved",
+    "never retune or rerun an evaluation split in response to its results"
+  ],
+  "datasets": {
+    "github_musae": {
+      "nodes": {"path": "data/github_musae/nodes.csv", "sha256": "f83a0fa41b4218d12aa53ed83aa60e4debb6bd6aaf83df66950addca6137fa5e"},
+      "edges": {"path": "data/github_musae/edges.csv", "sha256": "7992ccfe4dd82fcd2bde3114bb84d1f10b42a6bd7f6b1e88ba645f0429eef860"},
+      "questions": {"path": "data/github_musae/benchmark/questions_eval.json", "sha256": "ec459d402bf3ec3d41b6e613e6b4f719760f7ac56391e6c550bcb0254b497fc5", "count": 40}
+    },
+    "deezer_europe": {
+      "nodes": {"path": "data/deezer_europe/nodes.csv", "sha256": "6067a8364c4e25a9365310f9c9310f072fda88e57b0987080393ed177b801450"},
+      "edges": {"path": "data/deezer_europe/edges.csv", "sha256": "52fa5e8b10d8ece473ac062000e3f17983b4eeeae63227fcde7c3ff6192adf46"},
+      "questions": {"path": "data/deezer_europe/benchmark/questions_eval.json", "sha256": "2cb2f6a7cc340b070037c5866f7a0c9bb7171eb698c362972754e704fa044490", "count": 40}
+    }
+  },
+  "frozen_files": {
+    "rule_selector": {"path": "results/facebook_agp_pair_selector_dev_20260919/selector.json", "sha256": "eb86f704344bf4e6fd85fb5e1c900ac838900c16f4b2693c59f4b7e4a19041eb"},
+    "native_library": {"path": "build/paper_backend/libagp_api.dylib", "sha256": "8b881f6089cfc88632ee79c11c7380f51e66b7f3892ddbb082f9c67a832f3974"},
+    "keyword_planner": {"path": "agp_research/planner.py", "sha256": "6805a0fe545f155020e873a2c20f4ba779970ba84d0007e05a5cb8bc13ee2b5d"},
+    "llm_pair_selector": {"path": "agp_research/llm_pair_selector.py", "sha256": "daa9b727a8dedd9eb74dc4be742b837fd33b68a2e97e99154a13446f14409ab2"},
+    "answer_generator": {"path": "agp_research/eight_condition_answers.py", "sha256": "be90c7b8894e28df5015f901ae83a09aefd9979bcd9b7b7ef891c4e1bace908a"}
+  }
+}

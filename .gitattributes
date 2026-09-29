@@ -1,0 +1,3 @@
+# Preserve checksum-frozen generated CSV bytes and suppress enormous text diffs.
+data/github_musae/*.csv binary
+data/deezer_europe/*.csv binary

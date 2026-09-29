@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-09-29T02:24:03.913875+00:00",
+  "dataset": "github",
+  "random_seed": 90055,
+  "development_questions": 20,
+  "evaluation_questions": 40,
+  "questions_per_type": {
+    "development": 5,
+    "evaluation": 10
+  },
+  "development_unique_seeds": 30,
+  "evaluation_unique_seeds": 60,
+  "seed_overlap_between_splits": 0,
+  "label_source": "deterministic graph topology; no AGP or LLM output used",
+  "keyword_mapping_note": "Questions contain every intended seed title. GitHub usernames can be ordinary words, so the Facebook-only all-title substring extractor is not used to define seeds; experiment retrieval must use the frozen LLM keyword extractor and approximate title mapper.",
+  "source_sha256": {
+    "nodes": "f83a0fa41b4218d12aa53ed83aa60e4debb6bd6aaf83df66950addca6137fa5e",
+    "edges": "7992ccfe4dd82fcd2bde3114bb84d1f10b42a6bd7f6b1e88ba645f0429eef860",
+    "targets": "3a8582f0c55d6f605df5f45bde28a90561be9517b40226c5e6bbce253679906a"
+  },
+  "question_sha256": {
+    "development": "4d229e42b3265b176359d06c68a7de34014d574d5151593047a2c94ea8424643",
+    "evaluation": "ec459d402bf3ec3d41b6e613e6b4f719760f7ac56391e6c550bcb0254b497fc5"
+  }
+}

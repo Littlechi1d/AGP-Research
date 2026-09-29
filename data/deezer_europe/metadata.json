@@ -1,0 +1,31 @@
+{
+  "dataset": "Deezer Europe Social Network",
+  "source_repository": "Stanford Network Analysis Project (SNAP)",
+  "source_url": "https://snap.stanford.edu/data/feather-deezer-social.html",
+  "doi": null,
+  "license": null,
+  "node_count": 28281,
+  "raw_edge_rows": 92752,
+  "converted_edge_count": 92752,
+  "removed_self_loops": 0,
+  "removed_duplicate_undirected_edges": 0,
+  "isolated_node_count": 0,
+  "isolated_node_ids": [],
+  "binary_classes": {
+    "0": 15743,
+    "1": 12538
+  },
+  "node_id_policy": "Prefix the source integer ID with 'dz_'.",
+  "title_policy": "Use 'Deezer user <source ID>' because source users are anonymized.",
+  "edge_policy": "Treat mutual follows as undirected edges with weight 1.0.",
+  "feature_policy": "Preserve the raw feature JSON and record only each node's feature count because the archives do not include a feature-index vocabulary.",
+  "source_file_sha256": {
+    "deezer_europe_target.csv": "9d5c5736e1d55361e9caa5ae4f96ea5f40c3a70a8cfaad332defac9d84c6b2c6",
+    "deezer_europe_edges.csv": "a4aabf57e3eb20d40d5df7c7d15142b20656d9ca8f77a083106c1ee81226e530",
+    "deezer_europe_features.json": "8d2526372b903f45bf0d1bf6df33416769b99cbb38ba89cdac54848a3143b2db"
+  },
+  "output_file_sha256": {
+    "nodes.csv": "6067a8364c4e25a9365310f9c9310f072fda88e57b0987080393ed177b801450",
+    "edges.csv": "52fa5e8b10d8ece473ac062000e3f17983b4eeeae63227fcde7c3ff6192adf46"
+  }
+}

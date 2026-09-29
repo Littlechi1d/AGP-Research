@@ -1,0 +1,333 @@
+[
+  {
+    "id": "deezer_dev_direct_01",
+    "question": "Which users have a direct mutual-follow connection with Deezer user 2948",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "dz_2948"
+    ],
+    "relevant_node_ids": [
+      "dz_3465",
+      "dz_12437",
+      "dz_18690",
+      "dz_19948",
+      "dz_21275",
+      "dz_21690",
+      "dz_23326"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "deezer_dev_direct_02",
+    "question": "Which users have a direct mutual-follow connection with Deezer user 11830",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "dz_11830"
+    ],
+    "relevant_node_ids": [
+      "dz_1544",
+      "dz_7397",
+      "dz_7602",
+      "dz_10146",
+      "dz_12838",
+      "dz_19052",
+      "dz_26552",
+      "dz_26677",
+      "dz_27651",
+      "dz_27883"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "deezer_dev_direct_03",
+    "question": "Which users have a direct mutual-follow connection with Deezer user 21250",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "dz_21250"
+    ],
+    "relevant_node_ids": [
+      "dz_4288",
+      "dz_9378",
+      "dz_16805",
+      "dz_19658",
+      "dz_21569",
+      "dz_22312",
+      "dz_23442",
+      "dz_27113"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "deezer_dev_direct_04",
+    "question": "Which users have a direct mutual-follow connection with Deezer user 32",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "dz_32"
+    ],
+    "relevant_node_ids": [
+      "dz_2",
+      "dz_4399",
+      "dz_8757",
+      "dz_9035",
+      "dz_10456",
+      "dz_14828",
+      "dz_16734",
+      "dz_21483",
+      "dz_24950"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "deezer_dev_direct_05",
+    "question": "Which users have a direct mutual-follow connection with Deezer user 644",
+    "question_type": "direct",
+    "seed_node_ids": [
+      "dz_644"
+    ],
+    "relevant_node_ids": [
+      "dz_3257",
+      "dz_8785",
+      "dz_13203",
+      "dz_13728",
+      "dz_14016",
+      "dz_18578",
+      "dz_24540"
+    ],
+    "generation_rule": "All nodes adjacent to the seed."
+  },
+  {
+    "id": "deezer_dev_comparison_01",
+    "question": "Which users have direct mutual-follow connections with both Deezer user 17112 and Deezer user 11580",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "dz_17112",
+      "dz_11580"
+    ],
+    "relevant_node_ids": [
+      "dz_5587",
+      "dz_23771",
+      "dz_25966"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "deezer_dev_comparison_02",
+    "question": "Which users have direct mutual-follow connections with both Deezer user 6646 and Deezer user 1574",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "dz_6646",
+      "dz_1574"
+    ],
+    "relevant_node_ids": [
+      "dz_10990",
+      "dz_16429"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "deezer_dev_comparison_03",
+    "question": "Which users have direct mutual-follow connections with both Deezer user 12436 and Deezer user 21864",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "dz_12436",
+      "dz_21864"
+    ],
+    "relevant_node_ids": [
+      "dz_12010",
+      "dz_27221"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "deezer_dev_comparison_04",
+    "question": "Which users have direct mutual-follow connections with both Deezer user 12994 and Deezer user 25451",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "dz_12994",
+      "dz_25451"
+    ],
+    "relevant_node_ids": [
+      "dz_6760",
+      "dz_22634"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "deezer_dev_comparison_05",
+    "question": "Which users have direct mutual-follow connections with both Deezer user 16673 and Deezer user 16228",
+    "question_type": "comparison",
+    "seed_node_ids": [
+      "dz_16673",
+      "dz_16228"
+    ],
+    "relevant_node_ids": [
+      "dz_11430",
+      "dz_18873"
+    ],
+    "generation_rule": "Intersection of the two seeds' direct-neighbour sets."
+  },
+  {
+    "id": "deezer_dev_path_01",
+    "question": "To get from Deezer user 18248 to Deezer user 7590 using the fewest mutual-follow connections, which two users do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "dz_18248",
+      "dz_7590"
+    ],
+    "relevant_node_ids": [
+      "dz_3420",
+      "dz_22038"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "deezer_dev_path_02",
+    "question": "To get from Deezer user 26882 to Deezer user 3951 using the fewest mutual-follow connections, which two users do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "dz_26882",
+      "dz_3951"
+    ],
+    "relevant_node_ids": [
+      "dz_24551",
+      "dz_6390"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "deezer_dev_path_03",
+    "question": "To get from Deezer user 8351 to Deezer user 19267 using the fewest mutual-follow connections, which two users do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "dz_8351",
+      "dz_19267"
+    ],
+    "relevant_node_ids": [
+      "dz_19691",
+      "dz_18955"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "deezer_dev_path_04",
+    "question": "To get from Deezer user 13696 to Deezer user 15800 using the fewest mutual-follow connections, which two users do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "dz_13696",
+      "dz_15800"
+    ],
+    "relevant_node_ids": [
+      "dz_2412",
+      "dz_7594"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "deezer_dev_path_05",
+    "question": "To get from Deezer user 18979 to Deezer user 20682 using the fewest mutual-follow connections, which two users do you pass through, in order",
+    "question_type": "path",
+    "seed_node_ids": [
+      "dz_18979",
+      "dz_20682"
+    ],
+    "relevant_node_ids": [
+      "dz_18910",
+      "dz_27328"
+    ],
+    "generation_rule": "Two internal nodes, in order, on a unique shortest path of three edges."
+  },
+  {
+    "id": "deezer_dev_similarity_01",
+    "question": "Which users are in the same dataset class as Deezer user 4625 and can be reached through exactly one intermediate user, but are not directly connected to Deezer user 4625",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "dz_4625"
+    ],
+    "relevant_node_ids": [
+      "dz_1284",
+      "dz_1356",
+      "dz_2740",
+      "dz_5876",
+      "dz_10128",
+      "dz_13003",
+      "dz_20813",
+      "dz_21798",
+      "dz_22160",
+      "dz_23973"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "deezer_dev_similarity_02",
+    "question": "Which users are in the same dataset class as Deezer user 24499 and can be reached through exactly one intermediate user, but are not directly connected to Deezer user 24499",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "dz_24499"
+    ],
+    "relevant_node_ids": [
+      "dz_4060",
+      "dz_13532",
+      "dz_20224"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "deezer_dev_similarity_03",
+    "question": "Which users are in the same dataset class as Deezer user 17585 and can be reached through exactly one intermediate user, but are not directly connected to Deezer user 17585",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "dz_17585"
+    ],
+    "relevant_node_ids": [
+      "dz_1283",
+      "dz_3013",
+      "dz_8354",
+      "dz_9775",
+      "dz_13526",
+      "dz_14908",
+      "dz_18792",
+      "dz_22759",
+      "dz_25595"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "deezer_dev_similarity_04",
+    "question": "Which users are in the same dataset class as Deezer user 6699 and can be reached through exactly one intermediate user, but are not directly connected to Deezer user 6699",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "dz_6699"
+    ],
+    "relevant_node_ids": [
+      "dz_814",
+      "dz_8459",
+      "dz_9392",
+      "dz_11987",
+      "dz_15251",
+      "dz_18371",
+      "dz_19708",
+      "dz_20782",
+      "dz_23429",
+      "dz_25000"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  },
+  {
+    "id": "deezer_dev_similarity_05",
+    "question": "Which users are in the same dataset class as Deezer user 10078 and can be reached through exactly one intermediate user, but are not directly connected to Deezer user 10078",
+    "question_type": "similarity",
+    "seed_node_ids": [
+      "dz_10078"
+    ],
+    "relevant_node_ids": [
+      "dz_1970",
+      "dz_3356",
+      "dz_5353",
+      "dz_10556",
+      "dz_18627",
+      "dz_22426",
+      "dz_24611"
+    ],
+    "generation_rule": "Same-class nodes at shortest-path distance exactly two from the seed."
+  }
+]

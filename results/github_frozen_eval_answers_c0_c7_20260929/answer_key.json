@@ -1,0 +1,402 @@
+{
+  "github_eval_direct_01": {
+    "A": "C5",
+    "B": "C2",
+    "C": "C1",
+    "D": "C0",
+    "E": "C7",
+    "F": "C3",
+    "G": "C6",
+    "H": "C4"
+  },
+  "github_eval_direct_02": {
+    "A": "C5",
+    "B": "C7",
+    "C": "C2",
+    "D": "C1",
+    "E": "C0",
+    "F": "C6",
+    "G": "C4",
+    "H": "C3"
+  },
+  "github_eval_direct_03": {
+    "A": "C7",
+    "B": "C5",
+    "C": "C1",
+    "D": "C2",
+    "E": "C3",
+    "F": "C0",
+    "G": "C6",
+    "H": "C4"
+  },
+  "github_eval_direct_04": {
+    "A": "C6",
+    "B": "C2",
+    "C": "C4",
+    "D": "C7",
+    "E": "C1",
+    "F": "C0",
+    "G": "C3",
+    "H": "C5"
+  },
+  "github_eval_direct_05": {
+    "A": "C4",
+    "B": "C7",
+    "C": "C0",
+    "D": "C2",
+    "E": "C1",
+    "F": "C6",
+    "G": "C5",
+    "H": "C3"
+  },
+  "github_eval_direct_06": {
+    "A": "C4",
+    "B": "C0",
+    "C": "C1",
+    "D": "C3",
+    "E": "C5",
+    "F": "C2",
+    "G": "C7",
+    "H": "C6"
+  },
+  "github_eval_direct_07": {
+    "A": "C6",
+    "B": "C5",
+    "C": "C0",
+    "D": "C2",
+    "E": "C4",
+    "F": "C7",
+    "G": "C1",
+    "H": "C3"
+  },
+  "github_eval_direct_08": {
+    "A": "C5",
+    "B": "C1",
+    "C": "C3",
+    "D": "C0",
+    "E": "C6",
+    "F": "C7",
+    "G": "C4",
+    "H": "C2"
+  },
+  "github_eval_direct_09": {
+    "A": "C2",
+    "B": "C4",
+    "C": "C0",
+    "D": "C3",
+    "E": "C7",
+    "F": "C1",
+    "G": "C6",
+    "H": "C5"
+  },
+  "github_eval_direct_10": {
+    "A": "C0",
+    "B": "C1",
+    "C": "C3",
+    "D": "C5",
+    "E": "C2",
+    "F": "C7",
+    "G": "C6",
+    "H": "C4"
+  },
+  "github_eval_comparison_01": {
+    "A": "C1",
+    "B": "C4",
+    "C": "C2",
+    "D": "C6",
+    "E": "C7",
+    "F": "C5",
+    "G": "C0",
+    "H": "C3"
+  },
+  "github_eval_comparison_02": {
+    "A": "C2",
+    "B": "C3",
+    "C": "C4",
+    "D": "C5",
+    "E": "C0",
+    "F": "C1",
+    "G": "C7",
+    "H": "C6"
+  },
+  "github_eval_comparison_03": {
+    "A": "C3",
+    "B": "C1",
+    "C": "C7",
+    "D": "C6",
+    "E": "C2",
+    "F": "C5",
+    "G": "C0",
+    "H": "C4"
+  },
+  "github_eval_comparison_04": {
+    "A": "C5",
+    "B": "C1",
+    "C": "C0",
+    "D": "C4",
+    "E": "C7",
+    "F": "C3",
+    "G": "C2",
+    "H": "C6"
+  },
+  "github_eval_comparison_05": {
+    "A": "C4",
+    "B": "C0",
+    "C": "C6",
+    "D": "C2",
+    "E": "C7",
+    "F": "C3",
+    "G": "C1",
+    "H": "C5"
+  },
+  "github_eval_comparison_06": {
+    "A": "C2",
+    "B": "C3",
+    "C": "C6",
+    "D": "C5",
+    "E": "C0",
+    "F": "C4",
+    "G": "C1",
+    "H": "C7"
+  },
+  "github_eval_comparison_07": {
+    "A": "C4",
+    "B": "C3",
+    "C": "C2",
+    "D": "C5",
+    "E": "C0",
+    "F": "C1",
+    "G": "C6",
+    "H": "C7"
+  },
+  "github_eval_comparison_08": {
+    "A": "C2",
+    "B": "C6",
+    "C": "C5",
+    "D": "C3",
+    "E": "C0",
+    "F": "C7",
+    "G": "C1",
+    "H": "C4"
+  },
+  "github_eval_comparison_09": {
+    "A": "C6",
+    "B": "C1",
+    "C": "C3",
+    "D": "C0",
+    "E": "C7",
+    "F": "C5",
+    "G": "C4",
+    "H": "C2"
+  },
+  "github_eval_comparison_10": {
+    "A": "C7",
+    "B": "C2",
+    "C": "C0",
+    "D": "C3",
+    "E": "C1",
+    "F": "C6",
+    "G": "C5",
+    "H": "C4"
+  },
+  "github_eval_path_01": {
+    "A": "C4",
+    "B": "C0",
+    "C": "C6",
+    "D": "C3",
+    "E": "C7",
+    "F": "C1",
+    "G": "C2",
+    "H": "C5"
+  },
+  "github_eval_path_02": {
+    "A": "C7",
+    "B": "C0",
+    "C": "C1",
+    "D": "C5",
+    "E": "C3",
+    "F": "C6",
+    "G": "C2",
+    "H": "C4"
+  },
+  "github_eval_path_03": {
+    "A": "C2",
+    "B": "C1",
+    "C": "C5",
+    "D": "C0",
+    "E": "C3",
+    "F": "C7",
+    "G": "C4",
+    "H": "C6"
+  },
+  "github_eval_path_04": {
+    "A": "C3",
+    "B": "C2",
+    "C": "C0",
+    "D": "C7",
+    "E": "C5",
+    "F": "C4",
+    "G": "C6",
+    "H": "C1"
+  },
+  "github_eval_path_05": {
+    "A": "C5",
+    "B": "C0",
+    "C": "C6",
+    "D": "C4",
+    "E": "C7",
+    "F": "C1",
+    "G": "C3",
+    "H": "C2"
+  },
+  "github_eval_path_06": {
+    "A": "C3",
+    "B": "C2",
+    "C": "C1",
+    "D": "C5",
+    "E": "C6",
+    "F": "C4",
+    "G": "C7",
+    "H": "C0"
+  },
+  "github_eval_path_07": {
+    "A": "C0",
+    "B": "C5",
+    "C": "C4",
+    "D": "C2",
+    "E": "C7",
+    "F": "C1",
+    "G": "C6",
+    "H": "C3"
+  },
+  "github_eval_path_08": {
+    "A": "C1",
+    "B": "C6",
+    "C": "C7",
+    "D": "C5",
+    "E": "C0",
+    "F": "C4",
+    "G": "C2",
+    "H": "C3"
+  },
+  "github_eval_path_09": {
+    "A": "C4",
+    "B": "C3",
+    "C": "C0",
+    "D": "C5",
+    "E": "C1",
+    "F": "C7",
+    "G": "C2",
+    "H": "C6"
+  },
+  "github_eval_path_10": {
+    "A": "C6",
+    "B": "C0",
+    "C": "C5",
+    "D": "C1",
+    "E": "C2",
+    "F": "C4",
+    "G": "C7",
+    "H": "C3"
+  },
+  "github_eval_similarity_01": {
+    "A": "C2",
+    "B": "C6",
+    "C": "C3",
+    "D": "C7",
+    "E": "C0",
+    "F": "C5",
+    "G": "C4",
+    "H": "C1"
+  },
+  "github_eval_similarity_02": {
+    "A": "C2",
+    "B": "C6",
+    "C": "C1",
+    "D": "C0",
+    "E": "C5",
+    "F": "C3",
+    "G": "C4",
+    "H": "C7"
+  },
+  "github_eval_similarity_03": {
+    "A": "C3",
+    "B": "C4",
+    "C": "C2",
+    "D": "C5",
+    "E": "C0",
+    "F": "C6",
+    "G": "C1",
+    "H": "C7"
+  },
+  "github_eval_similarity_04": {
+    "A": "C0",
+    "B": "C5",
+    "C": "C2",
+    "D": "C4",
+    "E": "C7",
+    "F": "C1",
+    "G": "C3",
+    "H": "C6"
+  },
+  "github_eval_similarity_05": {
+    "A": "C1",
+    "B": "C0",
+    "C": "C7",
+    "D": "C6",
+    "E": "C5",
+    "F": "C3",
+    "G": "C4",
+    "H": "C2"
+  },
+  "github_eval_similarity_06": {
+    "A": "C6",
+    "B": "C2",
+    "C": "C7",
+    "D": "C3",
+    "E": "C0",
+    "F": "C4",
+    "G": "C1",
+    "H": "C5"
+  },
+  "github_eval_similarity_07": {
+    "A": "C6",
+    "B": "C1",
+    "C": "C3",
+    "D": "C2",
+    "E": "C4",
+    "F": "C0",
+    "G": "C7",
+    "H": "C5"
+  },
+  "github_eval_similarity_08": {
+    "A": "C4",
+    "B": "C2",
+    "C": "C1",
+    "D": "C0",
+    "E": "C7",
+    "F": "C3",
+    "G": "C5",
+    "H": "C6"
+  },
+  "github_eval_similarity_09": {
+    "A": "C0",
+    "B": "C5",
+    "C": "C7",
+    "D": "C4",
+    "E": "C3",
+    "F": "C6",
+    "G": "C2",
+    "H": "C1"
+  },
+  "github_eval_similarity_10": {
+    "A": "C4",
+    "B": "C3",
+    "C": "C5",
+    "D": "C2",
+    "E": "C0",
+    "F": "C6",
+    "G": "C1",
+    "H": "C7"
+  }
+}

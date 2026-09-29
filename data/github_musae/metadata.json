@@ -1,0 +1,31 @@
+{
+  "dataset": "GitHub MUSAE Social Network",
+  "source_repository": "UCI Machine Learning Repository",
+  "source_url": "https://archive.ics.uci.edu/dataset/588/github+musae",
+  "doi": "10.24432/C5Z02B",
+  "license": "CC BY 4.0",
+  "node_count": 37700,
+  "raw_edge_rows": 289003,
+  "converted_edge_count": 289003,
+  "removed_self_loops": 0,
+  "removed_duplicate_undirected_edges": 0,
+  "isolated_node_count": 0,
+  "isolated_node_ids": [],
+  "binary_classes": {
+    "0": 27961,
+    "1": 9739
+  },
+  "node_id_policy": "Prefix the source integer ID with 'gh_'.",
+  "title_policy": "Preserve the supplied GitHub username.",
+  "edge_policy": "Treat mutual follows as undirected edges with weight 1.0.",
+  "feature_policy": "Preserve the raw feature JSON and record only each node's feature count because the archives do not include a feature-index vocabulary.",
+  "source_file_sha256": {
+    "musae_git_target.csv": "3a8582f0c55d6f605df5f45bde28a90561be9517b40226c5e6bbce253679906a",
+    "musae_git_edges.csv": "34c57382246949d1b3b7fa641a8532672001ecae8e9558f0b3c113cc035bd781",
+    "musae_git_features.json": "47761f93f839d84b213e9f2fa43c056761734b295d6b2e838d8bbc335073cee7"
+  },
+  "output_file_sha256": {
+    "nodes.csv": "f83a0fa41b4218d12aa53ed83aa60e4debb6bd6aaf83df66950addca6137fa5e",
+    "edges.csv": "7992ccfe4dd82fcd2bde3114bb84d1f10b42a6bd7f6b1e88ba645f0429eef860"
+  }
+}

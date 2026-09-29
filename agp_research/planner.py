@@ -60,9 +60,11 @@ with keys keywords, depth, decay, and top_k."""
 
 
 def llm_keywords(question: str, client: OpenAICompatibleClient) -> list[str]:
-    """Ask an LLM for entity keywords only, leaving parameters fixed."""
+    """Ask an LLM for entity keywords, preserving explicit structured IDs."""
     system = """Extract the named entities that identify graph nodes in the question.
 Copy each entity exactly as written, including punctuation, accents, and capitalization.
+Treat an identifier such as 'Deezer user 32' as one complete entity: do not split its
+words, omit its prefix, or change any digit. Treat usernames as exact entity strings.
 Do not include question phrases such as 'which pages', 'directly neighbor', 'liked by
 both', 'shortest path', 'similar to', or 'two hops away'. Return JSON only with one
 key named keywords whose value is a list of strings."""
@@ -70,6 +72,14 @@ key named keywords whose value is a list of strings."""
     keywords = [
         str(item).strip() for item in data.get("keywords", []) if str(item).strip()
     ]
+    explicit_deezer_ids = [
+        match.group(0)
+        for match in re.finditer(r"\bDeezer\s+user\s+\d+\b", question, re.IGNORECASE)
+    ]
+    if explicit_deezer_ids:
+        # Numeric anonymized titles are already unambiguous in the question.
+        # Do not allow a generative copy error to alter or split their digits.
+        keywords = explicit_deezer_ids
     if not keywords:
         raise ValueError("LLM must return at least one keyword")
     return keywords
