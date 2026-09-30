@@ -177,6 +177,31 @@ The automatic metric also cannot recognize paraphrases, validate reasoning, or
 judge whether a response is readable and complete. It must therefore be reported
 as entity coverage rather than full answer correctness.
 
+### 5.1 Small blinded semantic-review pilot
+
+An exploratory model-assisted pilot reviewed one deterministically hash-selected
+question of each type from each dataset. The sample therefore contains eight
+questions and 32 saved answers: C0, C1, C2, and C8 for every question. Answers
+were randomized behind A–D labels. The judge saw the question, the verified gold
+entity set, and one answer at a time; all judgements were completed before the
+condition key was revealed.
+
+| Condition | Correctness (1–5) | Completeness (1–5) |
+| --- | ---: | ---: |
+| C0 | 1.000 | 1.000 |
+| C1 | 3.500 | 3.500 |
+| C2 | **4.750** | **4.750** |
+| C8 | 3.500 | 3.375 |
+
+The pilot supports the narrower observation that graph grounding improves
+answers to questions whose targets are graph-specific identifiers. C2 performs
+best in this small sample. However, the result is not independent human evidence:
+the judge is the same Qwen model used to generate answers, only eight questions
+are reviewed, and the gold criteria remain topology-defined entity sets. An
+initial diagnostic run also exposed ambiguous judge wording that rewarded C0
+abstentions; it is preserved and explicitly marked invalid. Only the clarified
+V2 rubric is reported here.
+
 ## 6. Generation behaviour and efficiency
 
 The answer stage made seven base calls per question: 280 calls for each dataset.

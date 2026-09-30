@@ -1,0 +1,98 @@
+{
+  "created_utc": "2026-09-30T04:32:56.562640+00:00",
+  "pilot_only": true,
+  "model_assisted_review": true,
+  "same_model_family_as_answer_generator": "qwen3:4b-instruct-2507-q4_K_M",
+  "independent_human_review": false,
+  "random_seed": 90055,
+  "sample_rule": "one deterministic hash-selected question per type and dataset",
+  "question_count": 8,
+  "conditions": [
+    "C0",
+    "C1",
+    "C2",
+    "C8"
+  ],
+  "rating_count": 32,
+  "rubric_sha256": "c405c6e8e3129f2eca7fea86f5d9dba824acd64c409f784c3c186d350757cb7f",
+  "selection_completed_before_answer_access": true,
+  "all_judgments_completed_before_key_reveal": true,
+  "network_requests": 32,
+  "cache_hits": 0,
+  "mean_scores": {
+    "C0": {
+      "correctness": 3.5,
+      "completeness": 3.5
+    },
+    "C1": {
+      "correctness": 1.5,
+      "completeness": 1.5
+    },
+    "C2": {
+      "correctness": 1.625,
+      "completeness": 1.5
+    },
+    "C8": {
+      "correctness": 2,
+      "completeness": 1.875
+    }
+  },
+  "mean_scores_by_dataset": {
+    "github_musae": {
+      "C0": {
+        "correctness": 3,
+        "completeness": 3
+      },
+      "C1": {
+        "correctness": 2,
+        "completeness": 2
+      },
+      "C2": {
+        "correctness": 2.25,
+        "completeness": 2
+      },
+      "C8": {
+        "correctness": 3,
+        "completeness": 2.75
+      }
+    },
+    "deezer_europe": {
+      "C0": {
+        "correctness": 4,
+        "completeness": 4
+      },
+      "C1": {
+        "correctness": 1,
+        "completeness": 1
+      },
+      "C2": {
+        "correctness": 1,
+        "completeness": 1
+      },
+      "C8": {
+        "correctness": 1,
+        "completeness": 1
+      }
+    }
+  },
+  "selected_question_ids": {
+    "github_musae": [
+      "github_eval_direct_06",
+      "github_eval_comparison_10",
+      "github_eval_path_05",
+      "github_eval_similarity_07"
+    ],
+    "deezer_europe": [
+      "deezer_eval_direct_07",
+      "deezer_eval_comparison_08",
+      "deezer_eval_path_01",
+      "deezer_eval_similarity_10"
+    ]
+  },
+  "input_sha256": {
+    "github_musae_questions": "ec459d402bf3ec3d41b6e613e6b4f719760f7ac56391e6c550bcb0254b497fc5",
+    "github_musae_answers": "a63d27f228764f2d53e66eed4cd0d0e5078dbf32fcec2d7d7c22878e5ad52c4d",
+    "deezer_europe_questions": "2cb2f6a7cc340b070037c5866f7a0c9bb7171eb698c362972754e704fa044490",
+    "deezer_europe_answers": "cfca3109edab532c2ff3a42bf5c7e50a95e5bbe3f321e799ed04035802c20e49"
+  }
+}

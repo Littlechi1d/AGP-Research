@@ -1,0 +1,50 @@
+{
+  "github_eval_direct_06": {
+    "A": "C2",
+    "B": "C1",
+    "C": "C0",
+    "D": "C8"
+  },
+  "github_eval_comparison_10": {
+    "A": "C1",
+    "B": "C2",
+    "C": "C8",
+    "D": "C0"
+  },
+  "github_eval_path_05": {
+    "A": "C2",
+    "B": "C0",
+    "C": "C1",
+    "D": "C8"
+  },
+  "github_eval_similarity_07": {
+    "A": "C8",
+    "B": "C1",
+    "C": "C0",
+    "D": "C2"
+  },
+  "deezer_eval_direct_07": {
+    "A": "C0",
+    "B": "C1",
+    "C": "C2",
+    "D": "C8"
+  },
+  "deezer_eval_comparison_08": {
+    "A": "C2",
+    "B": "C0",
+    "C": "C1",
+    "D": "C8"
+  },
+  "deezer_eval_path_01": {
+    "A": "C1",
+    "B": "C8",
+    "C": "C2",
+    "D": "C0"
+  },
+  "deezer_eval_similarity_10": {
+    "A": "C1",
+    "B": "C8",
+    "C": "C2",
+    "D": "C0"
+  }
+}

@@ -657,6 +657,9 @@ bootstrap intervals and publication-ready condition and question-type figures in
 or answer generation.
 The accompanying `FAILURE_ANALYSIS.md` traces representative frozen examples to
 mapping, selector, retrieval-budget, context, and generation stages.
+An exploratory eight-question blind model-assisted pilot gives C2 the highest
+mean correctness and completeness (4.75/5), but uses the same model family as
+answer generation and must not be presented as independent human evaluation.
 
 ## 12. Limitations
 

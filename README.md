@@ -486,6 +486,9 @@ Paired bootstrap intervals and dissertation-ready SVG figures are in
 Representative direct, comparison, path, similarity, selector, and truncation
 failures are documented in the accompanying
 [`FAILURE_ANALYSIS.md`](results/cross_dataset_statistical_analysis_20260930/FAILURE_ANALYSIS.md).
+The exploratory eight-question blinded model-assisted review is preserved in
+[`results/blinded_semantic_pilot_v2_20260930/`](results/blinded_semantic_pilot_v2_20260930/REPORT.md);
+it is not independent human evidence.
 
 ## Tests
 
