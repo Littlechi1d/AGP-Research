@@ -651,6 +651,12 @@ both graphs (0.4394 and 0.4450). C2 was the strongest fixed AGP arm (0.4129 and
 AGP. Full settings, hashes, question-type results, automatic answer metrics, and
 generation diagnostics are in
 `results/cross_dataset_frozen_evaluation_20260929/REPORT.md`.
+The follow-up saved-output analysis adds deterministic 10,000-resample paired
+bootstrap intervals and publication-ready condition and question-type figures in
+`results/cross_dataset_statistical_analysis_20260930/` without rerunning retrieval
+or answer generation.
+The accompanying `FAILURE_ANALYSIS.md` traces representative frozen examples to
+mapping, selector, retrieval-budget, context, and generation stages.
 
 ## 12. Limitations
 
@@ -735,6 +741,8 @@ The eventual academic report can use this structure:
 The current document now supports the implementation, methodology, and results
 chapters. Statistical uncertainty and qualitative examples should still be added
 before dissertation submission.
+The polished experimental narrative, paired intervals, figures, research-question
+answers, and threats to validity are assembled in `RESULTS_AND_DISCUSSION.md`.
 
 ## 15. Conclusion
 

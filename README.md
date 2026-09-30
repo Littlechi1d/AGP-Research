@@ -42,6 +42,9 @@ Further documentation:
   settings and one-time evaluation rule.
 - [`results/cross_dataset_frozen_evaluation_20260929/REPORT.md`](results/cross_dataset_frozen_evaluation_20260929/REPORT.md):
   final cross-dataset results.
+- [`RESULTS_AND_DISCUSSION.md`](RESULTS_AND_DISCUSSION.md): dissertation-ready
+  experimental setup, results by research question, discussion, and threats to
+  validity.
 
 ## Pipeline
 
@@ -478,6 +481,11 @@ C7 reproduced C2 because its frozen rules fell back for every new question. C8
 scored `0.3682` and `0.3895`, so the zero-shot question-only LLM selector did not
 beat the strongest fixed setting. See the
 [complete report](results/cross_dataset_frozen_evaluation_20260929/REPORT.md).
+Paired bootstrap intervals and dissertation-ready SVG figures are in
+[`results/cross_dataset_statistical_analysis_20260930/`](results/cross_dataset_statistical_analysis_20260930/REPORT.md).
+Representative direct, comparison, path, similarity, selector, and truncation
+failures are documented in the accompanying
+[`FAILURE_ANALYSIS.md`](results/cross_dataset_statistical_analysis_20260930/FAILURE_ANALYSIS.md).
 
 ## Tests
 

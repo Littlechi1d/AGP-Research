@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="600" viewBox="0 0 1040 600">
+<style>text{font-family:Arial,sans-serif;fill:#111827}.title{font-size:20px;font-weight:600}.label{font-size:13px}.value{font-size:12px;font-weight:600}</style>
+<rect width="1040" height="600" fill="#ffffff"/>
+<text x="520.0" y="30" text-anchor="middle" class="title">Retrieval F1 by question type</text>
+<text x="207.5" y="93" text-anchor="middle" class="label">C1</text>
+<text x="302.5" y="93" text-anchor="middle" class="label">C2</text>
+<text x="397.5" y="93" text-anchor="middle" class="label">C3</text>
+<text x="492.5" y="93" text-anchor="middle" class="label">C4</text>
+<text x="587.5" y="93" text-anchor="middle" class="label">C5</text>
+<text x="682.5" y="93" text-anchor="middle" class="label">C6</text>
+<text x="777.5" y="93" text-anchor="middle" class="label">C7</text>
+<text x="872.5" y="93" text-anchor="middle" class="label">C8</text>
+<text x="12" y="123" class="label">GitHub MUSAE</text>
+<text x="145" y="134" text-anchor="end" class="label">direct</text>
+<rect x="160" y="105" width="91" height="44" fill="#2563eb" fill-opacity="0.900"/>
+<text x="205.5" y="133" text-anchor="middle" class="value">1.000</text>
+<rect x="255" y="105" width="91" height="44" fill="#2563eb" fill-opacity="0.592"/>
+<text x="300.5" y="133" text-anchor="middle" class="value">0.615</text>
+<rect x="350" y="105" width="91" height="44" fill="#2563eb" fill-opacity="0.592"/>
+<text x="395.5" y="133" text-anchor="middle" class="value">0.615</text>
+<rect x="445" y="105" width="91" height="44" fill="#2563eb" fill-opacity="0.584"/>
+<text x="490.5" y="133" text-anchor="middle" class="value">0.605</text>
+<rect x="540" y="105" width="91" height="44" fill="#2563eb" fill-opacity="0.557"/>
+<text x="585.5" y="133" text-anchor="middle" class="value">0.571</text>
+<rect x="635" y="105" width="91" height="44" fill="#2563eb" fill-opacity="0.490"/>
+<text x="680.5" y="133" text-anchor="middle" class="value">0.487</text>
+<rect x="730" y="105" width="91" height="44" fill="#2563eb" fill-opacity="0.592"/>
+<text x="775.5" y="133" text-anchor="middle" class="value">0.615</text>
+<rect x="825" y="105" width="91" height="44" fill="#2563eb" fill-opacity="0.592"/>
+<text x="870.5" y="133" text-anchor="middle" class="value">0.615</text>
+<text x="145" y="182" text-anchor="end" class="label">comparison</text>
+<rect x="160" y="153" width="91" height="44" fill="#2563eb" fill-opacity="0.414"/>
+<text x="205.5" y="181" text-anchor="middle" class="value">0.392</text>
+<rect x="255" y="153" width="91" height="44" fill="#2563eb" fill-opacity="0.386"/>
+<text x="300.5" y="181" text-anchor="middle" class="value">0.357</text>
+<rect x="350" y="153" width="91" height="44" fill="#2563eb" fill-opacity="0.233"/>
+<text x="395.5" y="181" text-anchor="middle" class="value">0.167</text>
+<rect x="445" y="153" width="91" height="44" fill="#2563eb" fill-opacity="0.193"/>
+<text x="490.5" y="181" text-anchor="middle" class="value">0.117</text>
+<rect x="540" y="153" width="91" height="44" fill="#2563eb" fill-opacity="0.180"/>
+<text x="585.5" y="181" text-anchor="middle" class="value">0.100</text>
+<rect x="635" y="153" width="91" height="44" fill="#2563eb" fill-opacity="0.180"/>
+<text x="680.5" y="181" text-anchor="middle" class="value">0.100</text>
+<rect x="730" y="153" width="91" height="44" fill="#2563eb" fill-opacity="0.386"/>
+<text x="775.5" y="181" text-anchor="middle" class="value">0.357</text>
+<rect x="825" y="153" width="91" height="44" fill="#2563eb" fill-opacity="0.220"/>
+<text x="870.5" y="181" text-anchor="middle" class="value">0.150</text>
+<text x="145" y="230" text-anchor="end" class="label">path</text>
+<rect x="160" y="201" width="91" height="44" fill="#2563eb" fill-opacity="0.392"/>
+<text x="205.5" y="229" text-anchor="middle" class="value">0.365</text>
+<rect x="255" y="201" width="91" height="44" fill="#2563eb" fill-opacity="0.353"/>
+<text x="300.5" y="229" text-anchor="middle" class="value">0.317</text>
+<rect x="350" y="201" width="91" height="44" fill="#2563eb" fill-opacity="0.340"/>
+<text x="395.5" y="229" text-anchor="middle" class="value">0.300</text>
+<rect x="445" y="201" width="91" height="44" fill="#2563eb" fill-opacity="0.313"/>
+<text x="490.5" y="229" text-anchor="middle" class="value">0.267</text>
+<rect x="540" y="201" width="91" height="44" fill="#2563eb" fill-opacity="0.287"/>
+<text x="585.5" y="229" text-anchor="middle" class="value">0.233</text>
+<rect x="635" y="201" width="91" height="44" fill="#2563eb" fill-opacity="0.273"/>
+<text x="680.5" y="229" text-anchor="middle" class="value">0.217</text>
+<rect x="730" y="201" width="91" height="44" fill="#2563eb" fill-opacity="0.353"/>
+<text x="775.5" y="229" text-anchor="middle" class="value">0.317</text>
+<rect x="825" y="201" width="91" height="44" fill="#2563eb" fill-opacity="0.327"/>
+<text x="870.5" y="229" text-anchor="middle" class="value">0.283</text>
+<text x="145" y="278" text-anchor="end" class="label">similarity</text>
+<rect x="160" y="249" width="91" height="44" fill="#2563eb" fill-opacity="0.100"/>
+<text x="205.5" y="277" text-anchor="middle" class="value">0.000</text>
+<rect x="255" y="249" width="91" height="44" fill="#2563eb" fill-opacity="0.390"/>
+<text x="300.5" y="277" text-anchor="middle" class="value">0.362</text>
+<rect x="350" y="249" width="91" height="44" fill="#2563eb" fill-opacity="0.407"/>
+<text x="395.5" y="277" text-anchor="middle" class="value">0.383</text>
+<rect x="445" y="249" width="91" height="44" fill="#2563eb" fill-opacity="0.439"/>
+<text x="490.5" y="277" text-anchor="middle" class="value">0.424</text>
+<rect x="540" y="249" width="91" height="44" fill="#2563eb" fill-opacity="0.448"/>
+<text x="585.5" y="277" text-anchor="middle" class="value">0.435</text>
+<rect x="635" y="249" width="91" height="44" fill="#2563eb" fill-opacity="0.459"/>
+<text x="680.5" y="277" text-anchor="middle" class="value">0.449</text>
+<rect x="730" y="249" width="91" height="44" fill="#2563eb" fill-opacity="0.390"/>
+<text x="775.5" y="277" text-anchor="middle" class="value">0.362</text>
+<rect x="825" y="249" width="91" height="44" fill="#2563eb" fill-opacity="0.439"/>
+<text x="870.5" y="277" text-anchor="middle" class="value">0.424</text>
+<text x="12" y="343.79999999999995" class="label">Deezer Europe</text>
+<text x="145" y="354.79999999999995" text-anchor="end" class="label">direct</text>
+<rect x="160" y="325.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.900"/>
+<text x="205.5" y="353.79999999999995" text-anchor="middle" class="value">1.000</text>
+<rect x="255" y="325.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.624"/>
+<text x="300.5" y="353.79999999999995" text-anchor="middle" class="value">0.655</text>
+<rect x="350" y="325.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.624"/>
+<text x="395.5" y="353.79999999999995" text-anchor="middle" class="value">0.655</text>
+<rect x="445" y="325.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.624"/>
+<text x="490.5" y="353.79999999999995" text-anchor="middle" class="value">0.655</text>
+<rect x="540" y="325.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.624"/>
+<text x="585.5" y="353.79999999999995" text-anchor="middle" class="value">0.655</text>
+<rect x="635" y="325.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.598"/>
+<text x="680.5" y="353.79999999999995" text-anchor="middle" class="value">0.623</text>
+<rect x="730" y="325.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.624"/>
+<text x="775.5" y="353.79999999999995" text-anchor="middle" class="value">0.655</text>
+<rect x="825" y="325.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.624"/>
+<text x="870.5" y="353.79999999999995" text-anchor="middle" class="value">0.655</text>
+<text x="145" y="402.79999999999995" text-anchor="end" class="label">comparison</text>
+<rect x="160" y="373.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.463"/>
+<text x="205.5" y="401.79999999999995" text-anchor="middle" class="value">0.453</text>
+<rect x="255" y="373.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.415"/>
+<text x="300.5" y="401.79999999999995" text-anchor="middle" class="value">0.394</text>
+<rect x="350" y="373.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.415"/>
+<text x="395.5" y="401.79999999999995" text-anchor="middle" class="value">0.394</text>
+<rect x="445" y="373.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.402"/>
+<text x="490.5" y="401.79999999999995" text-anchor="middle" class="value">0.377</text>
+<rect x="540" y="373.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.348"/>
+<text x="585.5" y="401.79999999999995" text-anchor="middle" class="value">0.310</text>
+<rect x="635" y="373.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.271"/>
+<text x="680.5" y="401.79999999999995" text-anchor="middle" class="value">0.214</text>
+<rect x="730" y="373.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.415"/>
+<text x="775.5" y="401.79999999999995" text-anchor="middle" class="value">0.394</text>
+<rect x="825" y="373.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.402"/>
+<text x="870.5" y="401.79999999999995" text-anchor="middle" class="value">0.377</text>
+<text x="145" y="450.79999999999995" text-anchor="end" class="label">path</text>
+<rect x="160" y="421.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.361"/>
+<text x="205.5" y="449.79999999999995" text-anchor="middle" class="value">0.327</text>
+<rect x="255" y="421.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.327"/>
+<text x="300.5" y="449.79999999999995" text-anchor="middle" class="value">0.283</text>
+<rect x="350" y="421.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.287"/>
+<text x="395.5" y="449.79999999999995" text-anchor="middle" class="value">0.233</text>
+<rect x="445" y="421.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.273"/>
+<text x="490.5" y="449.79999999999995" text-anchor="middle" class="value">0.217</text>
+<rect x="540" y="421.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.273"/>
+<text x="585.5" y="449.79999999999995" text-anchor="middle" class="value">0.217</text>
+<rect x="635" y="421.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.260"/>
+<text x="680.5" y="449.79999999999995" text-anchor="middle" class="value">0.200</text>
+<rect x="730" y="421.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.327"/>
+<text x="775.5" y="449.79999999999995" text-anchor="middle" class="value">0.283</text>
+<rect x="825" y="421.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.273"/>
+<text x="870.5" y="449.79999999999995" text-anchor="middle" class="value">0.217</text>
+<text x="145" y="498.79999999999995" text-anchor="end" class="label">similarity</text>
+<rect x="160" y="469.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.100"/>
+<text x="205.5" y="497.79999999999995" text-anchor="middle" class="value">0.000</text>
+<rect x="255" y="469.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.357"/>
+<text x="300.5" y="497.79999999999995" text-anchor="middle" class="value">0.322</text>
+<rect x="350" y="469.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.331"/>
+<text x="395.5" y="497.79999999999995" text-anchor="middle" class="value">0.289</text>
+<rect x="445" y="469.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.347"/>
+<text x="490.5" y="497.79999999999995" text-anchor="middle" class="value">0.309</text>
+<rect x="540" y="469.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.347"/>
+<text x="585.5" y="497.79999999999995" text-anchor="middle" class="value">0.309</text>
+<rect x="635" y="469.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.329"/>
+<text x="680.5" y="497.79999999999995" text-anchor="middle" class="value">0.286</text>
+<rect x="730" y="469.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.357"/>
+<text x="775.5" y="497.79999999999995" text-anchor="middle" class="value">0.322</text>
+<rect x="825" y="469.79999999999995" width="91" height="44" fill="#2563eb" fill-opacity="0.347"/>
+<text x="870.5" y="497.79999999999995" text-anchor="middle" class="value">0.309</text>
+</svg>
